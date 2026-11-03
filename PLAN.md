@@ -194,7 +194,7 @@ Borrados en cascada: plan → dates, slots, options, participants → responses.
 - [x] Vitest y Playwright configurados con un test de ejemplo cada uno
 - [x] Script `pnpm check`
 - [x] `.env.example`, README mínimo
-- [x] Repo en GitHub + proyecto en Vercel conectado
+- [ ] Repo en GitHub + proyecto en Vercel conectado _(pendiente: el push a GitHub requiere tu permiso)_
 
 **Hecho cuando**: `pnpm check` y `pnpm build` en verde, y la landing se ve en `/es`, `/ca` y `/en` en un preview de Vercel.
 
