@@ -18,12 +18,12 @@ Without `AUTH_RESEND_KEY`, magic links and notification emails are printed in th
 
 ## Scripts
 
-| Script | What it does |
-| --- | --- |
-| `pnpm check` | Typecheck, lint, Prettier and unit tests |
-| `pnpm test:e2e` | Playwright end-to-end tests (starts `next dev` on :3100) |
-| `pnpm db:generate` / `pnpm db:migrate` | Drizzle migrations |
-| `pnpm email:dev` | React Email preview of the templates |
+| Script                                 | What it does                                             |
+| -------------------------------------- | -------------------------------------------------------- |
+| `pnpm check`                           | Typecheck, lint, Prettier and unit tests                 |
+| `pnpm test:e2e`                        | Playwright end-to-end tests (starts `next dev` on :3100) |
+| `pnpm db:generate` / `pnpm db:migrate` | Drizzle migrations                                       |
+| `pnpm email:dev`                       | React Email preview of the templates                     |
 
 ## Deploying (Vercel)
 
