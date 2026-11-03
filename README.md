@@ -1,36 +1,33 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Quadra
 
-## Getting Started
+Find the day that works for everyone. Create a plan, share the link, and everyone paints the days (or slots, or hours) they can make. Quadra highlights the best option; close the plan and everyone gets a calendar event.
 
-First, run the development server:
+## Local setup
+
+Requirements: Node 22+, pnpm 11, Docker.
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+pnpm install
+cp .env.example .env.local   # then fill AUTH_SECRET (openssl rand -base64 32)
+pnpm db:up                   # Postgres 17 on localhost:54329
+pnpm db:migrate
+pnpm dev                     # http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Without `AUTH_RESEND_KEY`, magic links and notification emails are printed in the dev server console. Set `AUTH_TEST_LOGIN=1` locally to get a one-click test login (never available in production).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Scripts
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Script | What it does |
+| --- | --- |
+| `pnpm check` | Typecheck, lint, Prettier and unit tests |
+| `pnpm test:e2e` | Playwright end-to-end tests (starts `next dev` on :3100) |
+| `pnpm db:generate` / `pnpm db:migrate` | Drizzle migrations |
+| `pnpm email:dev` | React Email preview of the templates |
 
-## Learn More
+## Deploying (Vercel)
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. Create a Neon database (Vercel Marketplace) and set `DATABASE_URL`.
+2. Set `AUTH_SECRET`, `AUTH_GOOGLE_ID`, `AUTH_GOOGLE_SECRET`, `AUTH_RESEND_KEY`, `EMAIL_FROM`, `NEXT_PUBLIC_APP_URL` and, optionally, `UPSTASH_REDIS_REST_URL` / `UPSTASH_REDIS_REST_TOKEN` for rate limiting.
+3. Google OAuth redirect URI: `https://<domain>/api/auth/callback/google`.
+4. The build (`pnpm vercel-build`) applies migrations before `next build` when `DATABASE_URL` is present.

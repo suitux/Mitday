@@ -1,0 +1,391 @@
+{
+  "meta": {
+    "title": "Quadra — encontrad el día que os va bien",
+    "description": "Crea un plan, comparte el enlace y cada uno pinta los días que puede. Quadra marca el mejor."
+  },
+  "nav": {
+    "signIn": "Entrar",
+    "dashboard": "Mis planes",
+    "account": "Cuenta",
+    "newPlan": "Nuevo plan",
+    "signOut": "Cerrar sesión"
+  },
+  "footer": {
+    "tagline": "Quadra · quedar sin cadenas de mensajes",
+    "language": "Idioma"
+  },
+  "common": { "link": "Enlace", "copy": "Copiar", "copied": "Copiado" },
+  "calendar": { "prevMonth": "Mes anterior", "nextMonth": "Mes siguiente" },
+  "landing": {
+    "title": "El día que os va bien a todos",
+    "subtitle": "Crea un plan, comparte el enlace y cada uno pinta los días que puede. Quadra marca el mejor.",
+    "cta": "Crear un plan",
+    "ctaNote": "Los invitados no necesitan cuenta.",
+    "how": {
+      "title": "Cómo funciona",
+      "guests": {
+        "title": "Un enlace y listo",
+        "body": "Quien lo abre pone su nombre y marca. Sin registros, sin apps. Si cambia de móvil, tiene su enlace personal."
+      },
+      "grain": {
+        "title": "Días, franjas u horas",
+        "body": "Elige días completos, franjas con nombre como «Comida» y «Cena», o una rejilla horaria en tu zona horaria."
+      },
+      "privacy": {
+        "title": "Tú decides qué se ve",
+        "body": "Que todos vean quién puede, solo el mapa de calor o nada de los demás. Tú siempre ves la tabla completa."
+      },
+      "close": {
+        "title": "Cerrar y al calendario",
+        "body": "Elige la fecha final: todos reciben un aviso con el evento para Google Calendar o Apple Calendar."
+      }
+    },
+    "demo": {
+      "yes": "Puedo",
+      "maybe": "Si hace falta",
+      "no": "No puedo",
+      "best": "Mejor día ahora: {date}",
+      "sample": "Ejemplo con las respuestas de cuatro amigos. Pinta encima: toca un día o arrastra."
+    }
+  },
+  "auth": {
+    "title": "Entrar en Quadra",
+    "subtitle": "Para crear y gestionar planes. Para responder no hace falta cuenta.",
+    "error": "No se ha podido iniciar sesión. Inténtalo de nuevo.",
+    "or": "o",
+    "guestNote": "Sin contraseñas: entra con Google o con un enlace que te enviamos por correo.",
+    "google": "Continuar con Google",
+    "emailLabel": "Correo electrónico",
+    "emailPlaceholder": "tu@correo.com",
+    "sendLink": "Enviarme un enlace",
+    "errors": {
+      "invalid_email": "Escribe un correo válido.",
+      "rate_limited": "Demasiados intentos. Espera unos minutos.",
+      "server": "No hemos podido enviar el correo. Inténtalo de nuevo."
+    },
+    "check": {
+      "title": "Revisa tu correo",
+      "body": "Te hemos enviado un enlace para entrar. Ábrelo en este dispositivo; caduca en 24 horas.",
+      "back": "Usar otro correo"
+    }
+  },
+  "dashboard": {
+    "title": "Mis planes",
+    "newPlan": "Crear plan",
+    "mine": "Creados por mí",
+    "emptyTitle": "Aún no has creado ningún plan",
+    "emptyBody": "Crea uno, comparte el enlace y deja que cada uno pinte sus días.",
+    "emptyCta": "Crear plan",
+    "participating": "Participo",
+    "participatingEmpty": "Cuando respondas a un plan con la sesión iniciada, aparecerá aquí.",
+    "final": "Fecha final: {when}",
+    "best": "Mejor por ahora: {when}",
+    "noAnswers": "Sin respuestas todavía",
+    "participants": "{count, plural, =0 {Nadie} one {# persona} other {# personas}}",
+    "closed": "Cerrado",
+    "open": "Abierto"
+  },
+  "wizard": {
+    "title": "Nuevo plan",
+    "progress": "Pasos",
+    "steps": {
+      "details": "Datos",
+      "when": "Cuándo",
+      "answers": "Respuestas",
+      "privacy": "Privacidad"
+    },
+    "back": "Atrás",
+    "next": "Siguiente",
+    "creating": "Creando…",
+    "create": "Crear plan",
+    "defaults": {
+      "yes": "Sí",
+      "no": "No",
+      "lunch": "Comida",
+      "dinner": "Cena"
+    },
+    "errors": {
+      "generic": "Revisa este campo.",
+      "required": "Este campo es obligatorio.",
+      "too_long": "Es demasiado largo.",
+      "invalid_date": "Fecha no válida.",
+      "range_required": "Elige el día de inicio y el de fin.",
+      "range_order": "El fin no puede ser anterior al inicio.",
+      "range_too_long": "El rango no puede pasar de 366 días.",
+      "dates_required": "Elige al menos un día.",
+      "dates_duplicate": "Hay días repetidos.",
+      "too_many_dates": "Como máximo 100 días.",
+      "slots_required": "Añade al menos una franja.",
+      "too_many_slots": "Como máximo 6 franjas.",
+      "hours_order": "La hora de fin debe ser posterior a la de inicio.",
+      "hours_alignment": "Las horas deben coincidir con el intervalo.",
+      "invalid_timezone": "Zona horaria no reconocida.",
+      "too_few_options": "Hacen falta al menos 2 respuestas.",
+      "too_many_options": "Como máximo 5 respuestas.",
+      "invalid_cell": "Celda no válida."
+    },
+    "details": {
+      "title": "¿Qué plan es?",
+      "name": "Título",
+      "namePlaceholder": "Cena de Navidad",
+      "description": "Descripción",
+      "optional": "(opcional)",
+      "descriptionPlaceholder": "Dónde, qué hay que llevar, lo que haga falta saber."
+    },
+    "when": {
+      "title": "¿Cuándo?",
+      "lockedNote": "Ya hay respuestas: las fechas y el horario no se pueden cambiar. En días sueltos sí puedes añadir o quitar días.",
+      "dateMode": "Fechas",
+      "range": "Un rango",
+      "rangeBody": "Del día X al día Y (máx. {max} días).",
+      "dates": "Días sueltos",
+      "datesBody": "Elige los días uno a uno.",
+      "open": "Abierto",
+      "openBody": "Cualquier día del próximo año.",
+      "granularity": "Qué se elige",
+      "day": "Días",
+      "dayBody": "Días completos.",
+      "slot": "Franjas",
+      "slotBody": "Etiquetas como «Comida» o «Cena».",
+      "hour": "Horas",
+      "hourBody": "Rejilla de 30 o 60 minutos.",
+      "slots": "Franjas del día",
+      "slotLabel": "Franja {n}",
+      "removeSlot": "Quitar franja",
+      "addSlot": "Añadir franja",
+      "slotsHint": "Entre 1 y 6. Son solo etiquetas, sin hora.",
+      "interval": "Intervalo",
+      "minutes": "{n} minutos",
+      "from": "Desde",
+      "to": "Hasta",
+      "timezone": "Zona horaria",
+      "timezoneHint": "Detectada en tu navegador. Cada participante verá las horas en la suya.",
+      "rangeSummary": "Del {start} al {end} · {count, plural, one {# día} other {# días}}",
+      "rangePickEnd": "Desde el {start}. Ahora toca el último día.",
+      "rangePickStart": "Toca el primer día del rango.",
+      "datesSummary": "{count, plural, =0 {Ningún día elegido} one {# día elegido} other {# días elegidos}}"
+    },
+    "answers": {
+      "title": "Respuestas posibles",
+      "description": "Lo que puede contestar cada uno. El peso decide cuánto cuenta para elegir el mejor día.",
+      "lockedNote": "Ya hay respuestas: puedes cambiar nombres y colores, pero no pesos ni añadir o quitar opciones.",
+      "label": "Respuesta {n}",
+      "remove": "Quitar respuesta",
+      "color": "Color",
+      "colors": {
+        "green": "Verde",
+        "lime": "Lima",
+        "amber": "Ámbar",
+        "orange": "Naranja",
+        "red": "Rojo",
+        "sky": "Azul",
+        "violet": "Violeta",
+        "slate": "Gris"
+      },
+      "weight": "Cuenta",
+      "weights": {
+        "1": "Del todo",
+        "0_75": "Bastante",
+        "0_5": "La mitad",
+        "0_25": "Poco",
+        "0": "Nada"
+      },
+      "add": "Añadir respuesta"
+    },
+    "privacy": {
+      "title": "Privacidad y avisos",
+      "visibility": "Qué ven los participantes",
+      "full": "Todo",
+      "fullBody": "El mapa de calor y quién ha respondido qué.",
+      "aggregate": "Solo el mapa",
+      "aggregateBody": "Cuánta gente puede, sin nombres.",
+      "hidden": "Nada",
+      "hiddenBody": "Cada uno ve solo lo suyo.",
+      "notify": "Avisarme por correo",
+      "notifyBody": "Cuando alguien responda o cambie sus respuestas (como mucho uno por persona cada hora)."
+    }
+  },
+  "created": {
+    "title": "Plan creado",
+    "body": "Comparte este enlace para que la gente marque cuándo puede ir a «{title}».",
+    "answer": "Responder yo también",
+    "manage": "Gestionar el plan",
+    "share": "Compartir",
+    "shareText": "¿Cuándo puedes? Marca tus días para «{title}»."
+  },
+  "participate": {
+    "metaDescription": "Marca los días que puedes.",
+    "answeringAs": "Respondes como {name}.",
+    "manage": "Gestionar",
+    "palette": "Respuesta con la que pintas",
+    "inspect": "Ver quién",
+    "inspectHint": "Toca una casilla para ver quién ha respondido.",
+    "paintHint": "Elige una respuesta y toca las casillas. Vuelve a tocar para borrar.",
+    "tapToSee": "Toca una casilla para ver quién ha respondido.",
+    "saved": "Respuestas guardadas",
+    "unsaved": "Cambios sin guardar",
+    "allSaved": "Todo guardado",
+    "nothingYet": "Aún no has marcado nada",
+    "discard": "Descartar",
+    "saving": "Guardando…",
+    "save": "Guardar",
+    "personalLinkAgain": "Tu enlace personal para editar desde otro dispositivo",
+    "personalLinkTitle": "Tu enlace personal",
+    "personalLinkBody": "Guárdalo para editar desde otro dispositivo. Quien lo tenga podrá cambiar tus respuestas.",
+    "personalLinkDone": "Ya lo tengo",
+    "hiddenNote": "En este plan solo ves tus respuestas.",
+    "legendOthers": "Lo que han marcado {count, plural, one {# persona} other {# personas}}",
+    "legendBest": "Mejor opción por ahora",
+    "answeredShort": "{count} de {total}",
+    "bestShort": "mejor opción",
+    "answeredOf": "{count} de {total} han respondido",
+    "slotsAnswered": "{count} de {total} franjas marcadas",
+    "pickDay": "Toca un día para ver sus franjas.",
+    "timesIn": "Horas en {zone}",
+    "planZone": "el plan está en {zone}",
+    "prevWeek": "Semana anterior",
+    "nextWeek": "Semana siguiente",
+    "emptyWeek": "Esta semana no tiene horas en el plan.",
+    "hoursAnswered": "{count}/{total}",
+    "claimInvalid": "Ese enlace personal ya no es válido.",
+    "join": {
+      "title": "¿Quién eres?",
+      "name": "Tu nombre",
+      "email": "Correo",
+      "optional": "(opcional)",
+      "emailHint": "Para avisarte cuando se decida la fecha.",
+      "submit": "Empezar a marcar",
+      "errors": {
+        "required": "Escribe tu nombre.",
+        "too_long": "Como máximo 40 caracteres.",
+        "invalid_email": "Ese correo no parece válido."
+      }
+    },
+    "link": {
+      "body": "Ya respondiste como {name} en este dispositivo. ¿Lo vinculamos a tu cuenta?",
+      "dismiss": "Ahora no",
+      "action": "Vincular"
+    },
+    "closed": {
+      "label": "Fecha decidida",
+      "google": "Añadir a Google Calendar",
+      "ics": "Descargar .ics"
+    }
+  },
+  "manage": {
+    "title": "Gestionar plan",
+    "summary": "{count, plural, =0 {Sin participantes} one {# participante} other {# participantes}}",
+    "statusClosed": "cerrado",
+    "statusOpen": "abierto",
+    "participate": "Ver como participante",
+    "answers": "Respuestas",
+    "closeTitle": "Fecha final",
+    "closeDescription": "Al cerrar, las respuestas se bloquean y se avisa a quien dejó su correo.",
+    "editTitle": "Editar",
+    "editLocked": "Ya hay respuestas, así que algunas cosas no se pueden cambiar.",
+    "editDescription": "Mientras nadie responda, puedes cambiarlo todo.",
+    "dangerTitle": "Enlace y borrado",
+    "table": {
+      "empty": "Todavía no ha respondido nadie. Comparte el enlace.",
+      "scroll": "Tabla de respuestas, desplazable",
+      "participant": "Participante",
+      "best": "Mejor opción",
+      "noAnswer": "Sin respuesta",
+      "delete": "Borrar a {name}",
+      "deleteTitle": "¿Borrar a {name}?",
+      "deleteBody": "Se borrarán también todas sus respuestas. No se puede deshacer.",
+      "cancel": "Cancelar",
+      "deleted": "Participante borrado",
+      "confirmDelete": "Borrar",
+      "score": "Puntos"
+    },
+    "close": {
+      "closedOn": "Cerrado en:",
+      "reopened": "Plan reabierto",
+      "reopen": "Reabrir plan",
+      "nothing": "Cuando haya respuestas podrás elegir la fecha final.",
+      "pick": "Fecha elegida",
+      "points": "{score} pts",
+      "best": "mejor",
+      "closed": "Plan cerrado. Avisando a los participantes.",
+      "action": "Cerrar plan",
+      "note": "Puedes reabrirlo más tarde."
+    },
+    "edit": {
+      "saved": "Cambios guardados",
+      "cancel": "Cancelar",
+      "save": "Guardar cambios",
+      "removeDatesTitle": "¿Quitar {count, plural, one {# día} other {# días}}?",
+      "removeDatesBody": "Se borrarán las respuestas a esos días.",
+      "removeDatesConfirm": "Quitar y borrar respuestas"
+    },
+    "danger": {
+      "regenerate": "Nuevo enlace",
+      "regenerateBody": "El enlace actual dejará de funcionar, y también los enlaces personales de los invitados.",
+      "regenerateAction": "Generar nuevo enlace",
+      "regenerateTitle": "¿Generar un nuevo enlace?",
+      "cancel": "Cancelar",
+      "regenerated": "Enlace nuevo listo",
+      "delete": "Borrar el plan",
+      "deleteBody": "Se borran el plan, sus participantes y sus respuestas.",
+      "deleteAction": "Borrar plan",
+      "deleteTitle": "¿Borrar el plan?",
+      "deleteConfirm": "Escribe «{title}» para confirmar.",
+      "typeTitle": "Título del plan",
+      "deleted": "Plan borrado"
+    }
+  },
+  "errors": {
+    "server": "Algo ha fallado. Inténtalo de nuevo.",
+    "unauthorized": "Tienes que iniciar sesión.",
+    "not_found": "No existe o ya no está disponible.",
+    "invalid": "Revisa los datos.",
+    "locked": "Ya hay respuestas: ese cambio no está permitido.",
+    "closed": "El plan está cerrado.",
+    "rate_limited": "Demasiadas peticiones. Espera un poco.",
+    "invalid_cell": "Hay casillas que no pertenecen al plan.",
+    "invalid_option": "Respuesta no válida.",
+    "confirm_mismatch": "El título no coincide.",
+    "confirm_remove_dates": "Confirma que quieres quitar días.",
+    "db": "Algo ha fallado. Inténtalo de nuevo."
+  },
+  "notFound": {
+    "title": "No encontramos esta página",
+    "body": "Puede que el enlace haya cambiado o que el plan se haya borrado.",
+    "home": "Ir al inicio"
+  },
+  "errorPage": {
+    "title": "Algo ha fallado",
+    "body": "Ha habido un error inesperado. Prueba otra vez.",
+    "retry": "Reintentar"
+  },
+  "emails": {
+    "magicLink": {
+      "subject": "Tu enlace para entrar en Quadra",
+      "preview": "Pulsa para entrar en Quadra",
+      "heading": "Pulsa el botón para entrar en Quadra. El enlace caduca en 24 horas.",
+      "button": "Entrar",
+      "ignore": "Si no lo has pedido tú, ignora este correo."
+    },
+    "newResponse": {
+      "subject": "{name} ha respondido a «{title}»",
+      "subjectEdit": "{name} ha cambiado sus respuestas en «{title}»",
+      "body": "{name} acaba de marcar su disponibilidad en «{title}».",
+      "bodyEdit": "{name} ha actualizado su disponibilidad en «{title}».",
+      "button": "Ver respuestas",
+      "footer": "Puedes desactivar estos avisos en la configuración del plan."
+    },
+    "personalLink": {
+      "subject": "Tu enlace para editar «{title}»",
+      "body": "Hola, {name}. Con este enlace puedes cambiar tus respuestas en «{title}» desde cualquier dispositivo.",
+      "button": "Abrir mis respuestas",
+      "footer": "No lo compartas: quien lo tenga puede editar tus respuestas."
+    },
+    "closed": {
+      "subject": "Ya hay fecha para «{title}»",
+      "body": "Se ha decidido la fecha de «{title}»:",
+      "button": "Ver el plan",
+      "footer": "Adjuntamos el evento para tu calendario."
+    }
+  }
+}

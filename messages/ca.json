@@ -1,0 +1,391 @@
+{
+  "meta": {
+    "title": "Quadra — trobeu el dia que us va bé",
+    "description": "Crea un pla, comparteix l'enllaç i cadascú pinta els dies que pot. Quadra marca el millor."
+  },
+  "nav": {
+    "signIn": "Entrar",
+    "dashboard": "Els meus plans",
+    "account": "Compte",
+    "newPlan": "Nou pla",
+    "signOut": "Tancar la sessió"
+  },
+  "footer": {
+    "tagline": "Quadra · quedar sense cadenes de missatges",
+    "language": "Idioma"
+  },
+  "common": { "link": "Enllaç", "copy": "Copiar", "copied": "Copiat" },
+  "calendar": { "prevMonth": "Mes anterior", "nextMonth": "Mes següent" },
+  "landing": {
+    "title": "El dia que us va bé a tots",
+    "subtitle": "Crea un pla, comparteix l'enllaç i cadascú pinta els dies que pot. Quadra marca el millor.",
+    "cta": "Crear un pla",
+    "ctaNote": "Els convidats no necessiten compte.",
+    "how": {
+      "title": "Com funciona",
+      "guests": {
+        "title": "Un enllaç i llestos",
+        "body": "Qui l'obre posa el seu nom i marca. Sense registres ni apps. Si canvia de mòbil, té el seu enllaç personal."
+      },
+      "grain": {
+        "title": "Dies, franges o hores",
+        "body": "Tria dies sencers, franges amb nom com «Dinar» i «Sopar», o una graella horària a la teva zona horària."
+      },
+      "privacy": {
+        "title": "Tu decideixes què es veu",
+        "body": "Que tothom vegi qui pot, només el mapa de calor o res dels altres. Tu sempre veus la taula completa."
+      },
+      "close": {
+        "title": "Tancar i al calendari",
+        "body": "Tria la data final: tothom rep un avís amb l'esdeveniment per a Google Calendar o Apple Calendar."
+      }
+    },
+    "demo": {
+      "yes": "Puc",
+      "maybe": "Si cal",
+      "no": "No puc",
+      "best": "Millor dia ara: {date}",
+      "sample": "Exemple amb les respostes de quatre amics. Pinta-hi a sobre: toca un dia o arrossega."
+    }
+  },
+  "auth": {
+    "title": "Entrar a Quadra",
+    "subtitle": "Per crear i gestionar plans. Per respondre no cal compte.",
+    "error": "No s'ha pogut iniciar la sessió. Torna-ho a provar.",
+    "or": "o",
+    "guestNote": "Sense contrasenyes: entra amb Google o amb un enllaç que t'enviem per correu.",
+    "google": "Continuar amb Google",
+    "emailLabel": "Correu electrònic",
+    "emailPlaceholder": "tu@correu.cat",
+    "sendLink": "Envia'm un enllaç",
+    "errors": {
+      "invalid_email": "Escriu un correu vàlid.",
+      "rate_limited": "Massa intents. Espera uns minuts.",
+      "server": "No hem pogut enviar el correu. Torna-ho a provar."
+    },
+    "check": {
+      "title": "Revisa el correu",
+      "body": "T'hem enviat un enllaç per entrar. Obre'l en aquest dispositiu; caduca en 24 hores.",
+      "back": "Fer servir un altre correu"
+    }
+  },
+  "dashboard": {
+    "title": "Els meus plans",
+    "newPlan": "Crear pla",
+    "mine": "Creats per mi",
+    "emptyTitle": "Encara no has creat cap pla",
+    "emptyBody": "Crea'n un, comparteix l'enllaç i deixa que cadascú pinti els seus dies.",
+    "emptyCta": "Crear pla",
+    "participating": "Hi participo",
+    "participatingEmpty": "Quan responguis a un pla amb la sessió iniciada, apareixerà aquí.",
+    "final": "Data final: {when}",
+    "best": "Millor de moment: {when}",
+    "noAnswers": "Encara sense respostes",
+    "participants": "{count, plural, =0 {Ningú} one {# persona} other {# persones}}",
+    "closed": "Tancat",
+    "open": "Obert"
+  },
+  "wizard": {
+    "title": "Nou pla",
+    "progress": "Passos",
+    "steps": {
+      "details": "Dades",
+      "when": "Quan",
+      "answers": "Respostes",
+      "privacy": "Privadesa"
+    },
+    "back": "Enrere",
+    "next": "Següent",
+    "creating": "Creant…",
+    "create": "Crear pla",
+    "defaults": {
+      "yes": "Sí",
+      "no": "No",
+      "lunch": "Dinar",
+      "dinner": "Sopar"
+    },
+    "errors": {
+      "generic": "Revisa aquest camp.",
+      "required": "Aquest camp és obligatori.",
+      "too_long": "És massa llarg.",
+      "invalid_date": "Data no vàlida.",
+      "range_required": "Tria el dia d'inici i el de final.",
+      "range_order": "El final no pot ser anterior a l'inici.",
+      "range_too_long": "El rang no pot passar de 366 dies.",
+      "dates_required": "Tria almenys un dia.",
+      "dates_duplicate": "Hi ha dies repetits.",
+      "too_many_dates": "Com a màxim 100 dies.",
+      "slots_required": "Afegeix almenys una franja.",
+      "too_many_slots": "Com a màxim 6 franges.",
+      "hours_order": "L'hora de final ha de ser posterior a la d'inici.",
+      "hours_alignment": "Les hores han de coincidir amb l'interval.",
+      "invalid_timezone": "Zona horària no reconeguda.",
+      "too_few_options": "Calen almenys 2 respostes.",
+      "too_many_options": "Com a màxim 5 respostes.",
+      "invalid_cell": "Casella no vàlida."
+    },
+    "details": {
+      "title": "Quin pla és?",
+      "name": "Títol",
+      "namePlaceholder": "Sopar de Nadal",
+      "description": "Descripció",
+      "optional": "(opcional)",
+      "descriptionPlaceholder": "On, què cal portar, el que calgui saber."
+    },
+    "when": {
+      "title": "Quan?",
+      "lockedNote": "Ja hi ha respostes: les dates i l'horari no es poden canviar. En dies solts sí que pots afegir o treure dies.",
+      "dateMode": "Dates",
+      "range": "Un rang",
+      "rangeBody": "Del dia X al dia Y (màx. {max} dies).",
+      "dates": "Dies solts",
+      "datesBody": "Tria els dies un a un.",
+      "open": "Obert",
+      "openBody": "Qualsevol dia del proper any.",
+      "granularity": "Què es tria",
+      "day": "Dies",
+      "dayBody": "Dies sencers.",
+      "slot": "Franges",
+      "slotBody": "Etiquetes com «Dinar» o «Sopar».",
+      "hour": "Hores",
+      "hourBody": "Graella de 30 o 60 minuts.",
+      "slots": "Franges del dia",
+      "slotLabel": "Franja {n}",
+      "removeSlot": "Treure franja",
+      "addSlot": "Afegir franja",
+      "slotsHint": "Entre 1 i 6. Són només etiquetes, sense hora.",
+      "interval": "Interval",
+      "minutes": "{n} minuts",
+      "from": "Des de",
+      "to": "Fins a",
+      "timezone": "Zona horària",
+      "timezoneHint": "Detectada al teu navegador. Cada participant veurà les hores a la seva.",
+      "rangeSummary": "Del {start} al {end} · {count, plural, one {# dia} other {# dies}}",
+      "rangePickEnd": "Des del {start}. Ara toca l'últim dia.",
+      "rangePickStart": "Toca el primer dia del rang.",
+      "datesSummary": "{count, plural, =0 {Cap dia triat} one {# dia triat} other {# dies triats}}"
+    },
+    "answers": {
+      "title": "Respostes possibles",
+      "description": "El que pot contestar cadascú. El pes decideix quant compta per triar el millor dia.",
+      "lockedNote": "Ja hi ha respostes: pots canviar noms i colors, però no pesos ni afegir o treure opcions.",
+      "label": "Resposta {n}",
+      "remove": "Treure resposta",
+      "color": "Color",
+      "colors": {
+        "green": "Verd",
+        "lime": "Llima",
+        "amber": "Ambre",
+        "orange": "Taronja",
+        "red": "Vermell",
+        "sky": "Blau",
+        "violet": "Violeta",
+        "slate": "Gris"
+      },
+      "weight": "Compta",
+      "weights": {
+        "1": "Del tot",
+        "0_75": "Força",
+        "0_5": "La meitat",
+        "0_25": "Poc",
+        "0": "Gens"
+      },
+      "add": "Afegir resposta"
+    },
+    "privacy": {
+      "title": "Privadesa i avisos",
+      "visibility": "Què veuen els participants",
+      "full": "Tot",
+      "fullBody": "El mapa de calor i qui ha respost què.",
+      "aggregate": "Només el mapa",
+      "aggregateBody": "Quanta gent pot, sense noms.",
+      "hidden": "Res",
+      "hiddenBody": "Cadascú veu només el seu.",
+      "notify": "Avisa'm per correu",
+      "notifyBody": "Quan algú respongui o canviï les respostes (com a molt un per persona cada hora)."
+    }
+  },
+  "created": {
+    "title": "Pla creat",
+    "body": "Comparteix aquest enllaç perquè la gent marqui quan pot anar a «{title}».",
+    "answer": "Respondre jo també",
+    "manage": "Gestionar el pla",
+    "share": "Compartir",
+    "shareText": "Quan pots? Marca els teus dies per a «{title}»."
+  },
+  "participate": {
+    "metaDescription": "Marca els dies que pots.",
+    "answeringAs": "Respons com a {name}.",
+    "manage": "Gestionar",
+    "palette": "Resposta amb què pintes",
+    "inspect": "Veure qui",
+    "inspectHint": "Toca una casella per veure qui ha respost.",
+    "paintHint": "Tria una resposta i toca les caselles. Torna a tocar per esborrar.",
+    "tapToSee": "Toca una casella per veure qui ha respost.",
+    "saved": "Respostes desades",
+    "unsaved": "Canvis sense desar",
+    "allSaved": "Tot desat",
+    "nothingYet": "Encara no has marcat res",
+    "discard": "Descartar",
+    "saving": "Desant…",
+    "save": "Desar",
+    "personalLinkAgain": "El teu enllaç personal per editar des d'un altre dispositiu",
+    "personalLinkTitle": "El teu enllaç personal",
+    "personalLinkBody": "Desa'l per editar des d'un altre dispositiu. Qui el tingui podrà canviar les teves respostes.",
+    "personalLinkDone": "Ja el tinc",
+    "hiddenNote": "En aquest pla només veus les teves respostes.",
+    "legendOthers": "El que han marcat {count, plural, one {# persona} other {# persones}}",
+    "legendBest": "Millor opció de moment",
+    "answeredShort": "{count} de {total}",
+    "bestShort": "millor opció",
+    "answeredOf": "{count} de {total} han respost",
+    "slotsAnswered": "{count} de {total} franges marcades",
+    "pickDay": "Toca un dia per veure'n les franges.",
+    "timesIn": "Hores a {zone}",
+    "planZone": "el pla és a {zone}",
+    "prevWeek": "Setmana anterior",
+    "nextWeek": "Setmana següent",
+    "emptyWeek": "Aquesta setmana no té hores al pla.",
+    "hoursAnswered": "{count}/{total}",
+    "claimInvalid": "Aquest enllaç personal ja no és vàlid.",
+    "join": {
+      "title": "Qui ets?",
+      "name": "El teu nom",
+      "email": "Correu",
+      "optional": "(opcional)",
+      "emailHint": "Per avisar-te quan es decideixi la data.",
+      "submit": "Començar a marcar",
+      "errors": {
+        "required": "Escriu el teu nom.",
+        "too_long": "Com a màxim 40 caràcters.",
+        "invalid_email": "Aquest correu no sembla vàlid."
+      }
+    },
+    "link": {
+      "body": "Ja vas respondre com a {name} en aquest dispositiu. El vinculem al teu compte?",
+      "dismiss": "Ara no",
+      "action": "Vincular"
+    },
+    "closed": {
+      "label": "Data decidida",
+      "google": "Afegir a Google Calendar",
+      "ics": "Descarregar .ics"
+    }
+  },
+  "manage": {
+    "title": "Gestionar el pla",
+    "summary": "{count, plural, =0 {Sense participants} one {# participant} other {# participants}}",
+    "statusClosed": "tancat",
+    "statusOpen": "obert",
+    "participate": "Veure com a participant",
+    "answers": "Respostes",
+    "closeTitle": "Data final",
+    "closeDescription": "En tancar, les respostes es bloquegen i s'avisa qui va deixar el correu.",
+    "editTitle": "Editar",
+    "editLocked": "Ja hi ha respostes, així que algunes coses no es poden canviar.",
+    "editDescription": "Mentre ningú respongui, ho pots canviar tot.",
+    "dangerTitle": "Enllaç i esborrat",
+    "table": {
+      "empty": "Encara no ha respost ningú. Comparteix l'enllaç.",
+      "scroll": "Taula de respostes, desplaçable",
+      "participant": "Participant",
+      "best": "Millor opció",
+      "noAnswer": "Sense resposta",
+      "delete": "Esborrar {name}",
+      "deleteTitle": "Vols esborrar {name}?",
+      "deleteBody": "També s'esborraran totes les seves respostes. No es pot desfer.",
+      "cancel": "Cancel·lar",
+      "deleted": "Participant esborrat",
+      "confirmDelete": "Esborrar",
+      "score": "Punts"
+    },
+    "close": {
+      "closedOn": "Tancat a:",
+      "reopened": "Pla reobert",
+      "reopen": "Reobrir el pla",
+      "nothing": "Quan hi hagi respostes podràs triar la data final.",
+      "pick": "Data triada",
+      "points": "{score} pts",
+      "best": "millor",
+      "closed": "Pla tancat. Avisant els participants.",
+      "action": "Tancar el pla",
+      "note": "El pots reobrir més endavant."
+    },
+    "edit": {
+      "saved": "Canvis desats",
+      "cancel": "Cancel·lar",
+      "save": "Desar els canvis",
+      "removeDatesTitle": "Vols treure {count, plural, one {# dia} other {# dies}}?",
+      "removeDatesBody": "S'esborraran les respostes d'aquests dies.",
+      "removeDatesConfirm": "Treure i esborrar respostes"
+    },
+    "danger": {
+      "regenerate": "Enllaç nou",
+      "regenerateBody": "L'enllaç actual deixarà de funcionar, i també els enllaços personals dels convidats.",
+      "regenerateAction": "Generar un enllaç nou",
+      "regenerateTitle": "Vols generar un enllaç nou?",
+      "cancel": "Cancel·lar",
+      "regenerated": "Enllaç nou a punt",
+      "delete": "Esborrar el pla",
+      "deleteBody": "S'esborren el pla, els participants i les respostes.",
+      "deleteAction": "Esborrar el pla",
+      "deleteTitle": "Vols esborrar el pla?",
+      "deleteConfirm": "Escriu «{title}» per confirmar.",
+      "typeTitle": "Títol del pla",
+      "deleted": "Pla esborrat"
+    }
+  },
+  "errors": {
+    "server": "Alguna cosa ha fallat. Torna-ho a provar.",
+    "unauthorized": "Has d'iniciar la sessió.",
+    "not_found": "No existeix o ja no està disponible.",
+    "invalid": "Revisa les dades.",
+    "locked": "Ja hi ha respostes: aquest canvi no està permès.",
+    "closed": "El pla està tancat.",
+    "rate_limited": "Massa peticions. Espera una mica.",
+    "invalid_cell": "Hi ha caselles que no pertanyen al pla.",
+    "invalid_option": "Resposta no vàlida.",
+    "confirm_mismatch": "El títol no coincideix.",
+    "confirm_remove_dates": "Confirma que vols treure dies.",
+    "db": "Alguna cosa ha fallat. Torna-ho a provar."
+  },
+  "notFound": {
+    "title": "No trobem aquesta pàgina",
+    "body": "Potser l'enllaç ha canviat o el pla s'ha esborrat.",
+    "home": "Anar a l'inici"
+  },
+  "errorPage": {
+    "title": "Alguna cosa ha fallat",
+    "body": "Hi ha hagut un error inesperat. Torna-ho a provar.",
+    "retry": "Tornar-ho a provar"
+  },
+  "emails": {
+    "magicLink": {
+      "subject": "El teu enllaç per entrar a Quadra",
+      "preview": "Prem per entrar a Quadra",
+      "heading": "Prem el botó per entrar a Quadra. L'enllaç caduca en 24 hores.",
+      "button": "Entrar",
+      "ignore": "Si no l'has demanat tu, ignora aquest correu."
+    },
+    "newResponse": {
+      "subject": "{name} ha respost a «{title}»",
+      "subjectEdit": "{name} ha canviat les respostes a «{title}»",
+      "body": "{name} acaba de marcar la seva disponibilitat a «{title}».",
+      "bodyEdit": "{name} ha actualitzat la seva disponibilitat a «{title}».",
+      "button": "Veure les respostes",
+      "footer": "Pots desactivar aquests avisos a la configuració del pla."
+    },
+    "personalLink": {
+      "subject": "El teu enllaç per editar «{title}»",
+      "body": "Hola, {name}. Amb aquest enllaç pots canviar les teves respostes a «{title}» des de qualsevol dispositiu.",
+      "button": "Obrir les meves respostes",
+      "footer": "No el comparteixis: qui el tingui pot editar les teves respostes."
+    },
+    "closed": {
+      "subject": "Ja hi ha data per a «{title}»",
+      "body": "S'ha decidit la data de «{title}»:",
+      "button": "Veure el pla",
+      "footer": "Adjuntem l'esdeveniment per al teu calendari."
+    }
+  }
+}

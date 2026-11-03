@@ -1,0 +1,15 @@
+pnpm-lock.yaml
+pnpm-workspace.yaml
+.next
+drizzle/meta
+node_modules
+playwright-report
+test-results
+.claude
+.agents
+skills-lock.json
+PLAN.md
+AGENTS.md
+next-env.d.ts
+.taste-skill
+drizzle

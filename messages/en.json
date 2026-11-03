@@ -1,0 +1,391 @@
+{
+  "meta": {
+    "title": "Quadra — find the day that works for everyone",
+    "description": "Create a plan, share the link and everyone paints the days they can make. Quadra marks the best one."
+  },
+  "nav": {
+    "signIn": "Sign in",
+    "dashboard": "My plans",
+    "account": "Account",
+    "newPlan": "New plan",
+    "signOut": "Sign out"
+  },
+  "footer": {
+    "tagline": "Quadra · plans without endless group chats",
+    "language": "Language"
+  },
+  "common": { "link": "Link", "copy": "Copy", "copied": "Copied" },
+  "calendar": { "prevMonth": "Previous month", "nextMonth": "Next month" },
+  "landing": {
+    "title": "The day that works for everyone",
+    "subtitle": "Create a plan, share the link and everyone paints the days they can make. Quadra marks the best one.",
+    "cta": "Create a plan",
+    "ctaNote": "Guests don't need an account.",
+    "how": {
+      "title": "How it works",
+      "guests": {
+        "title": "One link, that's it",
+        "body": "Whoever opens it types their name and marks their days. No sign-up, no app. Switching phones? They get a personal link."
+      },
+      "grain": {
+        "title": "Days, slots or hours",
+        "body": "Pick whole days, named slots such as “Lunch” and “Dinner”, or an hourly grid in your time zone."
+      },
+      "privacy": {
+        "title": "You decide what people see",
+        "body": "Everyone sees who can make it, only the heatmap, or nothing from others. You always see the full table."
+      },
+      "close": {
+        "title": "Close it, add it to calendars",
+        "body": "Pick the final date: everyone gets a notice with the event for Google Calendar or Apple Calendar."
+      }
+    },
+    "demo": {
+      "yes": "Can do",
+      "maybe": "If needed",
+      "no": "Can't",
+      "best": "Best day right now: {date}",
+      "sample": "Example with four friends' answers. Paint over it: tap a day or drag."
+    }
+  },
+  "auth": {
+    "title": "Sign in to Quadra",
+    "subtitle": "To create and manage plans. Answering never needs an account.",
+    "error": "We couldn't sign you in. Please try again.",
+    "or": "or",
+    "guestNote": "No passwords: sign in with Google or with a link we email you.",
+    "google": "Continue with Google",
+    "emailLabel": "Email",
+    "emailPlaceholder": "you@example.com",
+    "sendLink": "Email me a link",
+    "errors": {
+      "invalid_email": "Enter a valid email.",
+      "rate_limited": "Too many attempts. Wait a few minutes.",
+      "server": "We couldn't send the email. Please try again."
+    },
+    "check": {
+      "title": "Check your email",
+      "body": "We've sent you a sign-in link. Open it on this device; it expires in 24 hours.",
+      "back": "Use another email"
+    }
+  },
+  "dashboard": {
+    "title": "My plans",
+    "newPlan": "Create plan",
+    "mine": "Created by me",
+    "emptyTitle": "You haven't created a plan yet",
+    "emptyBody": "Create one, share the link and let everyone paint their days.",
+    "emptyCta": "Create plan",
+    "participating": "Taking part",
+    "participatingEmpty": "Plans you answer while signed in will show up here.",
+    "final": "Final date: {when}",
+    "best": "Best so far: {when}",
+    "noAnswers": "No answers yet",
+    "participants": "{count, plural, =0 {No one} one {# person} other {# people}}",
+    "closed": "Closed",
+    "open": "Open"
+  },
+  "wizard": {
+    "title": "New plan",
+    "progress": "Steps",
+    "steps": {
+      "details": "Details",
+      "when": "When",
+      "answers": "Answers",
+      "privacy": "Privacy"
+    },
+    "back": "Back",
+    "next": "Next",
+    "creating": "Creating…",
+    "create": "Create plan",
+    "defaults": {
+      "yes": "Yes",
+      "no": "No",
+      "lunch": "Lunch",
+      "dinner": "Dinner"
+    },
+    "errors": {
+      "generic": "Check this field.",
+      "required": "This field is required.",
+      "too_long": "It's too long.",
+      "invalid_date": "Invalid date.",
+      "range_required": "Pick a start day and an end day.",
+      "range_order": "The end can't be before the start.",
+      "range_too_long": "The range can't be longer than 366 days.",
+      "dates_required": "Pick at least one day.",
+      "dates_duplicate": "Some days are repeated.",
+      "too_many_dates": "At most 100 days.",
+      "slots_required": "Add at least one slot.",
+      "too_many_slots": "At most 6 slots.",
+      "hours_order": "The end time must be after the start time.",
+      "hours_alignment": "Times must match the interval.",
+      "invalid_timezone": "Unknown time zone.",
+      "too_few_options": "You need at least 2 answers.",
+      "too_many_options": "At most 5 answers.",
+      "invalid_cell": "Invalid cell."
+    },
+    "details": {
+      "title": "What's the plan?",
+      "name": "Title",
+      "namePlaceholder": "Christmas dinner",
+      "description": "Description",
+      "optional": "(optional)",
+      "descriptionPlaceholder": "Where, what to bring, anything people should know."
+    },
+    "when": {
+      "title": "When?",
+      "lockedNote": "There are answers already: dates and hours can't change. With single days you can still add or remove days.",
+      "dateMode": "Dates",
+      "range": "A range",
+      "rangeBody": "From day X to day Y (max. {max} days).",
+      "dates": "Single days",
+      "datesBody": "Pick the days one by one.",
+      "open": "Open",
+      "openBody": "Any day in the next year.",
+      "granularity": "What people pick",
+      "day": "Days",
+      "dayBody": "Whole days.",
+      "slot": "Slots",
+      "slotBody": "Labels such as “Lunch” or “Dinner”.",
+      "hour": "Hours",
+      "hourBody": "A 30- or 60-minute grid.",
+      "slots": "Slots of the day",
+      "slotLabel": "Slot {n}",
+      "removeSlot": "Remove slot",
+      "addSlot": "Add slot",
+      "slotsHint": "Between 1 and 6. They're just labels, no times.",
+      "interval": "Interval",
+      "minutes": "{n} minutes",
+      "from": "From",
+      "to": "To",
+      "timezone": "Time zone",
+      "timezoneHint": "Detected from your browser. Each participant sees the times in their own.",
+      "rangeSummary": "{start} to {end} · {count, plural, one {# day} other {# days}}",
+      "rangePickEnd": "From {start}. Now tap the last day.",
+      "rangePickStart": "Tap the first day of the range.",
+      "datesSummary": "{count, plural, =0 {No days picked} one {# day picked} other {# days picked}}"
+    },
+    "answers": {
+      "title": "Possible answers",
+      "description": "What everyone can answer. The weight decides how much it counts towards the best day.",
+      "lockedNote": "There are answers already: you can rename and recolour, but not change weights or add or remove options.",
+      "label": "Answer {n}",
+      "remove": "Remove answer",
+      "color": "Colour",
+      "colors": {
+        "green": "Green",
+        "lime": "Lime",
+        "amber": "Amber",
+        "orange": "Orange",
+        "red": "Red",
+        "sky": "Blue",
+        "violet": "Violet",
+        "slate": "Grey"
+      },
+      "weight": "Counts",
+      "weights": {
+        "1": "Fully",
+        "0_75": "Mostly",
+        "0_5": "Half",
+        "0_25": "A little",
+        "0": "Not at all"
+      },
+      "add": "Add answer"
+    },
+    "privacy": {
+      "title": "Privacy and notices",
+      "visibility": "What participants see",
+      "full": "Everything",
+      "fullBody": "The heatmap and who answered what.",
+      "aggregate": "Heatmap only",
+      "aggregateBody": "How many can make it, no names.",
+      "hidden": "Nothing",
+      "hiddenBody": "Everyone sees only their own answers.",
+      "notify": "Email me",
+      "notifyBody": "When someone answers or changes their answers (at most one per person per hour)."
+    }
+  },
+  "created": {
+    "title": "Plan created",
+    "body": "Share this link so people can mark when they can make “{title}”.",
+    "answer": "Answer myself too",
+    "manage": "Manage the plan",
+    "share": "Share",
+    "shareText": "When can you make it? Mark your days for “{title}”."
+  },
+  "participate": {
+    "metaDescription": "Mark the days you can make.",
+    "answeringAs": "Answering as {name}.",
+    "manage": "Manage",
+    "palette": "Answer you paint with",
+    "inspect": "See who",
+    "inspectHint": "Tap a cell to see who answered.",
+    "paintHint": "Pick an answer and tap the cells. Tap again to clear.",
+    "tapToSee": "Tap a cell to see who answered.",
+    "saved": "Answers saved",
+    "unsaved": "Unsaved changes",
+    "allSaved": "All saved",
+    "nothingYet": "You haven't marked anything yet",
+    "discard": "Discard",
+    "saving": "Saving…",
+    "save": "Save",
+    "personalLinkAgain": "Your personal link to edit from another device",
+    "personalLinkTitle": "Your personal link",
+    "personalLinkBody": "Keep it to edit from another device. Anyone who has it can change your answers.",
+    "personalLinkDone": "Got it",
+    "hiddenNote": "In this plan you only see your own answers.",
+    "legendOthers": "What {count, plural, one {# person has} other {# people have}} marked",
+    "legendBest": "Best option so far",
+    "answeredShort": "{count} of {total}",
+    "bestShort": "best option",
+    "answeredOf": "{count} of {total} answered",
+    "slotsAnswered": "{count} of {total} slots marked",
+    "pickDay": "Tap a day to see its slots.",
+    "timesIn": "Times in {zone}",
+    "planZone": "the plan is in {zone}",
+    "prevWeek": "Previous week",
+    "nextWeek": "Next week",
+    "emptyWeek": "This week has no hours in the plan.",
+    "hoursAnswered": "{count}/{total}",
+    "claimInvalid": "That personal link is no longer valid.",
+    "join": {
+      "title": "Who are you?",
+      "name": "Your name",
+      "email": "Email",
+      "optional": "(optional)",
+      "emailHint": "So we can tell you when the date is decided.",
+      "submit": "Start marking",
+      "errors": {
+        "required": "Enter your name.",
+        "too_long": "At most 40 characters.",
+        "invalid_email": "That email doesn't look valid."
+      }
+    },
+    "link": {
+      "body": "You already answered as {name} on this device. Link it to your account?",
+      "dismiss": "Not now",
+      "action": "Link"
+    },
+    "closed": {
+      "label": "Date decided",
+      "google": "Add to Google Calendar",
+      "ics": "Download .ics"
+    }
+  },
+  "manage": {
+    "title": "Manage plan",
+    "summary": "{count, plural, =0 {No participants} one {# participant} other {# participants}}",
+    "statusClosed": "closed",
+    "statusOpen": "open",
+    "participate": "View as participant",
+    "answers": "Answers",
+    "closeTitle": "Final date",
+    "closeDescription": "Closing locks the answers and notifies everyone who left an email.",
+    "editTitle": "Edit",
+    "editLocked": "There are answers already, so some things can't change.",
+    "editDescription": "Until someone answers, you can change everything.",
+    "dangerTitle": "Link and deletion",
+    "table": {
+      "empty": "No one has answered yet. Share the link.",
+      "scroll": "Answers table, scrollable",
+      "participant": "Participant",
+      "best": "Best option",
+      "noAnswer": "No answer",
+      "delete": "Delete {name}",
+      "deleteTitle": "Delete {name}?",
+      "deleteBody": "All their answers will be deleted too. This can't be undone.",
+      "cancel": "Cancel",
+      "deleted": "Participant deleted",
+      "confirmDelete": "Delete",
+      "score": "Points"
+    },
+    "close": {
+      "closedOn": "Closed on:",
+      "reopened": "Plan reopened",
+      "reopen": "Reopen plan",
+      "nothing": "Once there are answers you can pick the final date.",
+      "pick": "Chosen date",
+      "points": "{score} pts",
+      "best": "best",
+      "closed": "Plan closed. Notifying participants.",
+      "action": "Close plan",
+      "note": "You can reopen it later."
+    },
+    "edit": {
+      "saved": "Changes saved",
+      "cancel": "Cancel",
+      "save": "Save changes",
+      "removeDatesTitle": "Remove {count, plural, one {# day} other {# days}}?",
+      "removeDatesBody": "Answers for those days will be deleted.",
+      "removeDatesConfirm": "Remove and delete answers"
+    },
+    "danger": {
+      "regenerate": "New link",
+      "regenerateBody": "The current link will stop working, and so will guests' personal links.",
+      "regenerateAction": "Generate new link",
+      "regenerateTitle": "Generate a new link?",
+      "cancel": "Cancel",
+      "regenerated": "New link ready",
+      "delete": "Delete the plan",
+      "deleteBody": "Deletes the plan, its participants and their answers.",
+      "deleteAction": "Delete plan",
+      "deleteTitle": "Delete the plan?",
+      "deleteConfirm": "Type “{title}” to confirm.",
+      "typeTitle": "Plan title",
+      "deleted": "Plan deleted"
+    }
+  },
+  "errors": {
+    "server": "Something went wrong. Please try again.",
+    "unauthorized": "You need to sign in.",
+    "not_found": "It doesn't exist or is no longer available.",
+    "invalid": "Check the details.",
+    "locked": "There are answers already: that change isn't allowed.",
+    "closed": "The plan is closed.",
+    "rate_limited": "Too many requests. Wait a moment.",
+    "invalid_cell": "Some cells don't belong to the plan.",
+    "invalid_option": "Invalid answer.",
+    "confirm_mismatch": "The title doesn't match.",
+    "confirm_remove_dates": "Confirm you want to remove days.",
+    "db": "Something went wrong. Please try again."
+  },
+  "notFound": {
+    "title": "We can't find this page",
+    "body": "The link may have changed or the plan may have been deleted.",
+    "home": "Go home"
+  },
+  "errorPage": {
+    "title": "Something went wrong",
+    "body": "An unexpected error happened. Please try again.",
+    "retry": "Try again"
+  },
+  "emails": {
+    "magicLink": {
+      "subject": "Your Quadra sign-in link",
+      "preview": "Tap to sign in to Quadra",
+      "heading": "Press the button to sign in to Quadra. The link expires in 24 hours.",
+      "button": "Sign in",
+      "ignore": "If you didn't ask for this, ignore this email."
+    },
+    "newResponse": {
+      "subject": "{name} answered “{title}”",
+      "subjectEdit": "{name} changed their answers in “{title}”",
+      "body": "{name} just marked their availability for “{title}”.",
+      "bodyEdit": "{name} updated their availability for “{title}”.",
+      "button": "See answers",
+      "footer": "You can turn these notices off in the plan's settings."
+    },
+    "personalLink": {
+      "subject": "Your link to edit “{title}”",
+      "body": "Hi {name}. With this link you can change your answers to “{title}” from any device.",
+      "button": "Open my answers",
+      "footer": "Don't share it: anyone who has it can edit your answers."
+    },
+    "closed": {
+      "subject": "“{title}” has a date",
+      "body": "The date for “{title}” has been decided:",
+      "button": "See the plan",
+      "footer": "The event is attached for your calendar."
+    }
+  }
+}
