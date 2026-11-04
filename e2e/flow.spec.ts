@@ -47,8 +47,12 @@ test("create plan → guest answers → personal link → creator closes", async
   await ownerPage.goto("/es/dashboard");
   await ownerPage.getByRole("link", { name: new RegExp(title) }).click();
   await expect(ownerPage.getByRole("row", { name: /Berta/ })).toBeVisible();
+  // Pick a day other than the suggested best one in the shadcn select.
+  await ownerPage.getByLabel("Fecha elegida").click();
+  await ownerPage.getByRole("option", { name: /12 de/ }).click();
   await ownerPage.getByRole("button", { name: "Cerrar plan" }).click();
   await expect(ownerPage.getByText("Cerrado en:")).toBeVisible();
+  await expect(ownerPage.getByText("Cerrado en:")).toContainText("12 de");
 
   // Guest sees the banner and can download the .ics.
   await g.reload();
