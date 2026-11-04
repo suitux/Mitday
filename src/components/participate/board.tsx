@@ -96,7 +96,7 @@ export function Board({
     setAnswers,
     brush,
     disabled: closed || !me,
-    onInspect: (cell) => canInspect && setInspectCell(cell),
+    onInspect: canInspect ? setInspectCell : undefined,
   });
 
   const optionById = useMemo(
@@ -175,7 +175,11 @@ export function Board({
             allowInspect={canInspect}
           />
           <p className="mt-2 text-sm text-muted-foreground">
-            {brush.kind === "inspect" ? t("inspectHint") : t("paintHint")}
+            {brush.kind === "inspect"
+              ? t("inspectHint")
+              : canInspect
+                ? `${t("paintHint")} ${t("pressHint")}`
+                : t("paintHint")}
           </p>
         </div>
       ) : canInspect ? (

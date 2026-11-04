@@ -56,7 +56,8 @@ export default async function LocaleLayout({
       lang={locale}
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="flex min-h-dvh flex-col">
+      {/* Extensions (ColorZilla, Grammarly…) add attributes to <body>. */}
+      <body className="flex min-h-dvh flex-col" suppressHydrationWarning>
         <NextIntlClientProvider>
           <SiteHeader />
           <div className="flex flex-1 flex-col">{children}</div>

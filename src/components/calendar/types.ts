@@ -6,6 +6,7 @@ export type CellProps = (cell: string) => {
   "data-cell": string;
   onPointerDown: HTMLAttributes<HTMLElement>["onPointerDown"];
   onClick: HTMLAttributes<HTMLElement>["onClick"];
+  onContextMenu: HTMLAttributes<HTMLElement>["onContextMenu"];
 };
 
 export type ViewProps = {

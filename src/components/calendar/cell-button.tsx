@@ -32,7 +32,7 @@ export function CellButton({
       type="button"
       data-nav=""
       className={cn(
-        "relative flex size-full items-center justify-center rounded-md border text-sm select-none",
+        "relative flex size-full items-center justify-center rounded-md border text-sm select-none [-webkit-touch-callout:none]",
         "transition-[transform,background-color] outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1 active:scale-[0.96]",
         "num disabled:border-transparent disabled:bg-transparent disabled:text-muted-foreground/60 disabled:active:scale-100",
         mine

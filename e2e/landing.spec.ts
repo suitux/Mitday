@@ -2,9 +2,9 @@ import { expect, test } from "@playwright/test";
 
 test("landing in es, ca and en @mobile", async ({ page }) => {
   for (const [locale, title] of [
-    ["es", "El día que os va bien a todos"],
-    ["ca", "El dia que us va bé a tots"],
-    ["en", "The day that works for everyone"],
+    ["es", "Se acabó el «a ver si quedamos»"],
+    ["ca", "Prou de «a veure si quedem»"],
+    ["en", "No more “we should hang out”"],
   ] as const) {
     await page.goto(`/${locale}`);
     await expect(page.getByRole("heading", { level: 1 })).toHaveText(title);

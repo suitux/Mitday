@@ -1,7 +1,7 @@
 {
   "meta": {
-    "title": "Quadra — encontrad el día que os va bien",
-    "description": "Crea un plan, comparte el enlace y cada uno pinta los días que puede. Quadra marca el mejor."
+    "title": "Quadra — para grupos que nunca encuentran fecha",
+    "description": "Para el grupo que lleva meses con el «a ver si quedamos». Cada uno pinta los días que puede y Quadra elige el mejor."
   },
   "nav": {
     "signIn": "Entrar",
@@ -11,46 +11,78 @@
     "signOut": "Cerrar sesión"
   },
   "footer": {
-    "tagline": "Quadra · quedar sin cadenas de mensajes",
+    "tagline": "Quadra · para grupos que siempre dicen «a ver si quedamos»",
     "language": "Idioma"
   },
-  "common": { "link": "Enlace", "copy": "Copiar", "copied": "Copiado" },
-  "calendar": { "prevMonth": "Mes anterior", "nextMonth": "Mes siguiente" },
+  "common": {
+    "link": "Enlace",
+    "copy": "Copiar",
+    "copied": "Copiado"
+  },
+  "calendar": {
+    "prevMonth": "Mes anterior",
+    "nextMonth": "Mes siguiente"
+  },
   "landing": {
-    "title": "El día que os va bien a todos",
-    "subtitle": "Crea un plan, comparte el enlace y cada uno pinta los días que puede. Quadra marca el mejor.",
+    "title": "Se acabó el «a ver si quedamos»",
+    "subtitle": "Para grupos que llevan desde verano intentando cenar juntos. Crea un plan, pasa el enlace, cada uno pinta los días que puede y Quadra elige el mejor. Sin 300 mensajes por en medio.",
     "cta": "Crear un plan",
-    "ctaNote": "Los invitados no necesitan cuenta.",
-    "how": {
-      "title": "Cómo funciona",
-      "guests": {
-        "title": "Un enlace y listo",
-        "body": "Quien lo abre pone su nombre y marca. Sin registros, sin apps. Si cambia de móvil, tiene su enlace personal."
+    "ctaNote": "Tus amigos no necesitan cuenta. Ni excusas.",
+    "chat": {
+      "title": "Seguro que os suena",
+      "body": "Alguien propone, nadie concreta, alguien «se adapta» y el plan muere en «ya lo vamos viendo». Con Quadra, el mismo grupo marca sus días en un enlace y el mejor día sale solo, aunque el que siempre se adapta siga adaptándose.",
+      "group": "Los de siempre",
+      "members": "Ana, Berta, Carla, Dani, Edu",
+      "later": "Tres meses después",
+      "m1": "Hay que quedar ya, que no nos vemos desde verano",
+      "m2": "Sííí. ¿Cuándo?",
+      "m3": "Yo me adapto",
+      "m4": "Este finde no puedo. ¿El siguiente?",
+      "m5": "El siguiente tengo boda",
+      "m6": "¿Qué me he perdido? Pone 214 mensajes",
+      "m7": "Yo me adapto",
+      "m8": "Bueno, ya lo vamos viendo",
+      "m9": "Oye, ¿al final quedamos o qué?"
+    },
+    "types": {
+      "title": "Hay uno de cada en todos los grupos",
+      "adapts": {
+        "title": "El que «se adapta»",
+        "body": "Ahora lo demuestra: pinta día a día «Puedo», «Si hace falta» o «No puedo». Adaptarse a todo ya no cuenta."
       },
-      "grain": {
-        "title": "Días, franjas u horas",
-        "body": "Elige días completos, franjas con nombre como «Comida» y «Cena», o una rejilla horaria en tu zona horaria."
+      "noSignup": {
+        "title": "La que no se registra en nada",
+        "body": "No le hace falta. Abre el enlace, pone su nombre y marca. Si cambia de móvil, tiene su enlace personal."
       },
-      "privacy": {
-        "title": "Tú decides qué se ve",
-        "body": "Que todos vean quién puede, solo el mapa de calor o nada de los demás. Tú siempre ves la tabla completa."
+      "dinner": {
+        "title": "El de «yo solo puedo cenar»",
+        "body": "Elige días completos, franjas como «Comida» y «Cena», o una rejilla de horas en su zona horaria."
       },
-      "close": {
-        "title": "Cerrar y al calendario",
-        "body": "Elige la fecha final: todos reciben un aviso con el evento para Google Calendar o Apple Calendar."
+      "secret": {
+        "title": "El que no quiere que se sepa que no puede",
+        "body": "Tú decides si se ve quién puede, solo el mapa de calor o nada. Su secreto, a salvo. Tú siempre ves la tabla entera."
+      },
+      "late": {
+        "title": "La que se entera tarde de todo",
+        "body": "Cuando cierras la fecha, le llega un aviso con el evento para su calendario. A ver qué excusa pone ahora."
       }
+    },
+    "end": {
+      "title": "El plan no se va a montar solo",
+      "body": "Crear uno cuesta un minuto. Menos que ponerse al día con el chat del grupo.",
+      "cta": "Crear el plan del grupo"
     },
     "demo": {
       "yes": "Puedo",
       "maybe": "Si hace falta",
       "no": "No puedo",
-      "best": "Mejor día ahora: {date}",
-      "sample": "Ejemplo con las respuestas de cuatro amigos. Pinta encima: toca un día o arrastra."
+      "best": "Ganador provisional: {date}",
+      "sample": "Cuatro amigos de ejemplo que, milagrosamente, han contestado todos. Pinta encima: toca un día o arrastra."
     }
   },
   "auth": {
     "title": "Entrar en Quadra",
-    "subtitle": "Para crear y gestionar planes. Para responder no hace falta cuenta.",
+    "subtitle": "Para crear y gestionar planes. Tus amigos no necesitan cuenta para responder (ni para poner excusas).",
     "error": "No se ha podido iniciar sesión. Inténtalo de nuevo.",
     "or": "o",
     "guestNote": "Sin contraseñas: entra con Google o con un enlace que te enviamos por correo.",
@@ -73,8 +105,8 @@
     "title": "Mis planes",
     "newPlan": "Crear plan",
     "mine": "Creados por mí",
-    "emptyTitle": "Aún no has creado ningún plan",
-    "emptyBody": "Crea uno, comparte el enlace y deja que cada uno pinte sus días.",
+    "emptyTitle": "Aún no has creado ningún plan. El grupo espera.",
+    "emptyBody": "Crea uno, pasa el enlace y que cada uno pinte sus días. Sí, también el que «se adapta».",
     "emptyCta": "Crear plan",
     "participating": "Participo",
     "participatingEmpty": "Cuando respondas a un plan con la sesión iniciada, aparecerá aquí.",
@@ -207,11 +239,11 @@
   },
   "created": {
     "title": "Plan creado",
-    "body": "Comparte este enlace para que la gente marque cuándo puede ir a «{title}».",
+    "body": "Comparte este enlace para que la gente marque cuándo puede ir a «{title}». Ahora sí que no hay excusa.",
     "answer": "Responder yo también",
     "manage": "Gestionar el plan",
     "share": "Compartir",
-    "shareText": "¿Cuándo puedes? Marca tus días para «{title}»."
+    "shareText": "¿Cuándo puedes? Marca tus días para «{title}». Esta vez va en serio."
   },
   "participate": {
     "metaDescription": "Marca los días que puedes.",
@@ -221,6 +253,7 @@
     "inspect": "Ver quién",
     "inspectHint": "Toca una casilla para ver quién ha respondido.",
     "paintHint": "Elige una respuesta y toca las casillas. Vuelve a tocar para borrar.",
+    "pressHint": "Clic derecho o mantén pulsada una casilla para ver quién puede.",
     "tapToSee": "Toca una casilla para ver quién ha respondido.",
     "saved": "Respuestas guardadas",
     "unsaved": "Cambios sin guardar",
@@ -351,7 +384,7 @@
   },
   "notFound": {
     "title": "No encontramos esta página",
-    "body": "Puede que el enlace haya cambiado o que el plan se haya borrado.",
+    "body": "Puede que el enlace haya cambiado o que el plan se haya borrado. Como la mitad de los planes del grupo.",
     "home": "Ir al inicio"
   },
   "errorPage": {

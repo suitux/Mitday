@@ -69,7 +69,6 @@ export function LandingDemo({ todayIso }: { todayIso: string }) {
     setAnswers: (u) => setAnswers(u),
     brush,
     disabled: false,
-    onInspect: () => {},
   });
   const agg = useMemo(() => {
     const mine = Object.entries(answers).map(([cell, optionId]) => ({

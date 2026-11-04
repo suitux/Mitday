@@ -1,7 +1,7 @@
 {
   "meta": {
-    "title": "Quadra — find the day that works for everyone",
-    "description": "Create a plan, share the link and everyone paints the days they can make. Quadra marks the best one."
+    "title": "Quadra — for groups that never find a date",
+    "description": "For the group that has been saying “we should hang out” for months. Everyone paints the days they can make and Quadra picks the best one."
   },
   "nav": {
     "signIn": "Sign in",
@@ -11,46 +11,78 @@
     "signOut": "Sign out"
   },
   "footer": {
-    "tagline": "Quadra · plans without endless group chats",
+    "tagline": "Quadra · for groups that always say “we should hang out”",
     "language": "Language"
   },
-  "common": { "link": "Link", "copy": "Copy", "copied": "Copied" },
-  "calendar": { "prevMonth": "Previous month", "nextMonth": "Next month" },
+  "common": {
+    "link": "Link",
+    "copy": "Copy",
+    "copied": "Copied"
+  },
+  "calendar": {
+    "prevMonth": "Previous month",
+    "nextMonth": "Next month"
+  },
   "landing": {
-    "title": "The day that works for everyone",
-    "subtitle": "Create a plan, share the link and everyone paints the days they can make. Quadra marks the best one.",
+    "title": "No more “we should hang out”",
+    "subtitle": "For groups that have been trying to have dinner since last summer. Create a plan, send the link, everyone paints the days they can make and Quadra picks the best one. No 300 messages in between.",
     "cta": "Create a plan",
-    "ctaNote": "Guests don't need an account.",
-    "how": {
-      "title": "How it works",
-      "guests": {
-        "title": "One link, that's it",
-        "body": "Whoever opens it types their name and marks their days. No sign-up, no app. Switching phones? They get a personal link."
+    "ctaNote": "Your friends don't need an account. Or excuses.",
+    "chat": {
+      "title": "Sound familiar?",
+      "body": "Someone suggests it, nobody commits, someone is “easy” and the plan dies at “let's play it by ear”. With Quadra the same group marks its days on one link and the best day falls out on its own, even if the easy one stays easy.",
+      "group": "The usual lot",
+      "members": "Ana, Berta, Carla, Dani, Edu",
+      "later": "Three months later",
+      "m1": "We need to meet up, we haven't seen each other since summer",
+      "m2": "Yesss. When?",
+      "m3": "I'm easy",
+      "m4": "Can't do this weekend. The next one?",
+      "m5": "Got a wedding the next one",
+      "m6": "What did I miss? It says 214 messages",
+      "m7": "I'm easy",
+      "m8": "Ok, let's play it by ear",
+      "m9": "Hey, are we meeting up or what?"
+    },
+    "types": {
+      "title": "Every group has one of each",
+      "adapts": {
+        "title": "The one who's “easy”",
+        "body": "Now they prove it: “Can do”, “If needed” or “Can't”, painted day by day. Being easy about everything no longer counts."
       },
-      "grain": {
-        "title": "Days, slots or hours",
-        "body": "Pick whole days, named slots such as “Lunch” and “Dinner”, or an hourly grid in your time zone."
+      "noSignup": {
+        "title": "The one who signs up for nothing",
+        "body": "No need. Open the link, type a name, mark the days. Switching phones? There's a personal link."
       },
-      "privacy": {
-        "title": "You decide what people see",
-        "body": "Everyone sees who can make it, only the heatmap, or nothing from others. You always see the full table."
+      "dinner": {
+        "title": "The “I can only do dinner” one",
+        "body": "Pick whole days, slots such as “Lunch” and “Dinner”, or an hourly grid in their own time zone."
       },
-      "close": {
-        "title": "Close it, add it to calendars",
-        "body": "Pick the final date: everyone gets a notice with the event for Google Calendar or Apple Calendar."
+      "secret": {
+        "title": "The one who'd rather nobody knew they can't",
+        "body": "You decide whether people see who can make it, only the heatmap, or nothing. Their secret is safe. You always see the full table."
+      },
+      "late": {
+        "title": "The one who hears about everything last",
+        "body": "When you close the date, they get a notice with the event for their calendar. Let's hear the excuse now."
       }
+    },
+    "end": {
+      "title": "The plan won't make itself",
+      "body": "Setting one up takes a minute. Less than catching up on the group chat.",
+      "cta": "Create the group's plan"
     },
     "demo": {
       "yes": "Can do",
       "maybe": "If needed",
       "no": "Can't",
-      "best": "Best day right now: {date}",
-      "sample": "Example with four friends' answers. Paint over it: tap a day or drag."
+      "best": "Provisional winner: {date}",
+      "sample": "Four example friends who, miraculously, all answered. Paint over it: tap a day or drag."
     }
   },
   "auth": {
     "title": "Sign in to Quadra",
-    "subtitle": "To create and manage plans. Answering never needs an account.",
+    "subtitle": "To create and manage plans. Your friends don't need an account to answer (or to make excuses).",
     "error": "We couldn't sign you in. Please try again.",
     "or": "or",
     "guestNote": "No passwords: sign in with Google or with a link we email you.",
@@ -73,8 +105,8 @@
     "title": "My plans",
     "newPlan": "Create plan",
     "mine": "Created by me",
-    "emptyTitle": "You haven't created a plan yet",
-    "emptyBody": "Create one, share the link and let everyone paint their days.",
+    "emptyTitle": "No plans yet. The group is waiting.",
+    "emptyBody": "Create one, send the link and let everyone paint their days. Yes, the easy one too.",
     "emptyCta": "Create plan",
     "participating": "Taking part",
     "participatingEmpty": "Plans you answer while signed in will show up here.",
@@ -207,11 +239,11 @@
   },
   "created": {
     "title": "Plan created",
-    "body": "Share this link so people can mark when they can make “{title}”.",
+    "body": "Share this link so people can mark when they can make “{title}”. No excuses now.",
     "answer": "Answer myself too",
     "manage": "Manage the plan",
     "share": "Share",
-    "shareText": "When can you make it? Mark your days for “{title}”."
+    "shareText": "When can you make it? Mark your days for “{title}”. This time it's for real."
   },
   "participate": {
     "metaDescription": "Mark the days you can make.",
@@ -221,6 +253,7 @@
     "inspect": "See who",
     "inspectHint": "Tap a cell to see who answered.",
     "paintHint": "Pick an answer and tap the cells. Tap again to clear.",
+    "pressHint": "Right-click or long-press a cell to see who can make it.",
     "tapToSee": "Tap a cell to see who answered.",
     "saved": "Answers saved",
     "unsaved": "Unsaved changes",
@@ -351,7 +384,7 @@
   },
   "notFound": {
     "title": "We can't find this page",
-    "body": "The link may have changed or the plan may have been deleted.",
+    "body": "The link may have changed or the plan may have been deleted. Like half the group's plans.",
     "home": "Go home"
   },
   "errorPage": {

@@ -1,7 +1,7 @@
 {
   "meta": {
-    "title": "Quadra — trobeu el dia que us va bé",
-    "description": "Crea un pla, comparteix l'enllaç i cadascú pinta els dies que pot. Quadra marca el millor."
+    "title": "Quadra — per a colles que mai troben data",
+    "description": "Per a la colla que fa mesos que diu «a veure si quedem». Cadascú pinta els dies que pot i Quadra tria el millor."
   },
   "nav": {
     "signIn": "Entrar",
@@ -11,46 +11,78 @@
     "signOut": "Tancar la sessió"
   },
   "footer": {
-    "tagline": "Quadra · quedar sense cadenes de missatges",
+    "tagline": "Quadra · per a colles que sempre diuen «a veure si quedem»",
     "language": "Idioma"
   },
-  "common": { "link": "Enllaç", "copy": "Copiar", "copied": "Copiat" },
-  "calendar": { "prevMonth": "Mes anterior", "nextMonth": "Mes següent" },
+  "common": {
+    "link": "Enllaç",
+    "copy": "Copiar",
+    "copied": "Copiat"
+  },
+  "calendar": {
+    "prevMonth": "Mes anterior",
+    "nextMonth": "Mes següent"
+  },
   "landing": {
-    "title": "El dia que us va bé a tots",
-    "subtitle": "Crea un pla, comparteix l'enllaç i cadascú pinta els dies que pot. Quadra marca el millor.",
+    "title": "Prou de «a veure si quedem»",
+    "subtitle": "Per a colles que des de l'estiu intenten sopar plegats. Crea un pla, passa l'enllaç, cadascú pinta els dies que pot i Quadra tria el millor. Sense 300 missatges pel mig.",
     "cta": "Crear un pla",
-    "ctaNote": "Els convidats no necessiten compte.",
-    "how": {
-      "title": "Com funciona",
-      "guests": {
-        "title": "Un enllaç i llestos",
-        "body": "Qui l'obre posa el seu nom i marca. Sense registres ni apps. Si canvia de mòbil, té el seu enllaç personal."
+    "ctaNote": "Els teus amics no necessiten compte. Ni excuses.",
+    "chat": {
+      "title": "Segur que us sona",
+      "body": "Algú proposa, ningú concreta, algú «s'adapta» i el pla mor en «ja ho anirem veient». Amb Quadra, la mateixa colla marca els seus dies en un enllaç i el millor dia surt sol, encara que el que sempre s'adapta es continuï adaptant.",
+      "group": "Els de sempre",
+      "members": "Ana, Berta, Carla, Dani, Edu",
+      "later": "Tres mesos després",
+      "m1": "Hem de quedar ja, que no ens veiem des de l'estiu",
+      "m2": "Sííí. Quan?",
+      "m3": "Jo m'adapto",
+      "m4": "Aquest cap de setmana no puc. El següent?",
+      "m5": "El següent tinc casament",
+      "m6": "Què m'he perdut? Posa 214 missatges",
+      "m7": "Jo m'adapto",
+      "m8": "Bé, ja ho anirem veient",
+      "m9": "Ei, al final quedem o què?"
+    },
+    "types": {
+      "title": "N'hi ha un de cada a totes les colles",
+      "adapts": {
+        "title": "El que «s'adapta»",
+        "body": "Ara ho demostra: pinta dia a dia «Puc», «Si cal» o «No puc». Adaptar-se a tot ja no compta."
       },
-      "grain": {
-        "title": "Dies, franges o hores",
-        "body": "Tria dies sencers, franges amb nom com «Dinar» i «Sopar», o una graella horària a la teva zona horària."
+      "noSignup": {
+        "title": "La que no es registra enlloc",
+        "body": "No li cal. Obre l'enllaç, posa el seu nom i marca. Si canvia de mòbil, té el seu enllaç personal."
       },
-      "privacy": {
-        "title": "Tu decideixes què es veu",
-        "body": "Que tothom vegi qui pot, només el mapa de calor o res dels altres. Tu sempre veus la taula completa."
+      "dinner": {
+        "title": "El de «jo només puc sopar»",
+        "body": "Tria dies sencers, franges com «Dinar» i «Sopar», o una graella d'hores a la seva zona horària."
       },
-      "close": {
-        "title": "Tancar i al calendari",
-        "body": "Tria la data final: tothom rep un avís amb l'esdeveniment per a Google Calendar o Apple Calendar."
+      "secret": {
+        "title": "El que no vol que se sàpiga que no pot",
+        "body": "Tu decideixes si es veu qui pot, només el mapa de calor o res. El seu secret, a bon recer. Tu sempre veus la taula sencera."
+      },
+      "late": {
+        "title": "La que s'assabenta tard de tot",
+        "body": "Quan tanques la data, li arriba un avís amb l'esdeveniment per al seu calendari. A veure quina excusa posa ara."
       }
+    },
+    "end": {
+      "title": "El pla no es muntarà sol",
+      "body": "Crear-ne un costa un minut. Menys que posar-se al dia amb el xat de la colla.",
+      "cta": "Crear el pla de la colla"
     },
     "demo": {
       "yes": "Puc",
       "maybe": "Si cal",
       "no": "No puc",
-      "best": "Millor dia ara: {date}",
-      "sample": "Exemple amb les respostes de quatre amics. Pinta-hi a sobre: toca un dia o arrossega."
+      "best": "Guanyador provisional: {date}",
+      "sample": "Quatre amics d'exemple que, miraculosament, han contestat tots. Pinta-hi a sobre: toca un dia o arrossega."
     }
   },
   "auth": {
     "title": "Entrar a Quadra",
-    "subtitle": "Per crear i gestionar plans. Per respondre no cal compte.",
+    "subtitle": "Per crear i gestionar plans. Els teus amics no necessiten compte per respondre (ni per posar excuses).",
     "error": "No s'ha pogut iniciar la sessió. Torna-ho a provar.",
     "or": "o",
     "guestNote": "Sense contrasenyes: entra amb Google o amb un enllaç que t'enviem per correu.",
@@ -73,8 +105,8 @@
     "title": "Els meus plans",
     "newPlan": "Crear pla",
     "mine": "Creats per mi",
-    "emptyTitle": "Encara no has creat cap pla",
-    "emptyBody": "Crea'n un, comparteix l'enllaç i deixa que cadascú pinti els seus dies.",
+    "emptyTitle": "Encara no has creat cap pla. La colla espera.",
+    "emptyBody": "Crea'n un, passa l'enllaç i que cadascú pinti els seus dies. Sí, també el que «s'adapta».",
     "emptyCta": "Crear pla",
     "participating": "Hi participo",
     "participatingEmpty": "Quan responguis a un pla amb la sessió iniciada, apareixerà aquí.",
@@ -207,11 +239,11 @@
   },
   "created": {
     "title": "Pla creat",
-    "body": "Comparteix aquest enllaç perquè la gent marqui quan pot anar a «{title}».",
+    "body": "Comparteix aquest enllaç perquè la gent marqui quan pot anar a «{title}». Ara sí que no hi ha excusa.",
     "answer": "Respondre jo també",
     "manage": "Gestionar el pla",
     "share": "Compartir",
-    "shareText": "Quan pots? Marca els teus dies per a «{title}»."
+    "shareText": "Quan pots? Marca els teus dies per a «{title}». Aquesta vegada va de debò."
   },
   "participate": {
     "metaDescription": "Marca els dies que pots.",
@@ -221,6 +253,7 @@
     "inspect": "Veure qui",
     "inspectHint": "Toca una casella per veure qui ha respost.",
     "paintHint": "Tria una resposta i toca les caselles. Torna a tocar per esborrar.",
+    "pressHint": "Clic dret o mantén premuda una casella per veure qui pot.",
     "tapToSee": "Toca una casella per veure qui ha respost.",
     "saved": "Respostes desades",
     "unsaved": "Canvis sense desar",
@@ -351,7 +384,7 @@
   },
   "notFound": {
     "title": "No trobem aquesta pàgina",
-    "body": "Potser l'enllaç ha canviat o el pla s'ha esborrat.",
+    "body": "Potser l'enllaç ha canviat o el pla s'ha esborrat. Com la meitat dels plans de la colla.",
     "home": "Anar a l'inici"
   },
   "errorPage": {
