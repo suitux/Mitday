@@ -24,8 +24,10 @@ async function createPlan(
   if (grain === "Horas") {
     await page.getByLabel("Zona horaria").fill("Europe/Madrid");
     if (hours) {
-      await page.getByLabel("Desde").selectOption({ label: hours.from });
-      await page.getByLabel("Hasta").selectOption({ label: hours.to });
+      await page.getByLabel("Desde").click();
+      await page.getByRole("option", { name: hours.from, exact: true }).click();
+      await page.getByLabel("Hasta").click();
+      await page.getByRole("option", { name: hours.to, exact: true }).click();
     }
   }
   await page.getByRole("button", { name: "Siguiente", exact: true }).click();

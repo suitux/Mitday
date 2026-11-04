@@ -5,6 +5,13 @@ import { useParams } from "next/navigation";
 import { useTransition } from "react";
 import { usePathname, useRouter } from "@/i18n/navigation";
 import { routing, type Locale } from "@/i18n/routing";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 const NAMES: Record<Locale, string> = {
   es: "Español",
@@ -20,26 +27,33 @@ export function LocaleSwitcher() {
   const params = useParams();
   const [pending, startTransition] = useTransition();
   return (
-    <label className="flex items-center gap-2 text-muted-foreground">
-      <span>{t("language")}</span>
-      <select
-        className="h-9 rounded-md border border-input bg-transparent px-2 text-sm text-foreground"
+    <div className="flex items-center gap-2 text-muted-foreground">
+      <label htmlFor="locale-switcher">{t("language")}</label>
+      <Select
         value={locale}
         disabled={pending}
-        onChange={(e) => {
-          const next = e.target.value as Locale;
+        onValueChange={(v) => {
+          const next = v as Locale;
           startTransition(() => {
             // @ts-expect-error -- params match the current pathname
             router.replace({ pathname, params }, { locale: next });
           });
         }}
       >
-        {routing.locales.map((l) => (
-          <option key={l} value={l}>
-            {NAMES[l]}
-          </option>
-        ))}
-      </select>
-    </label>
+        <SelectTrigger
+          id="locale-switcher"
+          className="bg-card text-foreground data-[size=default]:h-9"
+        >
+          <SelectValue />
+        </SelectTrigger>
+        <SelectContent>
+          {routing.locales.map((l) => (
+            <SelectItem key={l} value={l}>
+              {NAMES[l]}
+            </SelectItem>
+          ))}
+        </SelectContent>
+      </Select>
+    </div>
   );
 }

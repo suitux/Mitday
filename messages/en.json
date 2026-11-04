@@ -44,6 +44,15 @@
       "m8": "Ok, let's play it by ear",
       "m9": "Hey, are we meeting up or what?"
     },
+    "past": {
+      "title": "People used to manage it",
+      "body": "Documentary proof that meeting up is possible. None of these groups had a group chat, and yet.",
+      "p1": "Picnic, 1716. Settled by letter, without a single “I'm easy”.",
+      "p2": "Picnic at Hagidera, Japan, 18th century. Six people, one date, zero messages.",
+      "p3": "Autumn, around 1789. Everyone came. Even the one who hears about everything last.",
+      "p4": "Ball in Charleville, 1950. The last group to settle a date on the first try.",
+      "credit": "Pictures: The Metropolitan Museum of Art (public domain) and State Library of Queensland (no known copyright restrictions)."
+    },
     "types": {
       "title": "Every group has one of each",
       "adapts": {
@@ -69,8 +78,11 @@
     },
     "end": {
       "title": "The plan won't make itself",
-      "body": "Setting one up takes a minute. Less than catching up on the group chat.",
-      "cta": "Create the group's plan"
+      "lead": "Finally meeting up for",
+      "placeholder": "the Christmas dinner",
+      "label": "What the plan is for",
+      "cta": "Create",
+      "note": "We take you to the plan with the title already filled in. Your friends don't need an account."
     },
     "demo": {
       "yes": "Can do",

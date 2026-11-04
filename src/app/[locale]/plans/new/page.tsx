@@ -10,8 +10,10 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function NewPlanPage({
   params,
+  searchParams,
 }: PageProps<"/[locale]/plans/new">) {
   const { locale: rawLocale } = await params;
+  const { title } = await searchParams;
   const locale = toLocale(rawLocale);
   setRequestLocale(locale);
   const t = await getTranslations("wizard");
@@ -26,6 +28,7 @@ export default async function NewPlanPage({
           no: t("defaults.no"),
           lunch: t("defaults.lunch"),
           dinner: t("defaults.dinner"),
+          title: typeof title === "string" ? title.trim().slice(0, 80) : "",
         }}
       />
     </main>

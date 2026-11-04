@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist_Mono, Schibsted_Grotesk } from "next/font/google";
 import { notFound } from "next/navigation";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
@@ -9,7 +9,10 @@ import { SiteHeader } from "@/components/app/site-header";
 import { routing } from "@/i18n/routing";
 import { appUrl } from "@/lib/env";
 
-const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
+const sans = Schibsted_Grotesk({
+  variable: "--font-schibsted",
+  subsets: ["latin"],
+});
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
@@ -38,10 +41,7 @@ export async function generateMetadata({
 }
 
 export const viewport: Viewport = {
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#f8f8f8" },
-    { media: "(prefers-color-scheme: dark)", color: "#000000" },
-  ],
+  themeColor: "#eef1fa",
 };
 
 export default async function LocaleLayout({
@@ -54,7 +54,7 @@ export default async function LocaleLayout({
   return (
     <html
       lang={locale}
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${sans.variable} ${geistMono.variable} h-full antialiased`}
     >
       {/* Extensions (ColorZilla, Grammarly…) add attributes to <body>. */}
       <body className="flex min-h-dvh flex-col" suppressHydrationWarning>

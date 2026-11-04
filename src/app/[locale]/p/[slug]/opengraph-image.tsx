@@ -39,8 +39,8 @@ export default async function OgImage({
         height: "100%",
         display: "flex",
         justifyContent: "space-between",
-        background: "#f8f8f8",
-        color: "#0a0a0a",
+        background: "#eef1fa",
+        color: "#141414",
         padding: 72,
         fontFamily: "sans-serif",
       }}
@@ -66,7 +66,7 @@ export default async function OgImage({
             style={{
               width: 30,
               height: 30,
-              background: "#0a0a0a",
+              background: "#0f5257",
               borderRadius: 6,
             }}
           />

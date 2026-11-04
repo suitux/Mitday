@@ -1,12 +1,15 @@
 import Link from "next/link";
-import { Geist } from "next/font/google";
+import { Schibsted_Grotesk } from "next/font/google";
 
-const geist = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
+const sans = Schibsted_Grotesk({
+  variable: "--font-schibsted",
+  subsets: ["latin"],
+});
 
 // Only reached for paths outside any locale (the proxy normally adds one).
 export default function GlobalNotFound() {
   return (
-    <html lang="es" className={geist.variable}>
+    <html lang="es" className={sans.variable}>
       <body className="flex min-h-dvh items-center justify-center bg-background p-6 font-sans text-foreground">
         <main className="max-w-sm">
           <h1 className="text-2xl font-medium tracking-tight">404</h1>

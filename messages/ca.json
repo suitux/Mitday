@@ -44,6 +44,15 @@
       "m8": "Bé, ja ho anirem veient",
       "m9": "Ei, al final quedem o què?"
     },
+    "past": {
+      "title": "Abans la gent sí que quedava",
+      "body": "Prova documental que quedar és possible. Cap d'aquestes colles tenia xat, i tot i així.",
+      "p1": "Pícnic, 1716. Ho van tancar per carta i sense ni un «jo m'adapto».",
+      "p2": "Pícnic a Hagidera, Japó, segle XVIII. Sis persones, una data, zero missatges.",
+      "p3": "Tardor, cap al 1789. Van venir tots. Fins i tot la que s'assabenta tard de tot.",
+      "p4": "Ball a Charleville, 1950. L'última colla que va tancar data a la primera.",
+      "credit": "Imatges: The Metropolitan Museum of Art (domini públic) i State Library of Queensland (sense restriccions conegudes)."
+    },
     "types": {
       "title": "N'hi ha un de cada a totes les colles",
       "adapts": {
@@ -69,8 +78,11 @@
     },
     "end": {
       "title": "El pla no es muntarà sol",
-      "body": "Crear-ne un costa un minut. Menys que posar-se al dia amb el xat de la colla.",
-      "cta": "Crear el pla de la colla"
+      "lead": "Per fi quedem per",
+      "placeholder": "el sopar de Nadal",
+      "label": "Per a què és el pla",
+      "cta": "Crear",
+      "note": "Et portem al pla amb el títol ja posat. Els teus amics no necessiten compte."
     },
     "demo": {
       "yes": "Puc",

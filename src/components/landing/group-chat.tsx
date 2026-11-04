@@ -34,7 +34,7 @@ export function GroupChat() {
         </span>
         <span className="min-w-0">
           <span className="block text-sm font-semibold">{t("group")}</span>
-          <span className="block truncate text-xs text-muted-foreground">
+          <span className="block truncate text-[0.8125rem] text-muted-foreground">
             {t("members")}
           </span>
         </span>
@@ -44,7 +44,7 @@ export function GroupChat() {
           "later" in line ? (
             <li
               key={i}
-              className="my-2 self-center rounded-full bg-muted px-3 py-1 text-xs text-muted-foreground"
+              className="my-2 self-center rounded-full bg-muted px-3 py-1 text-[0.8125rem] text-muted-foreground"
             >
               {t("later")}
             </li>

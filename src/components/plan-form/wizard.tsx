@@ -38,7 +38,14 @@ function browserTimeZone() {
 export function PlanWizard({
   defaults,
 }: {
-  defaults: { yes: string; no: string; lunch: string; dinner: string };
+  defaults: {
+    yes: string;
+    no: string;
+    lunch: string;
+    dinner: string;
+    /** Prefilled from the landing page (`?title=`). */
+    title?: string;
+  };
 }) {
   const t = useTranslations("wizard");
   const te = useTranslations("errors");
@@ -47,7 +54,7 @@ export function PlanWizard({
   const [errors, setErrors] = useState<Errors>({});
   const [pending, startTransition] = useTransition();
   const [state, setState] = useState<FormState>(() => ({
-    details: { title: "", description: "" },
+    details: { title: defaults.title ?? "", description: "" },
     when: {
       dateMode: "range",
       rangeStart: null,

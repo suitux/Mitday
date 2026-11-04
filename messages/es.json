@@ -44,6 +44,15 @@
       "m8": "Bueno, ya lo vamos viendo",
       "m9": "Oye, ¿al final quedamos o qué?"
     },
+    "past": {
+      "title": "Antes la gente sí quedaba",
+      "body": "Prueba documental de que quedar es posible. Ninguno de estos grupos tenía chat, y aun así.",
+      "p1": "Picnic, 1716. Lo cerraron por carta y sin un solo «yo me adapto».",
+      "p2": "Picnic en Hagidera, Japón, siglo XVIII. Seis personas, una fecha, cero mensajes.",
+      "p3": "Otoño, hacia 1789. Vinieron todos. Hasta la que se entera tarde de todo.",
+      "p4": "Baile en Charleville, 1950. El último grupo que cerró fecha a la primera.",
+      "credit": "Imágenes: The Metropolitan Museum of Art (dominio público) y State Library of Queensland (sin restricciones conocidas)."
+    },
     "types": {
       "title": "Hay uno de cada en todos los grupos",
       "adapts": {
@@ -69,8 +78,11 @@
     },
     "end": {
       "title": "El plan no se va a montar solo",
-      "body": "Crear uno cuesta un minuto. Menos que ponerse al día con el chat del grupo.",
-      "cta": "Crear el plan del grupo"
+      "lead": "Por fin quedamos para",
+      "placeholder": "la cena de Navidad",
+      "label": "Para qué es el plan",
+      "cta": "Crear",
+      "note": "Te llevamos al plan con el título ya puesto. Tus amigos no necesitan cuenta."
     },
     "demo": {
       "yes": "Puedo",

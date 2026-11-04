@@ -85,7 +85,7 @@ export function LandingDemo({ todayIso }: { todayIso: string }) {
   const bestDay = agg.best[0];
 
   return (
-    <div className="rounded-lg border border-border bg-card p-4 sm:p-6">
+    <div data-ui className="rounded-lg border border-border bg-card p-4 sm:p-6">
       <Palette
         options={options}
         brush={brush}
@@ -131,7 +131,9 @@ export function LandingDemo({ todayIso }: { todayIso: string }) {
           </>
         ) : null}
       </p>
-      <p className="mt-1 text-xs text-muted-foreground">{t("sample")}</p>
+      <p className="mt-1 text-[0.8125rem] text-muted-foreground">
+        {t("sample")}
+      </p>
     </div>
   );
 }

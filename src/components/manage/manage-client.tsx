@@ -28,6 +28,13 @@ import {
 } from "@/components/ui/alert-dialog";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { useRouter } from "@/i18n/navigation";
 import type { ClientPlan } from "@/lib/client-plan";
 import { formatCell, formatCellShort } from "@/lib/format";
@@ -289,21 +296,27 @@ export function ClosePanel({ data }: { data: ManageData }) {
     return <p className="text-sm text-muted-foreground">{t("nothing")}</p>;
   return (
     <div className="grid gap-3">
-      <label className="grid gap-2 text-sm">
-        <span className="font-medium">{t("pick")}</span>
-        <select
-          className="h-10 rounded-md border border-input bg-card px-3 text-sm"
-          value={choice}
-          onChange={(e) => setChoice(e.target.value)}
-        >
-          {ranked.map((c) => (
-            <option key={c} value={c}>
-              {label(c)} · {t("points", { score: data.scores[c] ?? 0 })}
-              {data.best.includes(c) ? ` · ${t("best")}` : ""}
-            </option>
-          ))}
-        </select>
-      </label>
+      <div className="grid gap-2 text-sm">
+        <label htmlFor="final-choice" className="font-medium">
+          {t("pick")}
+        </label>
+        <Select value={choice} onValueChange={setChoice}>
+          <SelectTrigger
+            id="final-choice"
+            className="w-full bg-card data-[size=default]:h-10"
+          >
+            <SelectValue />
+          </SelectTrigger>
+          <SelectContent>
+            {ranked.map((c) => (
+              <SelectItem key={c} value={c}>
+                {label(c)} · {t("points", { score: data.scores[c] ?? 0 })}
+                {data.best.includes(c) ? ` · ${t("best")}` : ""}
+              </SelectItem>
+            ))}
+          </SelectContent>
+        </Select>
+      </div>
       <div>
         <Button
           disabled={pending || !choice}

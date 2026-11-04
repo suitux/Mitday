@@ -12,6 +12,13 @@ import {
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { Switch } from "@/components/ui/switch";
 import { Textarea } from "@/components/ui/textarea";
 import { formatDate, minutesToHHMM } from "@/lib/format";
@@ -493,12 +500,10 @@ export function WhenSection({
         >
           <div>
             <Label htmlFor="interval">{t("interval")}</Label>
-            <select
-              id="interval"
-              className="mt-2 h-10 w-full rounded-md border border-input bg-card px-3 text-sm"
-              value={value.hourInterval}
-              onChange={(e) => {
-                const hourInterval = Number(e.target.value) as 30 | 60;
+            <Select
+              value={String(value.hourInterval)}
+              onValueChange={(v) => {
+                const hourInterval = Number(v) as 30 | 60;
                 const snap = (m: number) =>
                   Math.round(m / hourInterval) * hourInterval;
                 onChange({
@@ -509,44 +514,64 @@ export function WhenSection({
                 });
               }}
             >
-              <option value={30}>{t("minutes", { n: 30 })}</option>
-              <option value={60}>{t("minutes", { n: 60 })}</option>
-            </select>
+              <SelectTrigger
+                id="interval"
+                className="mt-2 w-full bg-card data-[size=default]:h-10"
+              >
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="30">{t("minutes", { n: 30 })}</SelectItem>
+                <SelectItem value="60">{t("minutes", { n: 60 })}</SelectItem>
+              </SelectContent>
+            </Select>
           </div>
           <div className="grid grid-cols-2 gap-3">
             <div>
               <Label htmlFor="from">{t("from")}</Label>
-              <select
-                id="from"
-                className="num mt-2 h-10 w-full rounded-md border border-input bg-card px-3 text-sm"
-                value={value.dayStartMinute}
-                onChange={(e) =>
-                  onChange({ ...value, dayStartMinute: Number(e.target.value) })
+              <Select
+                value={String(value.dayStartMinute)}
+                onValueChange={(v) =>
+                  onChange({ ...value, dayStartMinute: Number(v) })
                 }
               >
-                {times.slice(0, -1).map((m) => (
-                  <option key={m} value={m}>
-                    {minutesToHHMM(m)}
-                  </option>
-                ))}
-              </select>
+                <SelectTrigger
+                  id="from"
+                  className="num mt-2 w-full bg-card data-[size=default]:h-10"
+                >
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent>
+                  {times.slice(0, -1).map((m) => (
+                    <SelectItem key={m} value={String(m)} className="num">
+                      {minutesToHHMM(m)}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
             </div>
             <div>
               <Label htmlFor="to">{t("to")}</Label>
-              <select
-                id="to"
-                className="num mt-2 h-10 w-full rounded-md border border-input bg-card px-3 text-sm"
-                value={value.dayEndMinute}
-                onChange={(e) =>
-                  onChange({ ...value, dayEndMinute: Number(e.target.value) })
+              <Select
+                value={String(value.dayEndMinute)}
+                onValueChange={(v) =>
+                  onChange({ ...value, dayEndMinute: Number(v) })
                 }
               >
-                {times.slice(1).map((m) => (
-                  <option key={m} value={m}>
-                    {minutesToHHMM(m)}
-                  </option>
-                ))}
-              </select>
+                <SelectTrigger
+                  id="to"
+                  className="num mt-2 w-full bg-card data-[size=default]:h-10"
+                >
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent>
+                  {times.slice(1).map((m) => (
+                    <SelectItem key={m} value={String(m)} className="num">
+                      {minutesToHHMM(m)}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
             </div>
           </div>
           <div className="sm:col-span-2">
@@ -670,25 +695,35 @@ export function AnswersSection({
                   />
                 ))}
               </div>
-              <label className="flex items-center gap-2 text-sm">
-                <span className="text-muted-foreground">{t("weight")}</span>
-                <select
-                  className="num h-9 rounded-md border border-input bg-card px-2 text-sm disabled:opacity-60"
-                  value={o.weight}
-                  disabled={structureLocked}
-                  onChange={(e) =>
-                    update(i, { weight: Number(e.target.value) })
-                  }
+              <div className="flex items-center gap-2 text-sm">
+                <Label
+                  htmlFor={`weight-${i}`}
+                  className="font-normal text-muted-foreground"
                 >
-                  {WEIGHTS.map((w) => (
-                    <option key={w} value={w}>
-                      {t(
-                        `weights.${String(w).replace(".", "_")}` as "weights.1",
-                      )}
-                    </option>
-                  ))}
-                </select>
-              </label>
+                  {t("weight")}
+                </Label>
+                <Select
+                  value={String(o.weight)}
+                  disabled={structureLocked}
+                  onValueChange={(v) => update(i, { weight: Number(v) })}
+                >
+                  <SelectTrigger
+                    id={`weight-${i}`}
+                    className="bg-card data-[size=default]:h-9"
+                  >
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {WEIGHTS.map((w) => (
+                      <SelectItem key={w} value={String(w)}>
+                        {t(
+                          `weights.${String(w).replace(".", "_")}` as "weights.1",
+                        )}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
             </div>
           </li>
         ))}
