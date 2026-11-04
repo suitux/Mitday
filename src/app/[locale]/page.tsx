@@ -10,13 +10,6 @@ import { Link } from "@/i18n/navigation";
 import { colorValue } from "@/lib/plan-schema";
 import { cn } from "@/lib/utils";
 
-/**
- * Motif: the calendar cell (a rounded square). It notches the hero stage,
- * fills every tile of the board at poster size and builds the closing mark.
- */
-const NOTCH =
-  "[clip-path:polygon(var(--n)_0,100%_0,100%_100%,0_100%,0_var(--n),var(--n)_var(--n))]";
-
 export default async function Landing({ params }: PageProps<"/[locale]">) {
   const { locale: rawLocale } = await params;
   const locale = toLocale(rawLocale);
@@ -26,36 +19,33 @@ export default async function Landing({ params }: PageProps<"/[locale]">) {
 
   return (
     <main className="w-full overflow-x-clip">
-      {/* Hero: headline on the ground, the live calendar on a notched stage. */}
-      <section className="mx-auto w-full max-w-5xl px-4 pt-10 sm:px-6 lg:pt-16">
-        <h1 className="max-w-[15ch] text-[2.25rem] leading-[0.92] font-extrabold tracking-[-0.05em] text-balance sm:text-7xl lg:text-[5.25rem]">
-          {t("title")}
-        </h1>
-        <div className="mt-8 grid gap-10 lg:mt-12 lg:grid-cols-12 lg:gap-8">
-          <div className="reveal lg:col-span-4">
-            <p className="text-lg leading-relaxed">{t("subtitle")}</p>
-            <Button asChild size="lg" className="mt-8 h-12 px-6 text-base">
-              <Link href="/plans/new">{t("cta")}</Link>
-            </Button>
-            <p className="mt-4 text-sm text-muted-foreground">{t("ctaNote")}</p>
-          </div>
-          <div className="relative -mx-4 sm:-mx-6 lg:col-span-8 lg:mx-0">
-            <div
-              className={cn(
-                "shutter bg-primary px-4 pt-20 pb-10 [--n:4.5rem] sm:px-10 sm:pt-24 lg:-mr-[calc((100vw-64rem)/2+1.5rem)] lg:pr-[calc((100vw-64rem)/2+3.5rem)] lg:pb-16 lg:pl-14",
-                NOTCH,
-              )}
-            >
-              <div className="max-w-[560px]">
-                <LandingDemo todayIso={new Date().toISOString()} />
-              </div>
+      {/* Hero: the live calendar, friends answering one by one. */}
+      <section className="mx-auto w-full max-w-5xl px-4 pt-10 pb-24 sm:px-6 lg:pt-16">
+        <div className="grid gap-8 lg:grid-cols-12 lg:items-end lg:gap-y-10">
+          <h1 className="text-[2.25rem] leading-[0.92] font-extrabold tracking-[-0.05em] text-balance sm:text-7xl lg:col-span-12 lg:max-w-[16ch] lg:text-[5.25rem]">
+            {t("title")}
+          </h1>
+          <p className="max-w-xl text-lg leading-relaxed lg:col-span-7">
+            {t("subtitle")}
+          </p>
+          <div className="lg:col-span-5 lg:justify-self-end">
+            <div className="flex flex-wrap items-center gap-x-4 gap-y-3">
+              <Button asChild size="lg" className="h-12 px-6 text-base">
+                <Link href="/plans/new">{t("cta")}</Link>
+              </Button>
+              <span className="text-sm text-muted-foreground">
+                {t("ctaNote")}
+              </span>
             </div>
           </div>
+        </div>
+        <div className="mt-12 rounded-[var(--radius)] bg-field-sage p-3 sm:p-6 sm:[&_.aspect-square]:aspect-[5/3] [&_[data-ui]]:border-transparent">
+          <LandingDemo todayIso={new Date().toISOString()} animate />
         </div>
       </section>
 
       {/* The group chat, on its own field. */}
-      <section aria-labelledby="chat" className="mt-24 bg-field-pink lg:mt-32">
+      <section aria-labelledby="chat" className="bg-field-pink">
         <div className="mx-auto grid w-full max-w-5xl items-center gap-10 px-4 py-20 sm:px-6 lg:grid-cols-2 lg:gap-16 lg:py-28">
           <div className="reveal lg:order-2">
             <h2

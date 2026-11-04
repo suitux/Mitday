@@ -1,7 +1,7 @@
 "use client";
 
 import { useLocale, useTranslations } from "next-intl";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { CellButton } from "@/components/calendar/cell-button";
 import {
   MonthGrid,
@@ -17,7 +17,14 @@ import { addDays, todayIn, weekdayMonday } from "@/lib/grid";
 import { colorValue } from "@/lib/plan-schema";
 
 /** Landing "live thing": paint your days over four example friends' answers. */
-export function LandingDemo({ todayIso }: { todayIso: string }) {
+export function LandingDemo({
+  todayIso,
+  animate,
+}: {
+  todayIso: string;
+  /** Friends' answers arrive one by one. */
+  animate?: boolean;
+}) {
   const t = useTranslations("landing.demo");
   const locale = useLocale();
   const options = useMemo(
@@ -58,6 +65,22 @@ export function LandingDemo({ todayIso }: { todayIso: string }) {
     return out;
   }, [first]);
 
+  const [shown, setShown] = useState(4);
+  useEffect(() => {
+    if (!animate) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const raf = requestAnimationFrame(() => setShown(0));
+    let n = 0;
+    const id = setInterval(() => {
+      n += 1;
+      setShown(n);
+      if (n >= 4) clearInterval(id);
+    }, 900);
+    return () => {
+      cancelAnimationFrame(raf);
+      clearInterval(id);
+    };
+  }, [animate]);
   const [answers, setAnswers] = useState<Answers>({});
   const [brush, setBrush] = useState<Brush>({
     kind: "option",
@@ -76,12 +99,13 @@ export function LandingDemo({ todayIso }: { todayIso: string }) {
       cell,
       optionId,
     }));
+    const arrived = friends.filter((f) => Number(f.participantId[1]) < shown);
     return aggregate(
       options,
-      [...friends, ...mine],
-      Object.keys(answers).length > 0 ? 5 : 4,
+      [...arrived, ...mine],
+      Math.max(1, shown + (Object.keys(answers).length > 0 ? 1 : 0)),
     );
-  }, [answers, friends, options]);
+  }, [answers, friends, options, shown]);
   const bestDay = agg.best[0];
 
   return (
