@@ -1,7 +1,7 @@
 {
   "meta": {
-    "title": "Quadra — for groups that never find a date",
-    "description": "For the group that has been saying “we should hang out” for months. Everyone paints the days they can make and Quadra picks the best one."
+    "title": "Mitday — for groups that never find a date",
+    "description": "For the group that has been saying “we should hang out” for months. Everyone paints the days they can make and Mitday picks the best one."
   },
   "nav": {
     "signIn": "Sign in",
@@ -11,7 +11,7 @@
     "signOut": "Sign out"
   },
   "footer": {
-    "tagline": "Quadra · for groups that always say “we should hang out”",
+    "tagline": "Mitday · for groups that always say “we should hang out”",
     "language": "Language"
   },
   "common": {
@@ -25,12 +25,12 @@
   },
   "landing": {
     "title": "No more “we should hang out”",
-    "subtitle": "For groups that have been trying to have dinner since last summer. Create a plan, send the link, everyone paints the days they can make and Quadra picks the best one. No 300 messages in between.",
+    "subtitle": "For groups that have been trying to have dinner since last summer. Create a plan, send the link, everyone paints the days they can make and Mitday picks the best one. No 300 messages in between.",
     "cta": "Create a plan",
     "ctaNote": "Your friends don't need an account. Or excuses.",
     "chat": {
       "title": "Sound familiar?",
-      "body": "Someone suggests it, nobody commits, someone is “easy” and the plan dies at “let's play it by ear”. With Quadra the same group marks its days on one link and the best day falls out on its own, even if the easy one stays easy.",
+      "body": "Someone suggests it, nobody commits, someone is “easy” and the plan dies at “let's play it by ear”. With Mitday the same group marks its days on one link and the best day falls out on its own, even if the easy one stays easy.",
       "group": "The usual lot",
       "members": "Ana, Berta, Carla, Dani, Edu",
       "later": "Three months later",
@@ -93,7 +93,7 @@
     }
   },
   "auth": {
-    "title": "Sign in to Quadra",
+    "title": "Sign in to Mitday",
     "subtitle": "To create and manage plans. Your friends don't need an account to answer (or to make excuses).",
     "error": "We couldn't sign you in. Please try again.",
     "or": "or",
@@ -406,9 +406,9 @@
   },
   "emails": {
     "magicLink": {
-      "subject": "Your Quadra sign-in link",
-      "preview": "Tap to sign in to Quadra",
-      "heading": "Press the button to sign in to Quadra. The link expires in 24 hours.",
+      "subject": "Your Mitday sign-in link",
+      "preview": "Tap to sign in to Mitday",
+      "heading": "Press the button to sign in to Mitday. The link expires in 24 hours.",
       "button": "Sign in",
       "ignore": "If you didn't ask for this, ignore this email."
     },

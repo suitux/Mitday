@@ -20,7 +20,7 @@ export default function GlobalNotFound() {
             href="/"
             className="mt-6 inline-block underline underline-offset-4"
           >
-            Quadra
+            Mitday
           </Link>
         </main>
       </body>

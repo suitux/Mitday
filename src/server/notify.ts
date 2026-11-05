@@ -139,7 +139,7 @@ export async function sendPlanClosed(b: PlanBundle) {
         attachments: event
           ? [
               {
-                filename: "quadra.ics",
+                filename: "mitday.ics",
                 content: buildIcs(event),
                 contentType: "text/calendar; charset=utf-8",
               },

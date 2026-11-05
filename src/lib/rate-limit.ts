@@ -14,24 +14,24 @@ const limits: Record<
 };
 
 const g = globalThis as unknown as {
-  __quadraLimiters?: Map<Bucket, Ratelimit>;
+  __mitdayLimiters?: Map<Bucket, Ratelimit>;
 };
 
 function limiter(bucket: Bucket): Ratelimit | null {
   const url = process.env.UPSTASH_REDIS_REST_URL;
   const token = process.env.UPSTASH_REDIS_REST_TOKEN;
   if (!url || !token) return null;
-  g.__quadraLimiters ??= new Map();
-  let rl = g.__quadraLimiters.get(bucket);
+  g.__mitdayLimiters ??= new Map();
+  let rl = g.__mitdayLimiters.get(bucket);
   if (!rl) {
     const { tokens, window } = limits[bucket];
     rl = new Ratelimit({
       redis: new Redis({ url, token }),
       limiter: Ratelimit.slidingWindow(tokens, window),
-      prefix: `quadra:rl:${bucket}`,
+      prefix: `mitday:rl:${bucket}`,
       analytics: false,
     });
-    g.__quadraLimiters.set(bucket, rl);
+    g.__mitdayLimiters.set(bucket, rl);
   }
   return rl;
 }

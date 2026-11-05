@@ -26,7 +26,7 @@ export function eventForCell(
   const parsed = parseCell(cell, plan.granularity);
   if (!parsed) return null;
   const base = {
-    uid: `${plan.id}@quadra`,
+    uid: `${plan.id}@mitday`,
     description: plan.description ?? undefined,
     url,
   };
@@ -99,7 +99,7 @@ export function buildIcs(event: CalendarEvent, now: Date = new Date()): string {
   const lines = [
     "BEGIN:VCALENDAR",
     "VERSION:2.0",
-    "PRODID:-//Quadra//Quadra//EN",
+    "PRODID:-//Mitday//Mitday//EN",
     "CALSCALE:GREGORIAN",
     "METHOD:PUBLISH",
     "BEGIN:VEVENT",

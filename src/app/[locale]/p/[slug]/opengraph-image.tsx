@@ -3,7 +3,7 @@ import { getPlanBySlug } from "@/server/plans";
 
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
-export const alt = "Quadra";
+export const alt = "Mitday";
 
 /** Preview card for WhatsApp & co: the plan's title on the 2×2 mark. */
 export default async function OgImage({
@@ -13,7 +13,7 @@ export default async function OgImage({
 }) {
   const { slug } = await params;
   const b = await getPlanBySlug(slug).catch(() => null);
-  const title = b?.plan.title ?? "Quadra";
+  const title = b?.plan.title ?? "Mitday";
   const cells = [
     true,
     false,
@@ -70,7 +70,7 @@ export default async function OgImage({
               borderRadius: 6,
             }}
           />
-          Quadra
+          Mitday
         </div>
         <div
           style={{

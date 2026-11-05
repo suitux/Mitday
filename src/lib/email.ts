@@ -18,17 +18,18 @@ export type OutgoingEmail = {
 
 /** Emails captured in dev/test when no Resend key is configured. */
 const globalOutbox = globalThis as unknown as {
-  __quadraOutbox?: { to: string; subject: string; text: string }[];
+  __mitdayOutbox?: { to: string; subject: string; text: string }[];
 };
 
 export function devOutbox() {
-  globalOutbox.__quadraOutbox ??= [];
-  return globalOutbox.__quadraOutbox;
+  globalOutbox.__mitdayOutbox ??= [];
+  return globalOutbox.__mitdayOutbox;
 }
 
 export async function sendEmail(email: OutgoingEmail): Promise<void> {
-  const key = process.env.AUTH_RESEND_KEY;
-  const from = process.env.EMAIL_FROM ?? "Quadra <no-reply@example.com>";
+  // AUTH_RESEND_KEY, or RESEND_API_KEY as set by the Vercel Marketplace Resend integration.
+  const key = process.env.AUTH_RESEND_KEY ?? process.env.RESEND_API_KEY;
+  const from = process.env.EMAIL_FROM ?? "Mitday <no-reply@example.com>";
   if (!key) {
     const text = await render(email.react, { plainText: true });
     devOutbox().push({ to: email.to, subject: email.subject, text });

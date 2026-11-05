@@ -32,7 +32,7 @@ export async function generateMetadata({
   });
   return {
     metadataBase: new URL(appUrl()),
-    title: { default: t("title"), template: "%s · Quadra" },
+    title: { default: t("title"), template: "%s · Mitday" },
     description: t("description"),
     alternates: {
       languages: Object.fromEntries(routing.locales.map((l) => [l, `/${l}`])),

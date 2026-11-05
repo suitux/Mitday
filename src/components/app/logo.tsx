@@ -1,7 +1,7 @@
 import { cn } from "@/lib/utils";
 
-/** Quadra's mark: a 2×2 grid with one painted cell. */
-export function QuadraMark({ className }: { className?: string }) {
+/** Mitday's mark: a 2×2 grid with one painted cell. */
+export function MitdayMark({ className }: { className?: string }) {
   return (
     <svg
       viewBox="0 0 20 20"

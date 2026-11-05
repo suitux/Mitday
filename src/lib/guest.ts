@@ -8,7 +8,7 @@ const UUID_RE =
 const TOKEN_RE = /^[A-Za-z0-9_-]{43}$/;
 
 export function guestCookieName(planId: string): string {
-  return `quadra_p_${planId}`;
+  return `mitday_p_${planId}`;
 }
 
 export function generateGuestToken(): { token: string; hash: string } {

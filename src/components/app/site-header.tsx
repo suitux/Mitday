@@ -2,7 +2,7 @@ import { getTranslations } from "next-intl/server";
 import { Suspense } from "react";
 import { Link } from "@/i18n/navigation";
 import { currentUser } from "@/server/session";
-import { QuadraMark } from "./logo";
+import { MitdayMark } from "./logo";
 import { UserMenu } from "./user-menu";
 
 async function HeaderUser() {
@@ -42,8 +42,8 @@ export async function SiteHeader() {
         href="/"
         className="flex items-center gap-2 text-[15px] font-semibold tracking-tight"
       >
-        <QuadraMark />
-        Quadra
+        <MitdayMark />
+        Mitday
       </Link>
       <Suspense fallback={<div className="h-9 w-20" />}>
         <HeaderUser />

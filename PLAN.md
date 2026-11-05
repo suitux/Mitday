@@ -1,4 +1,4 @@
-# Quadra — Especificación y plan de implementación
+# Mitday — Especificación y plan de implementación
 
 ## Cómo usar este plan con Claude Code
 
@@ -175,7 +175,7 @@ Borrados en cascada: plan → dates, slots, options, participants → responses.
 ## 3. Identidad de invitados
 
 - Al crear un participante invitado: `token = randomBytes(32).base64url`, se guarda `sha256(token)`.
-- Cookie `quadra_p_<planId>` = `<participantId>.<token>` (httpOnly, secure, sameSite lax, 1 año, path `/`).
+- Cookie `mitday_p_<planId>` = `<participantId>.<token>` (httpOnly, secure, sameSite lax, 1 año, path `/`).
 - Enlace personal: `/[locale]/p/[slug]/claim?k=<participantId>.<token>`. El route handler valida el token, pone la cookie y redirige a `/p/[slug]` sin query.
 - Comparación de hashes en tiempo constante.
 - Usuario logueado: se usa el participante con `userId`. Si además tiene una cookie de invitado válida para ese plan, se ofrece «vincular» (asignar `userId` a ese participante).

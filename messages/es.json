@@ -1,7 +1,7 @@
 {
   "meta": {
-    "title": "Quadra — para grupos que nunca encuentran fecha",
-    "description": "Para el grupo que lleva meses con el «a ver si quedamos». Cada uno pinta los días que puede y Quadra elige el mejor."
+    "title": "Mitday — para grupos que nunca encuentran fecha",
+    "description": "Para el grupo que lleva meses con el «a ver si quedamos». Cada uno pinta los días que puede y Mitday elige el mejor."
   },
   "nav": {
     "signIn": "Entrar",
@@ -11,7 +11,7 @@
     "signOut": "Cerrar sesión"
   },
   "footer": {
-    "tagline": "Quadra · para grupos que siempre dicen «a ver si quedamos»",
+    "tagline": "Mitday · para grupos que siempre dicen «a ver si quedamos»",
     "language": "Idioma"
   },
   "common": {
@@ -25,12 +25,12 @@
   },
   "landing": {
     "title": "Se acabó el «a ver si quedamos»",
-    "subtitle": "Para grupos que llevan desde verano intentando cenar juntos. Crea un plan, pasa el enlace, cada uno pinta los días que puede y Quadra elige el mejor. Sin 300 mensajes por en medio.",
+    "subtitle": "Para grupos que llevan desde verano intentando cenar juntos. Crea un plan, pasa el enlace, cada uno pinta los días que puede y Mitday elige el mejor. Sin 300 mensajes por en medio.",
     "cta": "Crear un plan",
     "ctaNote": "Tus amigos no necesitan cuenta. Ni excusas.",
     "chat": {
       "title": "Seguro que os suena",
-      "body": "Alguien propone, nadie concreta, alguien «se adapta» y el plan muere en «ya lo vamos viendo». Con Quadra, el mismo grupo marca sus días en un enlace y el mejor día sale solo, aunque el que siempre se adapta siga adaptándose.",
+      "body": "Alguien propone, nadie concreta, alguien «se adapta» y el plan muere en «ya lo vamos viendo». Con Mitday, el mismo grupo marca sus días en un enlace y el mejor día sale solo, aunque el que siempre se adapta siga adaptándose.",
       "group": "Los de siempre",
       "members": "Ana, Berta, Carla, Dani, Edu",
       "later": "Tres meses después",
@@ -93,7 +93,7 @@
     }
   },
   "auth": {
-    "title": "Entrar en Quadra",
+    "title": "Entrar en Mitday",
     "subtitle": "Para crear y gestionar planes. Tus amigos no necesitan cuenta para responder (ni para poner excusas).",
     "error": "No se ha podido iniciar sesión. Inténtalo de nuevo.",
     "or": "o",
@@ -406,9 +406,9 @@
   },
   "emails": {
     "magicLink": {
-      "subject": "Tu enlace para entrar en Quadra",
-      "preview": "Pulsa para entrar en Quadra",
-      "heading": "Pulsa el botón para entrar en Quadra. El enlace caduca en 24 horas.",
+      "subject": "Tu enlace para entrar en Mitday",
+      "preview": "Pulsa para entrar en Mitday",
+      "heading": "Pulsa el botón para entrar en Mitday. El enlace caduca en 24 horas.",
       "button": "Entrar",
       "ignore": "Si no lo has pedido tú, ignora este correo."
     },

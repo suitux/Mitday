@@ -30,12 +30,12 @@ function createDb(): Db {
   });
 }
 
-const globalForDb = globalThis as unknown as { __quadraDb?: Db };
+const globalForDb = globalThis as unknown as { __mitdayDb?: Db };
 
 /** Lazily created so importing this module never needs DATABASE_URL. */
 export function getDb(): Db {
-  globalForDb.__quadraDb ??= createDb();
-  return globalForDb.__quadraDb;
+  globalForDb.__mitdayDb ??= createDb();
+  return globalForDb.__mitdayDb;
 }
 
 export const db = new Proxy({} as Db, {

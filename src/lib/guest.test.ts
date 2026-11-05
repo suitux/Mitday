@@ -36,6 +36,6 @@ describe("guest identity", () => {
   });
 
   it("cookie name is per plan", () => {
-    expect(guestCookieName("abc")).toBe("quadra_p_abc");
+    expect(guestCookieName("abc")).toBe("mitday_p_abc");
   });
 });

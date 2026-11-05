@@ -90,7 +90,7 @@ export function TestLoginForm({ callbackUrl }: { callbackUrl: string }) {
     >
       <input type="hidden" name="callbackUrl" value={callbackUrl} />
       <Label htmlFor="test-email">Test login</Label>
-      <Input id="test-email" name="email" placeholder="ana@test.quadra" />
+      <Input id="test-email" name="email" placeholder="ana@test.mitday" />
       <Input name="name" placeholder="Ana" aria-label="Name" />
       <Submit variant="secondary">Test login</Submit>
     </form>

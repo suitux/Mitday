@@ -1,8 +1,8 @@
 <p align="center">
-  <img src="docs/readme/banner.png" alt="Quadra — No more “we should hang out”. Group scheduling for friends who never manage to find a date." width="100%">
+  <img src="docs/readme/banner.png" alt="Mitday — No more “we should hang out”. Group scheduling for friends who never manage to find a date." width="100%">
 </p>
 
-**Quadra** is for the group chat that has been saying _“we should hang out”_ since last summer. Create a plan, send the link, everyone paints the days they can make, and Quadra picks the best one. Close it and everybody gets a calendar event. No 300 messages in between.
+**Mitday** is for the group chat that has been saying _“we should hang out”_ since last summer. Create a plan, send the link, everyone paints the days they can make, and Mitday picks the best one. Close it and everybody gets a calendar event. No 300 messages in between.
 
 Your friends don't need an account. Or excuses.
 
@@ -14,11 +14,11 @@ Your friends don't need an account. Or excuses.
 
 <img src="docs/readme/chat.png" alt="A group chat: “we need to meet up”, “I'm easy”, “got a wedding the next one”… three months later: “are we meeting up or what?”" width="100%">
 
-Someone suggests it, nobody commits, someone is “easy” and the plan dies at “let's play it by ear”. With Quadra the same group marks its days on one link and the best day falls out on its own.
+Someone suggests it, nobody commits, someone is “easy” and the plan dies at “let's play it by ear”. With Mitday the same group marks its days on one link and the best day falls out on its own.
 
 ## Every group has one of each
 
-| The friend                                      | What Quadra does about it                                                                                                |
+| The friend                                      | What Mitday does about it                                                                                                |
 | ----------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------ |
 | **The one who's “easy”**                        | Has to prove it: _Can do_, _If needed_ or _Can't_, painted day by day. Options, colours and weights are set by the plan. |
 | **The one who signs up for nothing**            | Doesn't have to. Open the link, type a name, mark the days. A personal link lets them edit from another phone.           |

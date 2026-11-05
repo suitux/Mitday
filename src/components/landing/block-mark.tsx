@@ -1,19 +1,19 @@
 import { cn } from "@/lib/utils";
 
 const BLOCKS = [
-  { letter: "q", h: "86%", bg: "bg-field-blue" },
-  { letter: "u", h: "64%", bg: "bg-field-pink" },
-  { letter: "a", h: "100%", bg: "bg-field-peach" },
+  { letter: "m", h: "86%", bg: "bg-field-blue" },
+  { letter: "i", h: "64%", bg: "bg-field-pink" },
+  { letter: "t", h: "100%", bg: "bg-field-peach" },
   { letter: "d", h: "74%", bg: "bg-field-sage" },
-  { letter: "r", h: "58%", bg: "bg-field-sand" },
-  { letter: "a", h: "92%", bg: "bg-field-blue" },
+  { letter: "a", h: "58%", bg: "bg-field-sand" },
+  { letter: "y", h: "92%", bg: "bg-field-blue" },
 ];
 
 /** The name built from calendar cells of different heights. */
 export function BlockMark({ className }: { className?: string }) {
   return (
     <div className={cn("h-[22svh] lg:h-[34svh]", className)}>
-      <span className="sr-only">Quadra</span>
+      <span className="sr-only">Mitday</span>
       <div aria-hidden="true" className="flex h-full items-end gap-1">
         {BLOCKS.map((b, i) => (
           <span

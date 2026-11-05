@@ -3,10 +3,10 @@ import { expect, type Page } from "@playwright/test";
 export const uid = () => Math.random().toString(36).slice(2, 8);
 
 export async function testLogin(page: Page, name: string, locale = "es") {
-  const email = `${name.toLowerCase()}-${uid()}@test.quadra`;
+  const email = `${name.toLowerCase()}-${uid()}@test.mitday`;
   await page.goto(`/${locale}/login`);
   const form = page.getByTestId("test-login");
-  await form.getByPlaceholder("ana@test.quadra").fill(email);
+  await form.getByPlaceholder("ana@test.mitday").fill(email);
   await form.getByLabel("Name").fill(name);
   await form.getByRole("button", { name: "Test login" }).click();
   await expect(page).toHaveURL(new RegExp(`/${locale}/dashboard`));

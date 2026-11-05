@@ -34,7 +34,7 @@ export async function GET(
     b.plan.title
       .replace(/[^\p{L}\p{N}]+/gu, "-")
       .replace(/^-|-$/g, "")
-      .slice(0, 40) || "quadra";
+      .slice(0, 40) || "mitday";
   return new Response(buildIcs(event), {
     headers: {
       "Content-Type": "text/calendar; charset=utf-8",

@@ -1,7 +1,7 @@
 {
   "meta": {
-    "title": "Quadra — per a colles que mai troben data",
-    "description": "Per a la colla que fa mesos que diu «a veure si quedem». Cadascú pinta els dies que pot i Quadra tria el millor."
+    "title": "Mitday — per a colles que mai troben data",
+    "description": "Per a la colla que fa mesos que diu «a veure si quedem». Cadascú pinta els dies que pot i Mitday tria el millor."
   },
   "nav": {
     "signIn": "Entrar",
@@ -11,7 +11,7 @@
     "signOut": "Tancar la sessió"
   },
   "footer": {
-    "tagline": "Quadra · per a colles que sempre diuen «a veure si quedem»",
+    "tagline": "Mitday · per a colles que sempre diuen «a veure si quedem»",
     "language": "Idioma"
   },
   "common": {
@@ -25,12 +25,12 @@
   },
   "landing": {
     "title": "Prou de «a veure si quedem»",
-    "subtitle": "Per a colles que des de l'estiu intenten sopar plegats. Crea un pla, passa l'enllaç, cadascú pinta els dies que pot i Quadra tria el millor. Sense 300 missatges pel mig.",
+    "subtitle": "Per a colles que des de l'estiu intenten sopar plegats. Crea un pla, passa l'enllaç, cadascú pinta els dies que pot i Mitday tria el millor. Sense 300 missatges pel mig.",
     "cta": "Crear un pla",
     "ctaNote": "Els teus amics no necessiten compte. Ni excuses.",
     "chat": {
       "title": "Segur que us sona",
-      "body": "Algú proposa, ningú concreta, algú «s'adapta» i el pla mor en «ja ho anirem veient». Amb Quadra, la mateixa colla marca els seus dies en un enllaç i el millor dia surt sol, encara que el que sempre s'adapta es continuï adaptant.",
+      "body": "Algú proposa, ningú concreta, algú «s'adapta» i el pla mor en «ja ho anirem veient». Amb Mitday, la mateixa colla marca els seus dies en un enllaç i el millor dia surt sol, encara que el que sempre s'adapta es continuï adaptant.",
       "group": "Els de sempre",
       "members": "Ana, Berta, Carla, Dani, Edu",
       "later": "Tres mesos després",
@@ -93,7 +93,7 @@
     }
   },
   "auth": {
-    "title": "Entrar a Quadra",
+    "title": "Entrar a Mitday",
     "subtitle": "Per crear i gestionar plans. Els teus amics no necessiten compte per respondre (ni per posar excuses).",
     "error": "No s'ha pogut iniciar la sessió. Torna-ho a provar.",
     "or": "o",
@@ -406,9 +406,9 @@
   },
   "emails": {
     "magicLink": {
-      "subject": "El teu enllaç per entrar a Quadra",
-      "preview": "Prem per entrar a Quadra",
-      "heading": "Prem el botó per entrar a Quadra. L'enllaç caduca en 24 hores.",
+      "subject": "El teu enllaç per entrar a Mitday",
+      "preview": "Prem per entrar a Mitday",
+      "heading": "Prem el botó per entrar a Mitday. L'enllaç caduca en 24 hores.",
       "button": "Entrar",
       "ignore": "Si no l'has demanat tu, ignora aquest correu."
     },

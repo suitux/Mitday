@@ -47,7 +47,7 @@ export function EmailLayout({
               margin: "0 0 16px",
             }}
           >
-            Quadra
+            Mitday
           </Text>
           <Section>{children}</Section>
         </Container>

@@ -27,8 +27,8 @@ MagicLinkEmail.PreviewProps = {
   lang: "es",
   url: "https://example.com",
   strings: {
-    preview: "Tu enlace para entrar en Quadra",
-    heading: "Pulsa el botón para entrar en Quadra.",
+    preview: "Tu enlace para entrar en Mitday",
+    heading: "Pulsa el botón para entrar en Mitday.",
     button: "Entrar",
     ignore: "Si no lo has pedido tú, ignora este correo.",
   },

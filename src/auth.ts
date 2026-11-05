@@ -65,7 +65,7 @@ if (testLoginEnabled()) {
       async authorize(credentials) {
         if (!testLoginEnabled()) return null;
         const email = String(credentials?.email ?? "").toLowerCase();
-        if (!email.endsWith("@test.quadra")) return null;
+        if (!email.endsWith("@test.mitday")) return null;
         const name = String(credentials?.name ?? email.split("@")[0]);
         const existing = await db.query.users.findFirst({
           where: eq(users.email, email),
