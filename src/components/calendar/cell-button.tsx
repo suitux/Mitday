@@ -114,7 +114,15 @@ export function Initials({
         </span>
       ))}
       {more ? (
-        <span className={cn(circle, "bg-foreground text-background")}>+</span>
+        <span
+          className={cn(circle, "text-white")}
+          // Same family as the circles it follows, a step lighter.
+          style={{
+            backgroundColor: `color-mix(in srgb, ${shown[shown.length - 1]!.color} 60%, white)`,
+          }}
+        >
+          +
+        </span>
       ) : null}
     </span>
   );
