@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+  <style>
+    .m { color: #0f5257; }
+    @media (prefers-color-scheme: dark) { .m { color: #ffffff; } }
+  </style>
+  <g class="m" fill="none" stroke="currentColor" stroke-width="1.75">
+    <rect x="1" y="1" width="8" height="8" rx="1.5" fill="currentColor" stroke="none" />
+    <rect x="11.875" y="1.875" width="6.25" height="6.25" rx="1.1" />
+    <rect x="1.875" y="11.875" width="6.25" height="6.25" rx="1.1" />
+    <rect x="11.875" y="11.875" width="6.25" height="6.25" rx="1.1" />
+  </g>
+</svg>
