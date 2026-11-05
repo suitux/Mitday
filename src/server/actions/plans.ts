@@ -15,6 +15,7 @@ import {
   responses,
 } from "@/db/schema";
 import { isValidCell } from "@/lib/grid";
+import { rateLimit } from "@/lib/rate-limit";
 import { createPlanSchema, type CreatePlanInput } from "@/lib/plan-schema";
 import { sendPlanClosed } from "@/server/notify";
 import { countResponses, getOwnedPlan, toGridPlan } from "@/server/plans";
@@ -336,6 +337,8 @@ export async function closePlan(
     const b = await getOwnedPlan(planId, user.id);
     if (!b) return { ok: false, error: "not_found" };
     if (b.plan.status === "closed") return { ok: false, error: "closed" };
+    if (!(await rateLimit("planStatus", user.id)).success)
+      return { ok: false, error: "rate_limited" };
     const grid = toGridPlan(b);
     const known = await db
       .select({ n: sql<number>`count(*)::int` })
@@ -349,11 +352,14 @@ export async function closePlan(
       .where(and(eq(plans.id, planId), eq(plans.status, "open")))
       .returning();
     if (!updated) return { ok: false, error: "closed" };
-    after(() =>
-      sendPlanClosed({ ...b, plan: updated }).catch((e) =>
-        console.error("close email", e),
-      ),
-    );
+    // Cap emails per plan so close/reopen loops can't be used to spam participants.
+    const emailOk = (await rateLimit("closeEmail", planId)).success;
+    if (emailOk)
+      after(() =>
+        sendPlanClosed({ ...b, plan: updated }).catch((e) =>
+          console.error("close email", e),
+        ),
+      );
     revalidatePath("/[locale]/plans/[id]/manage", "page");
     revalidatePath("/[locale]/p/[slug]", "page");
     return { ok: true, data: undefined };
@@ -367,6 +373,8 @@ export async function reopenPlan(planId: string): Promise<ActionResult> {
     const user = await requireUser();
     const b = await getOwnedPlan(planId, user.id);
     if (!b) return { ok: false, error: "not_found" };
+    if (!(await rateLimit("planStatus", user.id)).success)
+      return { ok: false, error: "rate_limited" };
     await db
       .update(plans)
       .set({ status: "open", finalCell: null, closedAt: null })

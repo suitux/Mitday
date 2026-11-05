@@ -69,7 +69,7 @@ function icsDateTime(date: Date) {
 function esc(text: string) {
   return text
     .replace(/\\/g, "\\\\")
-    .replace(/;/g, "\;")
+    .replace(/;/g, "\\;")
     .replace(/,/g, "\\,")
     .replace(/\r?\n/g, "\\n");
 }

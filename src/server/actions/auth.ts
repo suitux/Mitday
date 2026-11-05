@@ -4,6 +4,7 @@ import { getLocale } from "next-intl/server";
 import { z } from "zod";
 import { signIn, signOut } from "@/auth";
 import { testLoginEnabled } from "@/lib/env";
+import { clientIp, rateLimit } from "@/lib/rate-limit";
 
 export async function signOutAction() {
   const locale = await getLocale();
@@ -37,6 +38,8 @@ export async function signInWithEmail(
       .toLowerCase(),
   );
   if (!email.success) return { error: "invalid_email" };
+  const limit = await rateLimit("magicLinkIp", await clientIp());
+  if (!limit.success) return { error: "rate_limited" };
   try {
     await signIn("resend", {
       email: email.data,

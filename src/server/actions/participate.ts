@@ -1,7 +1,7 @@
 "use server";
 
 import { and, eq, sql } from "drizzle-orm";
-import { cookies, headers } from "next/headers";
+import { cookies } from "next/headers";
 import { after } from "next/server";
 import { z } from "zod";
 import { db } from "@/db";
@@ -14,7 +14,7 @@ import {
   guestCookieName,
 } from "@/lib/guest";
 import { participantNameSchema } from "@/lib/plan-schema";
-import { rateLimit } from "@/lib/rate-limit";
+import { clientIp, rateLimit } from "@/lib/rate-limit";
 import { personalLinkFor } from "@/server/links";
 import {
   notifyNewResponse,
@@ -25,15 +25,6 @@ import { getCurrentParticipant, setGuestCookie } from "@/server/participant";
 import { getPlanBySlug, toGridPlan } from "@/server/plans";
 import { currentUser } from "@/server/session";
 import { fail, type ActionResult } from "./result";
-
-async function clientKey(): Promise<string> {
-  const h = await headers();
-  return (
-    h.get("x-forwarded-for")?.split(",")[0] ??
-    h.get("x-real-ip") ??
-    "local"
-  ).trim();
-}
 
 export async function joinPlan(
   slug: string,
@@ -52,7 +43,7 @@ export async function joinPlan(
         error: "invalid",
         issues: parsed.error.issues.map((i) => i.message),
       };
-    const limit = await rateLimit("joinPlan", await clientKey());
+    const limit = await rateLimit("joinPlan", await clientIp());
     if (!limit.success) return { ok: false, error: "rate_limited" };
 
     const current = await getCurrentParticipant(b.plan.id);

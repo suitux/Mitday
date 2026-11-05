@@ -19,7 +19,7 @@ describe("ics", () => {
     const ics = buildIcs(e, NOW);
     expect(ics).toContain("DTSTART;VALUE=DATE:20261231");
     expect(ics).toContain("DTEND;VALUE=DATE:20270101");
-    expect(ics).toContain("SUMMARY:Cena\\, amigos\; 2026");
+    expect(ics).toContain("SUMMARY:Cena\\, amigos\\; 2026");
     expect(ics).toContain("DESCRIPTION:Línea 1\\nLínea 2");
     expect(ics.endsWith("\r\n")).toBe(true);
   });
