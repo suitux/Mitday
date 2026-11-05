@@ -35,6 +35,21 @@ test("cells show the initials of who answered, and + past five @mobile", async (
   await expect(eleven).toHaveText(["B", "C"]);
   await expect(dayCell(page, 12).locator("[data-initials]")).toHaveCount(0);
 
+  // Emulators report a fine pointer; phones don't.
+  const cdp = await page.context().newCDPSession(page);
+  await cdp.send("Emulation.setEmulatedMedia", {
+    features: [
+      { name: "pointer", value: "coarse" },
+      { name: "hover", value: "none" },
+    ],
+  });
+  await expect(
+    page.getByText("Mantén pulsada una casilla para ver quién ha votado."),
+  ).toBeVisible();
+  await expect(
+    page.getByText("Desliza de lado", { exact: false }),
+  ).toBeVisible();
+
   if (process.env.SHOTS)
     await page.screenshot({
       path: "test-results/initials-mobile.png",

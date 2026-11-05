@@ -128,6 +128,12 @@
   }
 }
 
+/* Board's fixed save bar covers the page end: the footer clears it. Unlayered
+ * so it beats the footer's own padding utility. */
+body:has([data-save-bar]) footer {
+  padding-bottom: calc(5.5rem + env(safe-area-inset-bottom));
+}
+
 /*
  * Landing motion. Transform + opacity only; nothing moves with reduced motion,
  * and without scroll-driven animation support everything is simply visible.

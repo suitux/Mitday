@@ -1,6 +1,6 @@
 "use client";
 
-import { Check, Copy } from "lucide-react";
+import { Check, Copy, MousePointerClick, Pointer } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
 import {
@@ -177,7 +177,7 @@ export function Board({
     });
 
   return (
-    <div className="pb-[calc(7rem+env(safe-area-inset-bottom))]">
+    <div>
       {!closed && me ? (
         <div className="mb-5">
           <Palette
@@ -196,10 +196,26 @@ export function Board({
                 <span className="hidden pointer-fine:inline">
                   {t("dragHint")}
                 </span>
-                {canInspect ? ` ${t("pressHint")}` : null}
               </>
             )}
           </p>
+          {canInspect && brush.kind === "option" ? (
+            // Seeing who voted is hidden behind a gesture: say it plainly.
+            <p className="mt-3 flex w-fit items-center gap-2 rounded-md border border-border bg-card px-3 py-2 text-sm">
+              <Pointer
+                className="size-4 shrink-0 pointer-fine:hidden"
+                aria-hidden="true"
+              />
+              <MousePointerClick
+                className="hidden size-4 shrink-0 pointer-fine:block"
+                aria-hidden="true"
+              />
+              <span className="pointer-fine:hidden">{t("pressHintTouch")}</span>
+              <span className="hidden pointer-fine:inline">
+                {t("pressHintMouse")}
+              </span>
+            </p>
+          ) : null}
         </div>
       ) : canInspect ? (
         <p className="mb-4 text-sm text-muted-foreground">{t("tapToSee")}</p>
@@ -237,7 +253,10 @@ export function Board({
       />
 
       {!closed && me ? (
-        <div className="fixed inset-x-0 bottom-0 z-20 border-t border-border bg-background/95 pb-[env(safe-area-inset-bottom)] backdrop-blur-sm">
+        <div
+          data-save-bar=""
+          className="fixed inset-x-0 bottom-0 z-20 border-t border-border bg-background/95 pb-[env(safe-area-inset-bottom)] backdrop-blur-sm"
+        >
           <div className="mx-auto flex max-w-5xl items-center justify-between gap-3 px-4 py-3 sm:px-6">
             <p className="min-w-0 text-sm" aria-live="polite">
               {dirty ? (
