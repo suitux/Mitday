@@ -2,7 +2,11 @@
 
 import { useLocale, useTranslations } from "next-intl";
 import { useEffect, useMemo, useState } from "react";
-import { CellButton } from "@/components/calendar/cell-button";
+import {
+  CellButton,
+  Initials,
+  type CellPerson,
+} from "@/components/calendar/cell-button";
 import {
   MonthGrid,
   monthOf,
@@ -17,10 +21,14 @@ import {
 import { aggregate } from "@/lib/aggregate";
 import type { Answers } from "@/lib/client-plan";
 import { formatDate } from "@/lib/format";
+import { cn } from "@/lib/utils";
 import { addDays, todayIn, weekdayMonday } from "@/lib/grid";
 import { colorValue } from "@/lib/plan-schema";
 
-/** Landing "live thing": paint your days over four example friends' answers. */
+/** Example friends; their initials show on the cells they answered. */
+const FRIENDS = ["Ana", "Marc", "Laura", "Pol", "Sara"];
+
+/** Landing "live thing": paint your days over five example friends' answers. */
 export function LandingDemo({
   todayIso,
   animate,
@@ -39,7 +47,7 @@ export function LandingDemo({
     ],
     [t],
   );
-  // Next month's Fridays and Saturdays, answered by four example friends.
+  // Next month, four of its weekend days answered by five example friends.
   const first = useMemo(() => {
     const d = todayIn("UTC", new Date(todayIso));
     const nextMonth = new Date(
@@ -56,20 +64,27 @@ export function LandingDemo({
       if (d.slice(5, 7) !== first.slice(5, 7)) break;
       days.push(d);
     }
-    const pattern = ["yes", "maybe", "yes", "no", "yes", "yes", "maybe", "no"];
+    // Only four days get answers; `null` = that friend left it blank.
+    // The third Saturday is the clear winner: everyone can.
+    const nth = (wd: number, n: number) =>
+      days.filter((d) => weekdayMonday(d) === wd)[n];
+    const plan: [string | undefined, (string | null)[]][] = [
+      [nth(5, 0), ["yes", "maybe", "no", null, "yes"]],
+      [nth(4, 1), ["no", "yes", "maybe", "yes", null]],
+      [nth(5, 2), ["yes", "yes", "yes", "yes", "yes"]],
+      [nth(6, 3), ["maybe", null, "yes", "no", "maybe"]],
+    ];
     const out: { participantId: string; cell: string; optionId: string }[] = [];
-    days.forEach((d, i) => {
-      const wd = weekdayMonday(d);
-      if (wd < 4) return;
-      for (let f = 0; f < 4; f++) {
-        const opt = pattern[(i * 3 + f * 5 + wd) % pattern.length]!;
-        out.push({ participantId: `f${f}`, cell: d, optionId: opt });
-      }
-    });
+    for (const [d, votes] of plan) {
+      if (!d) continue;
+      votes.forEach((opt, f) => {
+        if (opt) out.push({ participantId: `f${f}`, cell: d, optionId: opt });
+      });
+    }
     return out;
   }, [first]);
 
-  const [shown, setShown] = useState(4);
+  const [shown, setShown] = useState(FRIENDS.length);
   useEffect(() => {
     if (!animate) return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
@@ -78,8 +93,8 @@ export function LandingDemo({
     const id = setInterval(() => {
       n += 1;
       setShown(n);
-      if (n >= 4) clearInterval(id);
-    }, 900);
+      if (n >= FRIENDS.length) clearInterval(id);
+    }, 450);
     return () => {
       cancelAnimationFrame(raf);
       clearInterval(id);
@@ -103,7 +118,7 @@ export function LandingDemo({
       cell,
       optionId,
     }));
-    const arrived = friends.filter((f) => Number(f.participantId[1]) < shown);
+    const arrived = friends.filter((f) => Number(f.participantId.slice(1)) < shown);
     return aggregate(
       options,
       [...arrived, ...mine],
@@ -111,6 +126,22 @@ export function LandingDemo({
     );
   }, [answers, friends, options, shown]);
   const bestDay = agg.best[0];
+  // Arrived friends per day, "yes" first, like the real board.
+  const people = useMemo(() => {
+    const byCell: Record<string, CellPerson[]> = {};
+    for (const o of options) {
+      for (const f of friends) {
+        if (f.optionId !== o.id) continue;
+        const idx = Number(f.participantId.slice(1));
+        if (idx >= shown) continue;
+        (byCell[f.cell] ??= []).push({
+          name: FRIENDS[idx]!,
+          color: colorValue(o.color),
+        });
+      }
+    }
+    return byCell;
+  }, [friends, options, shown]);
 
   return (
     <div data-ui className="rounded-lg border border-border bg-card p-4 sm:p-6">
@@ -130,25 +161,34 @@ export function LandingDemo({
             const mine = answers[date];
             const a = agg.cells[date];
             const o = options.find((x) => x.id === mine);
+            const who = people[date] ?? [];
+            const isBest = agg.best.includes(date);
             return (
               <CellButton
+                className={cn(
+                  who.length > 0 && "flex-col gap-0.5 leading-none",
+                  // The winner stands out: thick ring lifted off the grid.
+                  isBest &&
+                    "z-10 ring-2 ring-hue ring-offset-2 ring-offset-card shadow-md",
+                )}
                 visual={{
                   mineColor: o ? colorValue(o.color) : undefined,
                   heat: a
                     ? { color: colorValue("green"), intensity: a.intensity }
                     : undefined,
-                  best: agg.best.includes(date),
+                  best: isBest,
                 }}
                 aria-label={`${formatDate(date, locale)}${o ? ` — ${o.label}` : ""}`}
                 {...cellProps(date)}
               >
-                {Number(date.slice(8, 10))}
+                <span>{Number(date.slice(8, 10))}</span>
+                <Initials people={who} stack />
               </CellButton>
             );
           }}
         />
       </div>
-      <p className="mt-4 text-sm" aria-live="polite">
+      <p className="mt-4 text-sm font-medium" aria-live="polite">
         {bestDay ? (
           <>
             <span
