@@ -24,7 +24,7 @@ function Submit({
     <Button
       type="submit"
       variant={variant}
-      className="h-11 w-full"
+      className="h-11 w-full pointer-fine:h-11"
       disabled={pending}
     >
       {children}
@@ -63,6 +63,7 @@ export function EmailForm({ callbackUrl }: { callbackUrl: string }) {
         type="email"
         autoComplete="email"
         inputMode="email"
+        enterKeyHint="send"
         required
         placeholder={t("emailPlaceholder")}
         className="h-11"

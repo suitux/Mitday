@@ -30,7 +30,11 @@ export default async function Landing({ params }: PageProps<"/[locale]">) {
           </p>
           <div className="lg:col-span-5 lg:justify-self-end">
             <div className="flex flex-wrap items-center gap-x-4 gap-y-3">
-              <Button asChild size="lg" className="h-12 px-6 text-base">
+              <Button
+                asChild
+                size="lg"
+                className="h-12 px-6 text-base pointer-fine:h-12 pointer-fine:px-6"
+              >
                 <Link href="/plans/new">{t("cta")}</Link>
               </Button>
               <span className="text-sm text-muted-foreground">
@@ -146,18 +150,19 @@ export default async function Landing({ params }: PageProps<"/[locale]">) {
             className="reveal mt-10 text-2xl leading-[1.5] font-semibold tracking-[-0.02em] sm:text-4xl"
           >
             <label htmlFor="end-title">{t("end.lead")} </label>
-            <span className="inline-flex max-w-full flex-wrap items-baseline gap-2">
+            <span className="mt-3 flex max-w-full items-center gap-2 sm:mt-0 sm:inline-flex sm:flex-wrap sm:items-baseline">
               <input
                 id="end-title"
                 name="title"
                 maxLength={80}
                 placeholder={t("end.placeholder")}
                 aria-label={t("end.label")}
-                className="h-[1.4em] w-[9.5em] max-w-full rounded-[0.25em] bg-white/15 px-[0.3em] text-white outline-none placeholder:text-white/60 focus-visible:ring-4 focus-visible:ring-white/50"
+                enterKeyHint="go"
+                className="h-[1.4em] min-h-11 w-[9.5em] max-w-full min-w-0 flex-1 rounded-[0.25em] bg-white/15 px-[0.3em] text-white outline-none placeholder:text-white/60 focus-visible:ring-4 focus-visible:ring-white/50 sm:flex-none"
               />
               <button
                 type="submit"
-                className="h-[1.4em] rounded-[0.25em] bg-field-peach px-[0.4em] text-foreground transition-transform outline-none hover:-translate-y-0.5 focus-visible:ring-4 focus-visible:ring-white/50 active:translate-y-0"
+                className="h-[1.4em] min-h-11 shrink-0 rounded-[0.25em] bg-field-peach px-[0.4em] text-foreground transition-transform outline-none hover:-translate-y-0.5 focus-visible:ring-4 focus-visible:ring-white/50 active:translate-y-0"
               >
                 {t("end.cta")}
               </button>

@@ -111,7 +111,7 @@ export default async function ParticipatePage({
     <main className="mx-auto w-full max-w-5xl px-4 pt-4 pb-10 sm:px-6 sm:pt-8">
       <div className="mb-6 flex items-start justify-between gap-4">
         <div className="min-w-0">
-          <h1 className="text-2xl font-semibold tracking-tight text-balance sm:text-3xl">
+          <h1 className="text-2xl font-semibold tracking-tight text-balance wrap-break-word sm:text-3xl">
             {b.plan.title}
           </h1>
           {b.plan.description ? (
@@ -126,7 +126,7 @@ export default async function ParticipatePage({
           ) : null}
         </div>
         {isOwner ? (
-          <Button asChild variant="secondary" size="sm" className="shrink-0">
+          <Button asChild variant="secondary" className="shrink-0">
             <Link href={`/plans/${b.plan.id}/manage`}>
               <Settings2 /> {t("manage")}
             </Link>

@@ -28,7 +28,7 @@ export function UserMenu({
   return (
     <DropdownMenu>
       <DropdownMenuTrigger
-        className="flex h-9 items-center gap-2 rounded-md px-1.5 outline-none hover:bg-accent focus-visible:ring-2 focus-visible:ring-ring"
+        className="flex h-11 items-center gap-2 rounded-md px-1.5 outline-none hover:bg-accent focus-visible:ring-2 focus-visible:ring-ring pointer-fine:h-9"
         aria-label={t("account")}
       >
         <Avatar className="size-7">

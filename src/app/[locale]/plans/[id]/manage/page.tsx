@@ -146,7 +146,7 @@ export default async function ManagePage({
     <main className="mx-auto w-full max-w-5xl px-4 pt-6 pb-16 sm:px-6 sm:pt-10">
       <div className="flex flex-wrap items-start justify-between gap-4">
         <div className="min-w-0">
-          <h1 className="text-2xl font-semibold tracking-tight text-balance">
+          <h1 className="text-2xl font-semibold tracking-tight text-balance wrap-break-word">
             {b.plan.title}
           </h1>
           <p className="num mt-1 text-sm text-muted-foreground">

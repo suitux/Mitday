@@ -12,7 +12,7 @@ async function HeaderUser() {
     return (
       <Link
         href="/login"
-        className="inline-flex h-9 items-center rounded-md px-3 text-sm font-medium transition-colors hover:bg-accent"
+        className="inline-flex h-11 items-center rounded-md px-3 text-sm font-medium transition-colors hover:bg-accent pointer-fine:h-9"
       >
         {t("signIn")}
       </Link>
@@ -40,7 +40,7 @@ export async function SiteHeader() {
     <header className="mx-auto flex h-14 w-full max-w-5xl items-center justify-between px-4 sm:px-6">
       <Link
         href="/"
-        className="flex items-center gap-2 text-[15px] font-semibold tracking-tight"
+        className="-ml-1 flex h-11 items-center gap-2 px-1 text-[15px] font-semibold tracking-tight"
       >
         <MitdayMark />
         Mitday

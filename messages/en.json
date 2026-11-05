@@ -265,6 +265,8 @@
     "inspect": "See who",
     "inspectHint": "Tap a cell to see who answered.",
     "paintHint": "Pick an answer and tap the cells. Tap again to clear.",
+    "swipeHint": "Swipe sideways to mark several in a row.",
+    "dragHint": "Drag to mark several in a row.",
     "pressHint": "Right-click or long-press a cell to see who can make it.",
     "tapToSee": "Tap a cell to see who answered.",
     "saved": "Answers saved",

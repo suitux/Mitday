@@ -9,7 +9,11 @@ import {
   type MonthKey,
 } from "@/components/calendar/month-grid";
 import { Palette } from "@/components/calendar/palette";
-import { usePaint, type Brush } from "@/components/calendar/use-paint";
+import {
+  SURFACE_TOUCH,
+  usePaint,
+  type Brush,
+} from "@/components/calendar/use-paint";
 import { aggregate } from "@/lib/aggregate";
 import type { Answers } from "@/lib/client-plan";
 import { formatDate } from "@/lib/format";
@@ -116,7 +120,7 @@ export function LandingDemo({
         onBrush={setBrush}
         allowInspect={false}
       />
-      <div {...surfaceProps} className="mt-4 touch-manipulation">
+      <div {...surfaceProps} className={`mt-4 ${SURFACE_TOUCH}`}>
         <MonthGrid
           month={month}
           onMonthChange={setMonth}

@@ -65,7 +65,7 @@ test("long press on a cell shows who answered @mobile", async ({ browser }) => {
   const sheet = page.getByRole("dialog");
   await expect(sheet).toBeVisible();
   await expect(sheet.getByText("Berta")).toBeVisible();
-  // The press's initial paint was undone.
+  // A press paints nothing by itself.
   await expect(page.getByText("Cambios sin guardar")).toHaveCount(0);
 
   // A quick tap still paints.

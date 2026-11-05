@@ -4,6 +4,7 @@ import { useLocale, useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
 import { useState, useTransition } from "react";
 import { Button } from "@/components/ui/button";
+import { autoFocusFinePointer } from "@/lib/focus";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { participantNameSchema } from "@/lib/plan-schema";
@@ -74,7 +75,9 @@ export function JoinForm({
           aria-describedby={
             error?.field === "name" ? "join-name-error" : undefined
           }
-          autoFocus
+          autoCapitalize="words"
+          enterKeyHint="next"
+          ref={autoFocusFinePointer}
         />
         {error?.field === "name" ? (
           <p
@@ -98,6 +101,7 @@ export function JoinForm({
           type="email"
           inputMode="email"
           autoComplete="email"
+          enterKeyHint="go"
           className="mt-2 h-11"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
@@ -122,7 +126,11 @@ export function JoinForm({
           {te(error.code as "server")}
         </p>
       ) : null}
-      <Button type="submit" className="h-11" disabled={pending}>
+      <Button
+        type="submit"
+        className="h-11 pointer-fine:h-11"
+        disabled={pending}
+      >
         {t("submit")}
       </Button>
     </form>
@@ -139,11 +147,10 @@ export function LinkOffer({ slug, name }: { slug: string; name: string }) {
     <div className="mb-5 flex flex-wrap items-center justify-between gap-3 rounded-lg border border-border bg-card p-4">
       <p className="text-sm">{t("body", { name })}</p>
       <div className="flex gap-2">
-        <Button variant="ghost" size="sm" onClick={() => setHidden(true)}>
+        <Button variant="ghost" onClick={() => setHidden(true)}>
           {t("dismiss")}
         </Button>
         <Button
-          size="sm"
           disabled={pending}
           onClick={() =>
             startTransition(async () => {

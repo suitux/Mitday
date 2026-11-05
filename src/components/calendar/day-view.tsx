@@ -4,9 +4,10 @@ import { useLocale } from "next-intl";
 import { useState } from "react";
 import { formatDate } from "@/lib/format";
 import { isPlanDay, planDays, visibleDayWindow } from "@/lib/grid";
-import { CellButton } from "./cell-button";
+import { CellButton, Initials } from "./cell-button";
 import { MonthGrid, monthOf, type MonthKey } from "./month-grid";
 import type { ViewProps } from "./types";
+import { SURFACE_TOUCH } from "./use-paint";
 
 export function useMonthBounds(props: Pick<ViewProps, "plan" | "now">) {
   const { plan, now } = props;
@@ -31,7 +32,7 @@ export function DayView(props: ViewProps) {
   const bounds = useMonthBounds(props);
   const [month, setMonth] = useState<MonthKey>(bounds.initial);
   return (
-    <div {...props.surfaceProps} className="touch-manipulation">
+    <div {...props.surfaceProps} className={SURFACE_TOUCH}>
       <MonthGrid
         month={month}
         onMonthChange={setMonth}
@@ -52,14 +53,19 @@ export function DayView(props: ViewProps) {
             );
           }
           const state = props.stateFor(date);
+          const people = props.peopleFor(date);
           return (
             <CellButton
               visual={props.visualFor(date)}
+              className={
+                people.length > 0 ? "flex-col gap-0.5 leading-none" : undefined
+              }
               aria-label={`${formatDate(date, locale)}${state ? ` — ${state}` : ""}`}
               aria-disabled={props.readOnly || undefined}
               {...props.cellProps(date)}
             >
-              {dayNumber}
+              <span>{dayNumber}</span>
+              <Initials people={people} stack />
             </CellButton>
           );
         }}

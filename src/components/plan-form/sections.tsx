@@ -10,6 +10,7 @@ import {
   type MonthKey,
 } from "@/components/calendar/month-grid";
 import { Button } from "@/components/ui/button";
+import { autoFocusFinePointer } from "@/lib/focus";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import {
@@ -193,7 +194,8 @@ export function DetailsSection({
           onChange={(e) => onChange({ ...value, title: e.target.value })}
           aria-invalid={!!errors["details.title"] || undefined}
           aria-describedby="plan-title-hint plan-title-error"
-          autoFocus
+          enterKeyHint="next"
+          ref={autoFocusFinePointer}
         />
         <p
           id="plan-title-hint"
@@ -446,6 +448,14 @@ export function WhenSection({
                   value={s.label}
                   maxLength={30}
                   aria-label={t("slotLabel", { n: i + 1 })}
+                  enterKeyHint="done"
+                  onKeyDown={(e) => {
+                    // Enter / Done closes the keyboard; it doesn't jump a step.
+                    if (e.key === "Enter") {
+                      e.preventDefault();
+                      e.currentTarget.blur();
+                    }
+                  }}
                   onChange={(e) =>
                     onChange({
                       ...value,
@@ -459,7 +469,7 @@ export function WhenSection({
                   type="button"
                   variant="ghost"
                   size="icon"
-                  className="size-10"
+                  className="pointer-fine:size-10"
                   aria-label={t("removeSlot")}
                   disabled={structureLocked || value.slots.length <= 1}
                   onClick={() =>
@@ -579,6 +589,10 @@ export function WhenSection({
             <Input
               id="tz"
               list="tz-list"
+              autoCapitalize="none"
+              autoCorrect="off"
+              spellCheck={false}
+              enterKeyHint="done"
               className="mt-2 h-10"
               value={value.timezone}
               onChange={(e) => onChange({ ...value, timezone: e.target.value })}
@@ -656,13 +670,21 @@ export function AnswersSection({
                 value={o.label}
                 maxLength={30}
                 aria-label={t("label", { n: i + 1 })}
+                enterKeyHint="done"
+                onKeyDown={(e) => {
+                  // Enter / Done closes the keyboard; it doesn't jump a step.
+                  if (e.key === "Enter") {
+                    e.preventDefault();
+                    e.currentTarget.blur();
+                  }
+                }}
                 onChange={(e) => update(i, { label: e.target.value })}
               />
               <Button
                 type="button"
                 variant="ghost"
                 size="icon"
-                className="size-10"
+                className="pointer-fine:size-10"
                 aria-label={t("remove")}
                 disabled={structureLocked || value.options.length <= 2}
                 onClick={() =>
@@ -687,7 +709,7 @@ export function AnswersSection({
                     aria-label={t(`colors.${name}`)}
                     onClick={() => update(i, { color: name })}
                     className={cn(
-                      "size-7 rounded-full outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
+                      "size-9 rounded-full outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 pointer-fine:size-7",
                       o.color === name &&
                         "ring-2 ring-foreground ring-offset-2",
                     )}

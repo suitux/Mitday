@@ -265,6 +265,8 @@
     "inspect": "Ver quién",
     "inspectHint": "Toca una casilla para ver quién ha respondido.",
     "paintHint": "Elige una respuesta y toca las casillas. Vuelve a tocar para borrar.",
+    "swipeHint": "Desliza de lado para marcar varias seguidas.",
+    "dragHint": "Arrastra para marcar varias seguidas.",
     "pressHint": "Clic derecho o mantén pulsada una casilla para ver quién puede.",
     "tapToSee": "Toca una casilla para ver quién ha respondido.",
     "saved": "Respuestas guardadas",

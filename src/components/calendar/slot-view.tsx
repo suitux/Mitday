@@ -1,15 +1,16 @@
 "use client";
 
 import { useLocale, useTranslations } from "next-intl";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { buildCell } from "@/lib/cells";
 import { formatDate } from "@/lib/format";
 import { sortedSlots } from "@/lib/grid";
 import { cn } from "@/lib/utils";
-import { CellButton, heatStyle } from "./cell-button";
+import { CellButton, heatStyle, Initials } from "./cell-button";
 import { useMonthBounds } from "./day-view";
 import { MonthGrid, monthOf, type MonthKey } from "./month-grid";
 import type { ViewProps } from "./types";
+import { SURFACE_TOUCH } from "./use-paint";
 
 export function SlotView(props: ViewProps) {
   const locale = useLocale();
@@ -20,6 +21,15 @@ export function SlotView(props: ViewProps) {
     props.plan.finalCell?.slice(0, 10) ?? null,
   );
   const slots = sortedSlots(props.plan.grid);
+  const panel = useRef<HTMLDivElement>(null);
+  const openSlots = (date: string | null) => {
+    setOpenDay(date);
+    // Phones stack the slots under the month: bring them into view.
+    if (date && window.matchMedia("(max-width: 767px)").matches)
+      requestAnimationFrame(() =>
+        panel.current?.scrollIntoView({ behavior: "smooth", block: "nearest" }),
+      );
+  };
 
   return (
     <div className="grid gap-6 md:grid-cols-[minmax(0,1fr)_280px]">
@@ -62,7 +72,7 @@ export function SlotView(props: ViewProps) {
               )}
               aria-expanded={openDay === date}
               aria-label={`${formatDate(date, locale)} — ${t("slotsAnswered", { count: answered, total: slots.length })}`}
-              onClick={() => setOpenDay(openDay === date ? null : date)}
+              onClick={() => openSlots(openDay === date ? null : date)}
             >
               <span>{dayNumber}</span>
               <span
@@ -85,13 +95,16 @@ export function SlotView(props: ViewProps) {
           );
         }}
       />
-      <div className="min-h-40">
+      <div ref={panel} className="min-h-40 scroll-mb-24">
         {openDay ? (
           <div>
             <h3 className="mb-3 text-base font-medium first-letter:uppercase">
               {formatDate(openDay, locale)}
             </h3>
-            <div {...props.surfaceProps} className="grid touch-none gap-2">
+            <div
+              {...props.surfaceProps}
+              className={cn("grid gap-2", SURFACE_TOUCH)}
+            >
               {slots.map((s) => {
                 const cell = buildCell({
                   kind: "slot",
@@ -103,14 +116,15 @@ export function SlotView(props: ViewProps) {
                   <div key={s.id} className="h-12">
                     <CellButton
                       visual={props.visualFor(cell)}
-                      className="justify-between px-4"
+                      className="justify-between gap-3 px-4"
                       aria-label={`${s.label}${state ? ` — ${state}` : ""}`}
                       aria-disabled={props.readOnly || undefined}
                       {...props.cellProps(cell)}
                     >
-                      <span>{s.label}</span>
-                      <span className="text-xs font-normal opacity-80">
-                        {state}
+                      <span className="truncate">{s.label}</span>
+                      <span className="flex shrink-0 items-center gap-2 text-xs font-normal">
+                        <span className="opacity-80">{state}</span>
+                        <Initials people={props.peopleFor(cell)} />
                       </span>
                     </CellButton>
                   </div>

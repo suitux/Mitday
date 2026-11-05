@@ -15,9 +15,10 @@ import {
   weekdayMonday,
 } from "@/lib/grid";
 import { cn } from "@/lib/utils";
-import { CellButton } from "./cell-button";
+import { CellButton, Initials } from "./cell-button";
 import { gridKeyNav } from "./month-grid";
 import type { ViewProps } from "./types";
+import { SURFACE_TOUCH } from "./use-paint";
 
 const noop = () => () => {};
 
@@ -135,7 +136,12 @@ export function HourView(props: ViewProps) {
         aria-disabled={props.readOnly || undefined}
         {...props.cellProps(c.cell)}
       >
-        {showState ? <span className="truncate">{state}</span> : null}
+        {showState ? (
+          <>
+            <span className="min-w-0 flex-1 truncate text-left">{state}</span>
+            <Initials people={props.peopleFor(c.cell)} className="shrink-0" />
+          </>
+        ) : null}
       </CellButton>
     );
   };
@@ -188,7 +194,7 @@ export function HourView(props: ViewProps) {
           <div className="hidden md:block">
             <div
               {...props.surfaceProps}
-              className="grid touch-none gap-1"
+              className={cn("grid gap-1", SURFACE_TOUCH)}
               style={{
                 gridTemplateColumns: "3.5rem repeat(7, minmax(0, 1fr))",
               }}
@@ -267,7 +273,7 @@ export function HourView(props: ViewProps) {
                   {open ? (
                     <div
                       {...props.surfaceProps}
-                      className="grid grid-cols-[1fr] gap-1 px-3 pb-3"
+                      className={cn("grid gap-1 px-3 pb-3", SURFACE_TOUCH)}
                       onKeyDown={(e) => gridKeyNav(e, 1)}
                     >
                       {dayCells.map((c) => (
@@ -275,12 +281,11 @@ export function HourView(props: ViewProps) {
                           key={c.cell}
                           className="flex h-11 items-stretch gap-2"
                         >
-                          {/* The time label stays scrollable: start a vertical scroll here. */}
                           <span className="num flex w-12 shrink-0 items-center text-xs text-muted-foreground">
                             {c.label}
                           </span>
-                          <div className="flex-1 touch-none">
-                            {cellButton(c, "justify-start px-3", true)}
+                          <div className="flex-1">
+                            {cellButton(c, "justify-start gap-2 px-3", true)}
                           </div>
                         </div>
                       ))}

@@ -38,9 +38,9 @@ export function CellSheet({
     <Sheet open={!!cell} onOpenChange={(o) => !o && onClose()}>
       <SheetContent
         side="bottom"
-        className="mx-auto max-h-[80dvh] max-w-lg overflow-y-auto rounded-t-xl"
+        className="mx-auto max-h-[80dvh] max-w-lg overflow-y-auto overscroll-contain rounded-t-xl pb-[env(safe-area-inset-bottom)]"
       >
-        <SheetHeader>
+        <SheetHeader className="pr-12">
           <SheetTitle className="first-letter:uppercase">
             {cell ? formatCell(plan.grid, cell, locale, tz) : ""}
           </SheetTitle>

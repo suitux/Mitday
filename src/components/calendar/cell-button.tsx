@@ -60,3 +60,62 @@ export function CellButton({
     </button>
   );
 }
+
+export type CellPerson = { name: string; color: string };
+
+/** Most initials a cell shows; beyond it a "+" says there are more. */
+export const MAX_INITIALS = 5;
+
+function initialOf(name: string) {
+  return (Array.from(name.trim())[0] ?? "?").toLocaleUpperCase();
+}
+
+/**
+ * Overlapping circles with the first letter of who answered a cell, in the
+ * colour of their answer. Decorative: the cell's label already says it.
+ */
+export function Initials({
+  people,
+  stack = false,
+  className,
+}: {
+  people: CellPerson[];
+  /** Small square cells: a 3×2 block on phones, one row from `sm`. */
+  stack?: boolean;
+  className?: string;
+}) {
+  if (people.length === 0) return null;
+  const shown = people.slice(0, MAX_INITIALS);
+  const more = people.length > MAX_INITIALS;
+  const circle = cn(
+    "flex shrink-0 items-center justify-center rounded-full leading-none font-semibold ring-1 ring-card",
+    stack
+      ? "size-3 text-[7px] sm:-ml-0.5 sm:size-4 sm:text-[9px] sm:first:ml-0"
+      : "-ml-0.5 size-5 text-[10px] first:ml-0",
+  );
+  return (
+    <span
+      aria-hidden="true"
+      data-initials=""
+      className={cn(
+        stack && shown.length + (more ? 1 : 0) > 3
+          ? "grid grid-cols-3 gap-px sm:flex sm:items-center sm:gap-0"
+          : cn("flex items-center", stack && "gap-px sm:gap-0"),
+        className,
+      )}
+    >
+      {shown.map((p, i) => (
+        <span
+          key={`${p.name}-${i}`}
+          className={cn(circle, "text-white")}
+          style={{ backgroundColor: p.color }}
+        >
+          {initialOf(p.name)}
+        </span>
+      ))}
+      {more ? (
+        <span className={cn(circle, "bg-foreground text-background")}>+</span>
+      ) : null}
+    </span>
+  );
+}

@@ -127,7 +127,7 @@ export function PlanWizard({
               disabled={i > step}
               onClick={() => i < step && setStep(i)}
               aria-current={i === step ? "step" : undefined}
-              className="group w-full text-left disabled:cursor-default"
+              className="group w-full py-2 text-left disabled:cursor-default"
             >
               <span
                 className={cn(
@@ -187,12 +187,16 @@ export function PlanWizard({
           />
         ) : null}
 
-        <div className="mt-10 flex items-center justify-between gap-3">
+        {/* Phones: the step actions stay under the thumb. */}
+        <div className="sticky bottom-0 z-10 -mx-4 mt-10 flex items-center justify-between gap-3 border-t border-border bg-background/95 px-4 pt-3 pb-[calc(0.75rem+env(safe-area-inset-bottom))] backdrop-blur-sm sm:static sm:mx-0 sm:border-0 sm:bg-transparent sm:p-0 sm:backdrop-blur-none">
           <Button
             type="button"
             variant="ghost"
             disabled={step === 0 || pending}
-            onClick={() => setStep(step - 1)}
+            onClick={() => {
+              setStep(step - 1);
+              window.scrollTo({ top: 0 });
+            }}
           >
             {t("back")}
           </Button>

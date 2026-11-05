@@ -7,6 +7,7 @@ import {
   useCallback,
   useEffect,
   useMemo,
+  useRef,
   useState,
   useTransition,
 } from "react";
@@ -103,10 +104,11 @@ export function Board({
     () => new Map(plan.options.map((o) => [o.id, o])),
     [plan.options],
   );
-  const heatColor = useMemo(() => {
-    const top = [...plan.options].sort((a, b) => b.weight - a.weight)[0];
-    return colorValue(top?.color ?? "green");
-  }, [plan.options]);
+  const optionsByWeight = useMemo(
+    () => [...plan.options].sort((a, b) => b.weight - a.weight),
+    [plan.options],
+  );
+  const heatColor = colorValue(optionsByWeight[0]?.color ?? "green");
   const best = useMemo(
     () => new Set(others.mode !== "hidden" ? others.best : []),
     [others],
@@ -140,6 +142,15 @@ export function Board({
     return parts.join(" · ");
   };
 
+  const peopleFor: ViewProps["peopleFor"] = (cell) => {
+    if (others.mode !== "full") return [];
+    const names = others.cells[cell]?.names;
+    if (!names) return [];
+    return optionsByWeight.flatMap((o) =>
+      (names[o.id] ?? []).map((name) => ({ name, color: colorValue(o.color) })),
+    );
+  };
+
   const viewProps: ViewProps = {
     plan,
     now,
@@ -147,6 +158,7 @@ export function Board({
     surfaceProps,
     visualFor,
     stateFor,
+    peopleFor,
     readOnly: closed || !me,
   };
 
@@ -165,7 +177,7 @@ export function Board({
     });
 
   return (
-    <div className="pb-28">
+    <div className="pb-[calc(7rem+env(safe-area-inset-bottom))]">
       {!closed && me ? (
         <div className="mb-5">
           <Palette
@@ -175,11 +187,18 @@ export function Board({
             allowInspect={canInspect}
           />
           <p className="mt-2 text-sm text-muted-foreground">
-            {brush.kind === "inspect"
-              ? t("inspectHint")
-              : canInspect
-                ? `${t("paintHint")} ${t("pressHint")}`
-                : t("paintHint")}
+            {brush.kind === "inspect" ? (
+              t("inspectHint")
+            ) : (
+              <>
+                {t("paintHint")}{" "}
+                <span className="pointer-fine:hidden">{t("swipeHint")}</span>
+                <span className="hidden pointer-fine:inline">
+                  {t("dragHint")}
+                </span>
+                {canInspect ? ` ${t("pressHint")}` : null}
+              </>
+            )}
           </p>
         </div>
       ) : canInspect ? (
@@ -218,9 +237,9 @@ export function Board({
       />
 
       {!closed && me ? (
-        <div className="fixed inset-x-0 bottom-0 z-20 border-t border-border bg-background/95">
+        <div className="fixed inset-x-0 bottom-0 z-20 border-t border-border bg-background/95 pb-[env(safe-area-inset-bottom)] backdrop-blur-sm">
           <div className="mx-auto flex max-w-5xl items-center justify-between gap-3 px-4 py-3 sm:px-6">
-            <p className="text-sm" aria-live="polite">
+            <p className="min-w-0 text-sm" aria-live="polite">
               {dirty ? (
                 <span className="flex items-center gap-2">
                   <span
@@ -238,7 +257,7 @@ export function Board({
                 </span>
               )}
             </p>
-            <div className="flex gap-2">
+            <div className="flex shrink-0 gap-2">
               {dirty ? (
                 <Button
                   type="button"
@@ -307,21 +326,30 @@ export function CopyField({
 }) {
   const t = useTranslations("common");
   const [copied, setCopied] = useState(false);
+  const input = useRef<HTMLInputElement>(null);
   return (
     <div className={`flex gap-2 ${className ?? ""}`}>
       <input
+        ref={input}
         readOnly
         value={value}
         aria-label={t("link")}
         onFocus={(e) => e.currentTarget.select()}
-        className="h-10 min-w-0 flex-1 rounded-md border border-input bg-card px-3 text-sm text-foreground"
+        className="h-11 min-w-0 flex-1 rounded-md border border-input bg-card px-3 text-base text-foreground pointer-fine:h-10 pointer-fine:text-sm"
       />
       <Button
         type="button"
         variant="secondary"
-        className="h-10"
+        className="h-11 pointer-fine:h-10"
         onClick={async () => {
-          await navigator.clipboard.writeText(value);
+          try {
+            await navigator.clipboard.writeText(value);
+          } catch {
+            // In-app browsers may block the clipboard: leave it selected.
+            input.current?.focus();
+            input.current?.select();
+            return;
+          }
           setCopied(true);
           setTimeout(() => setCopied(false), 2000);
         }}

@@ -8,24 +8,37 @@ export type Brush = { kind: "option"; optionId: string } | { kind: "inspect" };
 
 /** Hold time before a touch press counts as "show who can make it". */
 export const LONG_PRESS_MS = 450;
-/** Finger travel that turns a press into a drag (cancels the long press). */
-const LONG_PRESS_SLOP = 10;
+/** Finger travel that turns a press into a gesture (scroll or drag). */
+const SLOP = 10;
+
+/**
+ * Class for the container of paintable cells: vertical swipes scroll the page,
+ * horizontal ones reach `onPointerMove` and paint.
+ */
+export const SURFACE_TOUCH = "[touch-action:pan-y_pinch-zoom]";
 
 type Press = {
   cell: string;
+  pointerId: number;
   x: number;
   y: number;
-  timer: ReturnType<typeof setTimeout>;
+  timer: ReturnType<typeof setTimeout> | null;
 };
 
 /**
- * Palette-brush painting. Tap paints a cell with the active option; tapping a
- * cell already painted with it clears it. Dragging (pointer events, mouse and
- * touch) applies the same action to every cell crossed.
+ * Palette-brush painting.
  *
- * Right click (context menu) or a touch long press on a cell opens who
- * answered it (`onInspect`), whatever the brush. A long press undoes the
- * paint its initial tap applied.
+ * Mouse: press paints a cell with the active option (pressing a cell already
+ * painted with it clears it); dragging applies the same action to every cell
+ * crossed. Right click opens who answered it (`onInspect`).
+ *
+ * Touch / pen: nothing happens on touch-down, so scrolling never paints.
+ * - Tap (lift without moving) paints / clears; with the inspect brush, or
+ *   when painting is disabled, it shows who answered.
+ * - Vertical swipe scrolls the page (surface is `SURFACE_TOUCH`).
+ * - Horizontal swipe starts a stroke that paints every cell crossed; once
+ *   started it follows the finger in any direction.
+ * - Long press shows who answered.
  */
 export function usePaint({
   answers,
@@ -45,13 +58,9 @@ export function usePaint({
     null,
   );
   const press = useRef<Press | null>(null);
-  /** Value a cell had before the current gesture's first tap, to undo it. */
-  const before = useRef<{ cell: string; value: string | undefined } | null>(
-    null,
-  );
 
   const cancelPress = useCallback(() => {
-    if (press.current) clearTimeout(press.current.timer);
+    if (press.current?.timer) clearTimeout(press.current.timer);
     press.current = null;
   }, []);
 
@@ -72,52 +81,54 @@ export function usePaint({
     [brush, setAnswers],
   );
 
-  const inspect = useCallback(
-    (cell: string) => {
-      cancelPress();
-      drag.current = null;
-      const b = before.current;
-      before.current = null;
-      if (b && b.cell === cell) {
-        setAnswers((prev) => {
-          if (prev[cell] === b.value) return prev;
-          const next = { ...prev };
-          if (b.value === undefined) delete next[cell];
-          else next[cell] = b.value;
-          return next;
-        });
-      }
-      onInspect?.(cell);
-    },
-    [cancelPress, onInspect, setAnswers],
-  );
-
+  /** Begins a paint stroke at `cell`. False when painting isn't possible. */
   const start = useCallback(
     (cell: string) => {
-      if (brush.kind === "inspect") {
-        onInspect?.(cell);
-        return;
-      }
-      if (disabled) return;
+      if (brush.kind !== "option" || disabled) return false;
       const mode = answers[cell] === brush.optionId ? "erase" : "paint";
-      before.current = { cell, value: answers[cell] };
       drag.current = { mode, visited: new Set([cell]) };
       apply(cell, mode);
+      return true;
     },
-    [answers, apply, brush, disabled, onInspect],
+    [answers, apply, brush, disabled],
   );
 
+  /** A single activation (key, tap): paint, or show who answered. */
+  const activate = useCallback(
+    (cell: string) => {
+      if (!start(cell)) onInspect?.(cell);
+      drag.current = null;
+    },
+    [onInspect, start],
+  );
+
+  // Window listeners outlive renders: read the latest callback through a ref.
+  const latestActivate = useRef(activate);
   useEffect(() => {
-    const end = () => {
+    latestActivate.current = activate;
+  });
+
+  useEffect(() => {
+    const up = (e: globalThis.PointerEvent) => {
+      const p = press.current;
+      cancelPress();
+      if (p && p.pointerId === e.pointerId && !drag.current) {
+        // Lifted without scrolling or dragging: a tap.
+        latestActivate.current(p.cell);
+      }
+      drag.current = null;
+    };
+    const cancel = () => {
+      // The browser took the gesture (scroll, zoom): it was never a tap.
       drag.current = null;
       cancelPress();
     };
-    window.addEventListener("pointerup", end);
-    window.addEventListener("pointercancel", end);
+    window.addEventListener("pointerup", up);
+    window.addEventListener("pointercancel", cancel);
     return () => {
-      window.removeEventListener("pointerup", end);
-      window.removeEventListener("pointercancel", end);
-      end();
+      window.removeEventListener("pointerup", up);
+      window.removeEventListener("pointercancel", cancel);
+      cancel();
     };
   }, [cancelPress]);
 
@@ -127,41 +138,55 @@ export function usePaint({
       "data-cell": cell,
       onPointerDown: (e: PointerEvent<HTMLElement>) => {
         if (e.button !== 0) return;
+        cancelPress();
+        drag.current = null;
+        if (e.pointerType === "mouse") {
+          if (!start(cell)) onInspect?.(cell);
+          return;
+        }
         // Touch pointers are implicitly captured; release so moves hit other cells.
         if (e.currentTarget.hasPointerCapture(e.pointerId))
           e.currentTarget.releasePointerCapture(e.pointerId);
-        before.current = null;
-        start(cell);
-        cancelPress();
-        if (onInspect && e.pointerType !== "mouse" && brush.kind === "option") {
-          press.current = {
-            cell,
-            x: e.clientX,
-            y: e.clientY,
-            timer: setTimeout(() => inspect(cell), LONG_PRESS_MS),
-          };
-        }
+        press.current = {
+          cell,
+          pointerId: e.pointerId,
+          x: e.clientX,
+          y: e.clientY,
+          timer: onInspect
+            ? setTimeout(() => {
+                cancelPress();
+                onInspect(cell);
+              }, LONG_PRESS_MS)
+            : null,
+        };
       },
       onClick: (e: MouseEvent<HTMLElement>) => {
         // Keyboard activation (Enter / Space) arrives as a click with detail 0.
-        if (e.detail === 0) start(cell);
+        if (e.detail === 0) activate(cell);
       },
       onContextMenu: (e: MouseEvent<HTMLElement>) => {
         // Right click, Shift+F10 / menu key, and Android's long press.
-        if (!onInspect) return;
         e.preventDefault();
-        inspect(cell);
+        if (!onInspect || drag.current) return;
+        cancelPress();
+        onInspect(cell);
       },
     }),
-    [brush.kind, cancelPress, inspect, onInspect, start],
+    [activate, cancelPress, onInspect, start],
   );
 
-  /** Put on the container that holds draggable cells. */
+  /** Put on the container that holds draggable cells (with `SURFACE_TOUCH`). */
   const surfaceProps = {
     onPointerMove: (e: PointerEvent<HTMLElement>) => {
       const p = press.current;
-      if (p && Math.hypot(e.clientX - p.x, e.clientY - p.y) > LONG_PRESS_SLOP)
+      if (p && p.pointerId === e.pointerId && !drag.current) {
+        const dx = Math.abs(e.clientX - p.x);
+        const dy = Math.abs(e.clientY - p.y);
+        if (Math.max(dx, dy) <= SLOP) return;
         cancelPress();
+        // Mostly vertical: the browser scrolls and a pointercancel follows.
+        if (dy >= dx || !start(p.cell)) return;
+      }
       const d = drag.current;
       if (!d) return;
       const el = document

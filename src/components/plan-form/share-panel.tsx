@@ -21,7 +21,7 @@ export function SharePanel({ url, title }: { url: string; title: string }) {
       {canShare ? (
         <Button
           type="button"
-          className="h-11"
+          className="h-11 pointer-fine:h-11"
           onClick={() =>
             navigator
               .share({ title, text: t("shareText", { title }), url })

@@ -13,6 +13,8 @@ for (const [label, viewport] of [
   test(`screens ${label}`, async ({ browser }) => {
     const ctx = await browser.newContext({
       viewport,
+      // Phones are touch screens: coarse pointer, mobile viewport.
+      ...(viewport.width < 768 ? { hasTouch: true, isMobile: true } : {}),
       locale: "es-ES",
       timezoneId: "Europe/Madrid",
     });
@@ -60,10 +62,13 @@ for (const [label, viewport] of [
       await g.getByText("Todo guardado").waitFor();
       await c.close();
     }
-    const c = await browser.newContext({ viewport });
+    const c = await browser.newContext({
+      viewport,
+      ...(viewport.width < 768 ? { hasTouch: true, isMobile: true } : {}),
+    });
     const g = await c.newPage();
     await joinAs(g, path, "Quim");
-    await dayCell(g, 12).click();
+    await dayCell(g, 12).tap();
     await g.screenshot({
       path: `${out}/${label}-participate.png`,
       fullPage: true,

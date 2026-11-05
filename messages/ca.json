@@ -265,6 +265,8 @@
     "inspect": "Veure qui",
     "inspectHint": "Toca una casella per veure qui ha respost.",
     "paintHint": "Tria una resposta i toca les caselles. Torna a tocar per esborrar.",
+    "swipeHint": "Llisca de costat per marcar-ne diverses seguides.",
+    "dragHint": "Arrossega per marcar-ne diverses seguides.",
     "pressHint": "Clic dret o mantén premuda una casella per veure qui pot.",
     "tapToSee": "Toca una casella per veure qui ha respost.",
     "saved": "Respostes desades",

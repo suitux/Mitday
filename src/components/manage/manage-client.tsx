@@ -103,153 +103,175 @@ export function ResponsesTable({ data }: { data: ManageData }) {
   }
 
   return (
-    <div
-      className="overflow-x-auto rounded-lg border border-border bg-card"
-      tabIndex={0}
-      aria-label={t("scroll")}
-    >
-      <table className="num w-max min-w-full border-collapse text-sm">
-        <thead>
-          <tr className="border-b border-border">
-            <th
-              scope="col"
-              className="sticky left-0 z-10 min-w-40 bg-card px-3 py-2 text-left text-xs font-normal text-muted-foreground"
-            >
-              {t("participant")}
-            </th>
-            {data.cells.map((c) => (
+    <>
+      <ul className="mb-2 flex flex-wrap gap-x-4 gap-y-1 text-xs text-muted-foreground">
+        {data.plan.options.map((o) => (
+          <li key={o.id} className="flex items-center gap-1.5">
+            <span
+              aria-hidden="true"
+              className="size-3 rounded-sm"
+              style={{ backgroundColor: colorValue(o.color) }}
+            />
+            {o.label}
+          </li>
+        ))}
+        {best.size > 0 ? (
+          <li className="flex items-center gap-1.5">
+            <span aria-hidden="true" className="size-1.5 rounded-full bg-hue" />
+            {t("best")}
+          </li>
+        ) : null}
+      </ul>
+      <div
+        className="overflow-x-auto overscroll-x-contain rounded-lg border border-border bg-card"
+        tabIndex={0}
+        aria-label={t("scroll")}
+      >
+        <table className="num w-max min-w-full border-collapse text-sm">
+          <thead>
+            <tr className="border-b border-border">
               <th
-                key={c}
                 scope="col"
-                className="px-1 py-2 text-xs font-normal text-muted-foreground"
+                className="sticky left-0 z-10 min-w-28 bg-card px-3 py-2 text-left text-xs font-normal text-muted-foreground sm:min-w-40"
               >
-                <span className="flex w-20 flex-col items-center gap-1 leading-tight first-letter:uppercase">
-                  <span
-                    className="line-clamp-3 text-center"
-                    title={fullLabel(c)}
-                  >
-                    {label(c)}
-                  </span>
-                  {best.has(c) ? (
-                    <span
-                      className="size-1.5 rounded-full bg-hue"
-                      title={t("best")}
-                    />
-                  ) : null}
-                </span>
+                {t("participant")}
               </th>
-            ))}
-            <th scope="col" className="w-12" />
-          </tr>
-        </thead>
-        <tbody>
-          {data.participants.map((p) => {
-            const answers = byParticipant.get(p.id);
-            return (
-              <tr
-                key={p.id}
-                className="border-b border-[var(--rule)] last:border-b-0"
-              >
+              {data.cells.map((c) => (
                 <th
-                  scope="row"
-                  className="sticky left-0 z-10 bg-card px-3 py-2 text-left font-medium"
+                  key={c}
+                  scope="col"
+                  className="px-1 py-2 text-xs font-normal text-muted-foreground"
                 >
-                  <span className="block max-w-40 truncate">{p.name}</span>
-                  {p.email ? (
-                    <span className="block max-w-40 truncate text-xs font-normal text-muted-foreground">
-                      {p.email}
+                  <span className="flex w-14 flex-col items-center gap-1 leading-tight first-letter:uppercase sm:w-20">
+                    <span
+                      className="line-clamp-3 text-center"
+                      title={fullLabel(c)}
+                    >
+                      {label(c)}
                     </span>
-                  ) : null}
+                    {best.has(c) ? (
+                      <span
+                        className="size-1.5 rounded-full bg-hue"
+                        title={t("best")}
+                      />
+                    ) : null}
+                  </span>
                 </th>
-                {data.cells.map((c) => {
-                  const o = answers?.get(c)
-                    ? options.get(answers.get(c)!)
-                    : undefined;
-                  return (
-                    <td key={c} className="px-1 py-2 text-center">
-                      {o ? (
-                        <span
-                          className="mx-auto block size-6 rounded-sm"
-                          style={{ backgroundColor: colorValue(o.color) }}
-                          title={o.label}
-                          aria-label={o.label}
-                          role="img"
-                        />
-                      ) : (
-                        <span
-                          className="text-muted-foreground"
-                          aria-label={t("noAnswer")}
+              ))}
+              <th scope="col" className="w-12" />
+            </tr>
+          </thead>
+          <tbody>
+            {data.participants.map((p) => {
+              const answers = byParticipant.get(p.id);
+              return (
+                <tr
+                  key={p.id}
+                  className="border-b border-[var(--rule)] last:border-b-0"
+                >
+                  <th
+                    scope="row"
+                    className="sticky left-0 z-10 bg-card px-3 py-2 text-left font-medium"
+                  >
+                    <span className="block max-w-28 truncate sm:max-w-40">
+                      {p.name}
+                    </span>
+                    {p.email ? (
+                      <span className="block max-w-28 truncate text-xs font-normal text-muted-foreground sm:max-w-40">
+                        {p.email}
+                      </span>
+                    ) : null}
+                  </th>
+                  {data.cells.map((c) => {
+                    const o = answers?.get(c)
+                      ? options.get(answers.get(c)!)
+                      : undefined;
+                    return (
+                      <td key={c} className="px-1 py-2 text-center">
+                        {o ? (
+                          <span
+                            className="mx-auto block size-6 rounded-sm"
+                            style={{ backgroundColor: colorValue(o.color) }}
+                            title={o.label}
+                            aria-label={o.label}
+                            role="img"
+                          />
+                        ) : (
+                          <span
+                            className="text-muted-foreground"
+                            aria-label={t("noAnswer")}
+                          >
+                            —
+                          </span>
+                        )}
+                      </td>
+                    );
+                  })}
+                  <td className="px-1">
+                    <AlertDialog>
+                      <AlertDialogTrigger asChild>
+                        <Button
+                          variant="ghost"
+                          size="icon"
+                          aria-label={t("delete", { name: p.name })}
                         >
-                          —
-                        </span>
-                      )}
-                    </td>
-                  );
-                })}
-                <td className="px-1">
-                  <AlertDialog>
-                    <AlertDialogTrigger asChild>
-                      <Button
-                        variant="ghost"
-                        size="icon"
-                        aria-label={t("delete", { name: p.name })}
-                      >
-                        <Trash2 />
-                      </Button>
-                    </AlertDialogTrigger>
-                    <AlertDialogContent>
-                      <AlertDialogHeader>
-                        <AlertDialogTitle>
-                          {t("deleteTitle", { name: p.name })}
-                        </AlertDialogTitle>
-                        <AlertDialogDescription>
-                          {t("deleteBody")}
-                        </AlertDialogDescription>
-                      </AlertDialogHeader>
-                      <AlertDialogFooter>
-                        <AlertDialogCancel>{t("cancel")}</AlertDialogCancel>
-                        <AlertDialogAction
-                          disabled={pending}
-                          onClick={() =>
-                            startTransition(async () => {
-                              const res = await deleteParticipant(
-                                data.plan.id,
-                                p.id,
-                              );
-                              if (res.ok) toast.success(t("deleted"));
-                              else toast.error(res.error);
-                              router.refresh();
-                            })
-                          }
-                        >
-                          {t("confirmDelete")}
-                        </AlertDialogAction>
-                      </AlertDialogFooter>
-                    </AlertDialogContent>
-                  </AlertDialog>
+                          <Trash2 />
+                        </Button>
+                      </AlertDialogTrigger>
+                      <AlertDialogContent>
+                        <AlertDialogHeader>
+                          <AlertDialogTitle>
+                            {t("deleteTitle", { name: p.name })}
+                          </AlertDialogTitle>
+                          <AlertDialogDescription>
+                            {t("deleteBody")}
+                          </AlertDialogDescription>
+                        </AlertDialogHeader>
+                        <AlertDialogFooter>
+                          <AlertDialogCancel>{t("cancel")}</AlertDialogCancel>
+                          <AlertDialogAction
+                            disabled={pending}
+                            onClick={() =>
+                              startTransition(async () => {
+                                const res = await deleteParticipant(
+                                  data.plan.id,
+                                  p.id,
+                                );
+                                if (res.ok) toast.success(t("deleted"));
+                                else toast.error(res.error);
+                                router.refresh();
+                              })
+                            }
+                          >
+                            {t("confirmDelete")}
+                          </AlertDialogAction>
+                        </AlertDialogFooter>
+                      </AlertDialogContent>
+                    </AlertDialog>
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
+          <tfoot>
+            <tr className="border-t border-border">
+              <th
+                scope="row"
+                className="sticky left-0 z-10 bg-card px-3 py-2 text-left text-xs font-normal text-muted-foreground"
+              >
+                {t("score")}
+              </th>
+              {data.cells.map((c) => (
+                <td key={c} className="px-1 py-2 text-center text-xs">
+                  {data.scores[c] ?? 0}
                 </td>
-              </tr>
-            );
-          })}
-        </tbody>
-        <tfoot>
-          <tr className="border-t border-border">
-            <th
-              scope="row"
-              className="sticky left-0 z-10 bg-card px-3 py-2 text-left text-xs font-normal text-muted-foreground"
-            >
-              {t("score")}
-            </th>
-            {data.cells.map((c) => (
-              <td key={c} className="px-1 py-2 text-center text-xs">
-                {data.scores[c] ?? 0}
-              </td>
-            ))}
-            <td />
-          </tr>
-        </tfoot>
-      </table>
-    </div>
+              ))}
+              <td />
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+    </>
   );
 }
 
@@ -503,6 +525,10 @@ export function DangerPanel({ data }: { data: ManageData }) {
               onChange={(e) => setTyped(e.target.value)}
               aria-label={t("typeTitle")}
               autoComplete="off"
+              autoCapitalize="none"
+              autoCorrect="off"
+              spellCheck={false}
+              enterKeyHint="done"
             />
             <AlertDialogFooter>
               <AlertDialogCancel>{t("cancel")}</AlertDialogCancel>

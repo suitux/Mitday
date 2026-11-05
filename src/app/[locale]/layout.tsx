@@ -42,6 +42,8 @@ export async function generateMetadata({
 
 export const viewport: Viewport = {
   themeColor: "#eef1fa",
+  // Lets fixed bars pad themselves with env(safe-area-inset-*).
+  viewportFit: "cover",
 };
 
 export default async function LocaleLayout({
