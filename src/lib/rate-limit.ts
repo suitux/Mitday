@@ -50,24 +50,30 @@ function limiter(bucket: Bucket): Ratelimit | null {
   if (!rl) {
     const { tokens, window } = limits[bucket];
     rl = new Ratelimit({
-      redis: new Redis({ url, token }),
+      // Few retries: on an outage we'd rather let the request through fast.
+      redis: new Redis({ url, token, retry: { retries: 1 } }),
       limiter: Ratelimit.slidingWindow(tokens, window),
       prefix: `mitday:rl:${bucket}`,
       analytics: false,
+      // If Redis is slow/unreachable, allow the request after this many ms.
+      timeout: 1000,
     });
     g.__mitdayLimiters.set(bucket, rl);
   }
   return rl;
 }
 
-/** No-op (always allowed) when Upstash is not configured. */
+/**
+ * Fails open: when Upstash is not configured, errors out or times out, the
+ * request is allowed. Only an actual limit hit returns `success: false`.
+ */
 export async function rateLimit(
   bucket: Bucket,
   key: string,
 ): Promise<{ success: boolean }> {
-  const rl = limiter(bucket);
-  if (!rl) return { success: true };
   try {
+    const rl = limiter(bucket);
+    if (!rl) return { success: true };
     const { success } = await rl.limit(key);
     return { success };
   } catch (err) {
