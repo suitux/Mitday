@@ -76,6 +76,124 @@ function useCellLabel(plan: ClientPlan, short = false) {
       : formatCell(plan.grid, cell, locale, tz);
 }
 
+/**
+ * First thing the owner sees: the cell that is currently winning (or the
+ * final one once closed) and who has voted / who is still missing. A
+ * participant "has voted" once they saved at least one answer; joining
+ * alone (name only) leaves them pending.
+ */
+export function LeadingBanner({ data }: { data: ManageData }) {
+  const t = useTranslations("manage.leading");
+  const label = useCellLabel(data.plan);
+  const closed = data.plan.status === "closed" && !!data.plan.finalCell;
+  const cells = closed ? [data.plan.finalCell!] : data.best;
+  const score = cells[0] ? (data.scores[cells[0]] ?? 0) : 0;
+  const votedIds = new Set(data.responses.map((r) => r.participantId));
+  const voted = data.participants.filter((p) => votedIds.has(p.id));
+  const pending = data.participants.filter((p) => !votedIds.has(p.id));
+  const total = data.participants.length;
+
+  return (
+    <section
+      className="mb-8 overflow-hidden rounded-lg border border-border bg-card shadow-sm"
+      aria-labelledby="leading-title"
+    >
+      <div className="bg-hue p-5 text-white sm:p-6">
+        {cells.length > 0 ? (
+          <>
+            <p className="flex items-center gap-2 text-sm font-medium opacity-90">
+              <BestMark className="bg-white text-hue ring-0" />
+              {closed ? t("final") : cells.length > 1 ? t("tie") : t("label")}
+            </p>
+            <h2
+              id="leading-title"
+              className={
+                cells.length > 1
+                  ? "mt-2 grid gap-1 text-lg font-semibold tracking-tight text-balance sm:text-xl"
+                  : "mt-2 grid gap-1 text-2xl font-semibold tracking-tight text-balance sm:text-3xl"
+              }
+            >
+              {cells.map((c) => (
+                <span key={c} className="first-letter:uppercase">
+                  {label(c)}
+                </span>
+              ))}
+            </h2>
+            <p className="num mt-2 text-sm opacity-90">
+              {t("points", { score })} ·{" "}
+              {t("progress", { voted: voted.length, total })}
+            </p>
+          </>
+        ) : (
+          <>
+            <h2
+              id="leading-title"
+              className="text-xl font-semibold tracking-tight sm:text-2xl"
+            >
+              {t("noLeader")}
+            </h2>
+            {total > 0 ? (
+              <p className="num mt-2 text-sm opacity-90">
+                {t("progress", { voted: voted.length, total })}
+              </p>
+            ) : null}
+          </>
+        )}
+      </div>
+      {total > 0 ? (
+        <div className="grid gap-5 p-5 sm:grid-cols-2 sm:p-6">
+          <VoterList title={t("voted")} people={voted} empty={t("noneVoted")} />
+          <VoterList
+            title={t("pending")}
+            people={pending}
+            empty={t("allVoted")}
+            muted
+          />
+        </div>
+      ) : null}
+    </section>
+  );
+}
+
+function VoterList({
+  title,
+  people,
+  empty,
+  muted = false,
+}: {
+  title: string;
+  people: ManageData["participants"];
+  empty: string;
+  muted?: boolean;
+}) {
+  return (
+    <div className="min-w-0">
+      <h3 className="num text-sm font-medium">
+        {title} <span className="text-muted-foreground">· {people.length}</span>
+      </h3>
+      {people.length === 0 ? (
+        <p className="mt-2 text-sm text-muted-foreground">{empty}</p>
+      ) : (
+        <ul className="mt-2 flex flex-wrap gap-1.5">
+          {people.map((p) => (
+            <li
+              key={p.id}
+              title={p.email ?? undefined}
+              className={
+                muted
+                  ? "max-w-full truncate rounded-full border border-dashed border-border px-2.5 py-0.5 text-sm text-muted-foreground"
+                  : "max-w-full truncate rounded-full bg-muted px-2.5 py-0.5 text-sm"
+              }
+            >
+              {p.name}
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  );
+}
+
 export function ShareRow({ url }: { url: string }) {
   return <CopyField value={url} />;
 }
@@ -150,9 +268,7 @@ export function ResponsesTable({ data }: { data: ManageData }) {
                     >
                       {label(c)}
                     </span>
-                    {best.has(c) ? (
-                      <BestMark title={t("best")} />
-                    ) : null}
+                    {best.has(c) ? <BestMark title={t("best")} /> : null}
                   </span>
                 </th>
               ))}

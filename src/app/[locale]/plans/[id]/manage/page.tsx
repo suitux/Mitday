@@ -8,6 +8,7 @@ import {
   ClosePanel,
   DangerPanel,
   EditPanel,
+  LeadingBanner,
   ResponsesTable,
   ShareRow,
   type ManageData,
@@ -144,6 +145,8 @@ export default async function ManagePage({
 
   return (
     <main className="mx-auto w-full max-w-5xl px-4 pt-6 pb-16 sm:px-6 sm:pt-10">
+      <LeadingBanner data={manage} />
+
       <div className="flex flex-wrap items-start justify-between gap-4">
         <div className="min-w-0">
           <h1 className="text-2xl font-semibold tracking-tight text-balance wrap-break-word">

@@ -381,6 +381,18 @@
       "deleteConfirm": "Escribe «{title}» para confirmar.",
       "typeTitle": "Título del plan",
       "deleted": "Plan borrado"
+    },
+    "leading": {
+      "label": "Va ganando",
+      "tie": "Empate",
+      "final": "Fecha final",
+      "points": "{score, plural, one {# punto} other {# puntos}}",
+      "voted": "Han votado",
+      "pending": "Faltan por votar",
+      "allVoted": "Ya ha votado todo el mundo",
+      "noneVoted": "Nadie ha votado todavía",
+      "progress": "{voted} de {total} han votado",
+      "noLeader": "Todavía no hay día ganador"
     }
   },
   "errors": {

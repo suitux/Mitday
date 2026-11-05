@@ -381,6 +381,18 @@
       "deleteConfirm": "Escriu «{title}» per confirmar.",
       "typeTitle": "Títol del pla",
       "deleted": "Pla esborrat"
+    },
+    "leading": {
+      "label": "Va guanyant",
+      "tie": "Empat",
+      "final": "Data final",
+      "points": "{score, plural, one {# punt} other {# punts}}",
+      "voted": "Han votat",
+      "pending": "Falten per votar",
+      "allVoted": "Ja ha votat tothom",
+      "noneVoted": "Encara no ha votat ningú",
+      "progress": "{voted} de {total} han votat",
+      "noLeader": "Encara no hi ha dia guanyador"
     }
   },
   "errors": {

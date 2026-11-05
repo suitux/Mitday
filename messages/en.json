@@ -381,6 +381,18 @@
       "deleteConfirm": "Type “{title}” to confirm.",
       "typeTitle": "Plan title",
       "deleted": "Plan deleted"
+    },
+    "leading": {
+      "label": "Leading",
+      "tie": "Tied",
+      "final": "Final date",
+      "points": "{score, plural, one {# point} other {# points}}",
+      "voted": "Voted",
+      "pending": "Still to vote",
+      "allVoted": "Everyone has voted",
+      "noneVoted": "Nobody has voted yet",
+      "progress": "{voted} of {total} have voted",
+      "noLeader": "No leading day yet"
     }
   },
   "errors": {
