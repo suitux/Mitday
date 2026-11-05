@@ -3,6 +3,7 @@
 import { useLocale, useTranslations } from "next-intl";
 import { useEffect, useMemo, useState } from "react";
 import {
+  BestMark,
   CellButton,
   Initials,
   type CellPerson,
@@ -191,10 +192,7 @@ export function LandingDemo({
       <p className="mt-4 text-sm font-medium" aria-live="polite">
         {bestDay ? (
           <>
-            <span
-              className="mr-2 inline-block size-2 rounded-full bg-hue align-middle"
-              aria-hidden="true"
-            />
+            <BestMark className="mr-2 align-middle" />
             {t("best", { date: formatDate(bestDay, locale) })}
           </>
         ) : null}

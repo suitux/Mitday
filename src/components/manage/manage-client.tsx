@@ -4,6 +4,7 @@ import { Trash2 } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 import { useState, useTransition } from "react";
 import { toast } from "sonner";
+import { BestMark } from "@/components/calendar/cell-button";
 import { useViewerTimeZone } from "@/components/calendar/hour-view";
 import { CopyField } from "@/components/participate/board";
 import {
@@ -117,7 +118,7 @@ export function ResponsesTable({ data }: { data: ManageData }) {
         ))}
         {best.size > 0 ? (
           <li className="flex items-center gap-1.5">
-            <span aria-hidden="true" className="size-1.5 rounded-full bg-hue" />
+            <BestMark />
             {t("best")}
           </li>
         ) : null}
@@ -150,10 +151,7 @@ export function ResponsesTable({ data }: { data: ManageData }) {
                       {label(c)}
                     </span>
                     {best.has(c) ? (
-                      <span
-                        className="size-1.5 rounded-full bg-hue"
-                        title={t("best")}
-                      />
+                      <BestMark title={t("best")} />
                     ) : null}
                   </span>
                 </th>

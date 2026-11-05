@@ -12,6 +12,7 @@ import {
   useTransition,
 } from "react";
 import { toast } from "sonner";
+import { BestMark } from "@/components/calendar/cell-button";
 import { CellSheet } from "@/components/calendar/cell-sheet";
 import { DayView } from "@/components/calendar/day-view";
 import { HourView } from "@/components/calendar/hour-view";
@@ -328,7 +329,7 @@ function Legend({
       </span>
       {others.best.length > 0 && plan.status === "open" ? (
         <span className="flex items-center gap-2">
-          <span aria-hidden="true" className="size-2 rounded-full bg-hue" />
+          <BestMark />
           {t("legendBest")}
         </span>
       ) : null}

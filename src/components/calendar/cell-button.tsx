@@ -1,5 +1,6 @@
 "use client";
 
+import { Crown } from "lucide-react";
 import type { ComponentPropsWithoutRef, CSSProperties } from "react";
 import { cn } from "@/lib/utils";
 
@@ -49,15 +50,40 @@ export function CellButton({
     >
       {children}
       {visual.best ? (
-        <span
-          aria-hidden="true"
+        <BestMark
           className={cn(
-            "absolute top-1 right-1 size-1.5 rounded-full bg-hue",
-            mine && "ring-1 ring-white",
+            // Sits on the corner, off the content, like a badge.
+            "absolute -top-1.5 -right-1.5 z-10",
+            mine && "ring-white",
           )}
         />
       ) : null}
     </button>
+  );
+}
+
+/**
+ * Winner marker: a small crown badge in the accent hue. Reads as "best
+ * option" without a legend, and holds up on any cell background.
+ */
+export function BestMark({
+  className,
+  title,
+}: {
+  className?: string;
+  title?: string;
+}) {
+  return (
+    <span
+      aria-hidden={title ? undefined : true}
+      title={title}
+      className={cn(
+        "inline-flex size-4 shrink-0 items-center justify-center rounded-full bg-hue text-white shadow-sm ring-1 ring-card",
+        className,
+      )}
+    >
+      <Crown className="size-2.5" strokeWidth={2.5} fill="currentColor" />
+    </span>
   );
 }
 
