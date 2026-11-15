@@ -212,9 +212,43 @@ export const responses = pgTable(
   ],
 );
 
+/**
+ * Web Push subscriptions. One device (endpoint) may be linked to a user and/or
+ * to several guest participants, so there is one row per (endpoint, owner).
+ */
+export const pushSubscriptions = pgTable(
+  "push_subscriptions",
+  {
+    id: uuid("id").primaryKey().defaultRandom(),
+    endpoint: text("endpoint").notNull(),
+    p256dh: text("p256dh").notNull(),
+    auth: text("auth").notNull(),
+    userId: text("user_id").references(() => users.id, {
+      onDelete: "cascade",
+    }),
+    participantId: uuid("participant_id").references(() => participants.id, {
+      onDelete: "cascade",
+    }),
+    locale: text("locale").notNull().default("es"),
+    createdAt: timestamp("created_at", { withTimezone: true })
+      .notNull()
+      .defaultNow(),
+  },
+  (t) => [
+    index("push_subscriptions_endpoint_idx").on(t.endpoint),
+    uniqueIndex("push_subscriptions_user_uq")
+      .on(t.endpoint, t.userId)
+      .where(sql`${t.userId} is not null`),
+    uniqueIndex("push_subscriptions_participant_uq")
+      .on(t.endpoint, t.participantId)
+      .where(sql`${t.participantId} is not null`),
+  ],
+);
+
 export type User = typeof users.$inferSelect;
 export type Plan = typeof plans.$inferSelect;
 export type PlanSlot = typeof planSlots.$inferSelect;
 export type AnswerOption = typeof answerOptions.$inferSelect;
 export type Participant = typeof participants.$inferSelect;
 export type ResponseRow = typeof responses.$inferSelect;
+export type PushSubscriptionRow = typeof pushSubscriptions.$inferSelect;

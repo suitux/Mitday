@@ -407,7 +407,8 @@
     "invalid_option": "Invalid answer.",
     "confirm_mismatch": "The title doesn't match.",
     "confirm_remove_dates": "Confirm you want to remove days.",
-    "db": "Something went wrong. Please try again."
+    "db": "Something went wrong. Please try again.",
+    "unavailable": "Notifications aren't available."
   },
   "notFound": {
     "title": "We can't find this page",
@@ -446,6 +447,50 @@
       "body": "The date for “{title}” has been decided:",
       "button": "See the plan",
       "footer": "The event is attached for your calendar."
+    }
+  },
+  "push": {
+    "newResponse": {
+      "title": "New answer on “{title}”",
+      "titleEdit": "Changes on “{title}”",
+      "body": "{name} marked their availability.",
+      "bodyEdit": "{name} updated their availability."
+    },
+    "closed": {
+      "title": "“{title}” has a date",
+      "body": "{when}. Tap to see it and add it to your calendar."
+    },
+    "prompt": {
+      "guestTitle": "Want a heads-up when there's a date?",
+      "guestBody": "Get a notification on this device as soon as the day is decided.",
+      "ownerTitle": "Want a heads-up when someone answers?",
+      "ownerBody": "Get notifications on this device when someone answers your plans and when a date is set on plans you're in.",
+      "enable": "Turn on notifications",
+      "enabling": "Turning on…",
+      "dismiss": "Not now",
+      "enabled": "Notifications are on for this device.",
+      "disable": "Turn off",
+      "enabledToast": "Done: we'll let you know here.",
+      "disabledToast": "Notifications turned off.",
+      "denied": "You've blocked notifications from Mitday. You can allow them in your browser settings.",
+      "error": "Couldn't turn on notifications.",
+      "iosTitle": "Notifications on iPhone and iPad",
+      "iosBody": "iPhone only sends notifications from sites added to the Home Screen. It takes a moment:",
+      "iosStep2": "Choose “Add to Home Screen” and confirm.",
+      "iosStep3": "Open Mitday from the new icon and tap “Turn on notifications”.",
+      "iosNote": "Requires iOS 16.4 or later.",
+      "iosGuestNote": "Your answers come with you into the app.",
+      "iosOwnerNote": "You may need to sign in again inside the app.",
+      "iosStep1Safari": "Tap the Share button (the square with the arrow pointing up). If you can't see it, it's inside the ⋯ menu.",
+      "iosStep1Chrome": "Tap the Share button in the address bar, top right.",
+      "iosStep1Firefox": "Tap the menu (☰), then “Share”.",
+      "iosStep1Edge": "Tap the menu (⋯), then “Share”.",
+      "iosStep1Other": "Open your browser's Share option.",
+      "inappTitle": "Open it in Safari to get notifications",
+      "inappBody": "You're viewing Mitday inside another app, and iPhone doesn't allow notifications from here.",
+      "inappGuest": "Copy your personal link and paste it into Safari so you keep answering as yourself. We'll show you how to turn them on there.",
+      "inappOwner": "Look for “Open in Safari” in this app's menu, or copy the link and paste it into Safari. We'll show you how to turn them on there.",
+      "copyLink": "Copy link"
     }
   }
 }

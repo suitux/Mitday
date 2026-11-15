@@ -407,7 +407,8 @@
     "invalid_option": "Respuesta no válida.",
     "confirm_mismatch": "El título no coincide.",
     "confirm_remove_dates": "Confirma que quieres quitar días.",
-    "db": "Algo ha fallado. Inténtalo de nuevo."
+    "db": "Algo ha fallado. Inténtalo de nuevo.",
+    "unavailable": "Las notificaciones no están disponibles."
   },
   "notFound": {
     "title": "No encontramos esta página",
@@ -446,6 +447,50 @@
       "body": "Se ha decidido la fecha de «{title}»:",
       "button": "Ver el plan",
       "footer": "Adjuntamos el evento para tu calendario."
+    }
+  },
+  "push": {
+    "newResponse": {
+      "title": "Nueva respuesta en «{title}»",
+      "titleEdit": "Cambios en «{title}»",
+      "body": "{name} ha marcado su disponibilidad.",
+      "bodyEdit": "{name} ha actualizado su disponibilidad."
+    },
+    "closed": {
+      "title": "Ya hay fecha para «{title}»",
+      "body": "{when}. Toca para verlo y añadirlo al calendario."
+    },
+    "prompt": {
+      "guestTitle": "¿Te avisamos cuando haya fecha?",
+      "guestBody": "Recibe una notificación en este dispositivo en cuanto se decida el día.",
+      "ownerTitle": "¿Te avisamos cuando alguien responda?",
+      "ownerBody": "Recibe notificaciones en este dispositivo cuando alguien responda a tus planes y cuando se decida la fecha de los planes en los que participas.",
+      "enable": "Activar notificaciones",
+      "enabling": "Activando…",
+      "dismiss": "Ahora no",
+      "enabled": "Notificaciones activadas en este dispositivo.",
+      "disable": "Desactivar",
+      "enabledToast": "Hecho: te avisaremos aquí.",
+      "disabledToast": "Notificaciones desactivadas.",
+      "denied": "Has bloqueado las notificaciones de Mitday. Puedes permitirlas en los ajustes del navegador.",
+      "error": "No se han podido activar las notificaciones.",
+      "iosTitle": "Notificaciones en iPhone y iPad",
+      "iosBody": "El iPhone solo envía notificaciones de webs añadidas a la pantalla de inicio. Es un momento:",
+      "iosStep2": "Elige «Añadir a pantalla de inicio» y confirma.",
+      "iosStep3": "Abre Mitday desde el nuevo icono y toca «Activar notificaciones».",
+      "iosNote": "Necesitas iOS 16.4 o posterior.",
+      "iosGuestNote": "Tus respuestas te seguirán en la app.",
+      "iosOwnerNote": "Puede que tengas que iniciar sesión de nuevo en la app.",
+      "iosStep1Safari": "Toca el botón Compartir (el cuadrado con la flecha hacia arriba). Si no lo ves, está dentro del menú ⋯.",
+      "iosStep1Chrome": "Toca el botón Compartir de la barra de direcciones, arriba a la derecha.",
+      "iosStep1Firefox": "Toca el menú (☰) y después «Compartir».",
+      "iosStep1Edge": "Toca el menú (⋯) y después «Compartir».",
+      "iosStep1Other": "Abre la opción Compartir de tu navegador.",
+      "inappTitle": "Ábrelo en Safari para recibir notificaciones",
+      "inappBody": "Estás viendo Mitday dentro de otra app y, desde aquí, el iPhone no permite notificaciones.",
+      "inappGuest": "Copia tu enlace personal y pégalo en Safari: así seguirás respondiendo como tú. Allí te contamos cómo activarlas.",
+      "inappOwner": "Busca «Abrir en Safari» en el menú de esta app, o copia el enlace y pégalo en Safari. Allí te contamos cómo activarlas.",
+      "copyLink": "Copiar enlace"
     }
   }
 }

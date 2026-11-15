@@ -9,7 +9,8 @@ type Bucket =
   | "joinPlan"
   | "saveResponses"
   | "planStatus"
-  | "closeEmail";
+  | "closeEmail"
+  | "pushSubscribe";
 
 const limits: Record<
   Bucket,
@@ -23,6 +24,8 @@ const limits: Record<
   /** "plan closed" email blasts per plan; over the limit the plan still closes, silently. */
   closeEmail: { tokens: 3, window: "24 h" },
   magicLinkIp: { tokens: 10, window: "15 m" },
+  /** Silent re-sync runs on page loads, so this one is generous. */
+  pushSubscribe: { tokens: 60, window: "10 m" },
 };
 
 /** Client IP (Vercel sets `x-forwarded-for` itself; it is not client-controlled there). */

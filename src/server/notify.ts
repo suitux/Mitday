@@ -10,6 +10,7 @@ import { appUrl } from "@/lib/env";
 import { formatCell } from "@/lib/format";
 import { buildIcs, eventForCell } from "@/lib/ics";
 import { toGridPlan, type PlanBundle } from "./plans";
+import { sendPush, subscriptionsForPlan, subscriptionsForUser } from "./push";
 
 export const NOTIFY_WINDOW_MS = 60 * 60 * 1000;
 
@@ -47,25 +48,45 @@ export async function notifyNewResponse(
   participantName: string,
   isFirstSave: boolean,
 ) {
+  const vars = { name: participantName, title: b.plan.title };
+  const push = subscriptionsForUser(b.plan.ownerId)
+    .then((subs) =>
+      sendPush(subs, (locale) => {
+        const t = translatorFor(locale, "push.newResponse");
+        return {
+          title: t(isFirstSave ? "title" : "titleEdit", vars),
+          body: t(isFirstSave ? "body" : "bodyEdit", vars),
+          url: `/${locale}/plans/${b.plan.id}/manage`,
+          tag: `response-${b.plan.id}`,
+        };
+      }),
+    )
+    .catch((e) => console.error("response push", e));
   const o = await owner(b.plan.ownerId);
-  if (!o?.email) return;
+  if (!o?.email) {
+    await push;
+    return;
+  }
   const locale = toLocale(o.locale);
   const t = translatorFor(locale, "emails.newResponse");
-  const vars = { name: participantName, title: b.plan.title };
-  await sendEmail({
-    to: o.email,
-    subject: t(isFirstSave ? "subject" : "subjectEdit", vars),
-    react: SimpleEmail({
-      lang: locale,
-      preview: t("subject", vars),
-      paragraphs: [t(isFirstSave ? "body" : "bodyEdit", vars)],
-      button: {
-        label: t("button"),
-        href: `${appUrl()}/${locale}/plans/${b.plan.id}/manage`,
-      },
-      footer: t("footer"),
+  const [, mail] = await Promise.allSettled([
+    push,
+    sendEmail({
+      to: o.email,
+      subject: t(isFirstSave ? "subject" : "subjectEdit", vars),
+      react: SimpleEmail({
+        lang: locale,
+        preview: t("subject", vars),
+        paragraphs: [t(isFirstSave ? "body" : "bodyEdit", vars)],
+        button: {
+          label: t("button"),
+          href: `${appUrl()}/${locale}/plans/${b.plan.id}/manage`,
+        },
+        footer: t("footer"),
+      }),
     }),
-  });
+  ]);
+  if (mail.status === "rejected") throw mail.reason;
 }
 
 export async function sendPersonalLink(
@@ -94,6 +115,20 @@ export async function sendPersonalLink(
 export async function sendPlanClosed(b: PlanBundle) {
   if (!b.plan.finalCell) return;
   const grid = toGridPlan(b);
+  const finalCell = b.plan.finalCell;
+  const push = subscriptionsForPlan(b.plan.id, b.plan.ownerId)
+    .then((subs) =>
+      sendPush(subs, (locale) => {
+        const t = translatorFor(locale, "push.closed");
+        return {
+          title: t("title", { title: b.plan.title }),
+          body: t("body", { when: formatCell(grid, finalCell, locale) }),
+          url: `/${locale}/p/${b.plan.slug}`,
+          tag: `closed-${b.plan.id}`,
+        };
+      }),
+    )
+    .catch((e) => console.error("close push", e));
   const recipients = await db
     .select({ email: participants.email, locale: participants.locale })
     .from(participants)
@@ -106,8 +141,9 @@ export async function sendPlanClosed(b: PlanBundle) {
     if (r.email) list.set(r.email.toLowerCase(), r.locale);
   if (o?.email) list.set(o.email.toLowerCase(), o.locale);
 
-  await Promise.allSettled(
-    [...list].map(async ([to, localeRaw]) => {
+  await Promise.allSettled([
+    push,
+    ...[...list].map(async ([to, localeRaw]) => {
       const locale = toLocale(localeRaw);
       const t = translatorFor(locale, "emails.closed");
       const url = planUrl(locale, b.plan.slug);
@@ -147,5 +183,5 @@ export async function sendPlanClosed(b: PlanBundle) {
           : undefined,
       });
     }),
-  );
+  ]);
 }

@@ -32,6 +32,10 @@ export default defineConfig({
       AUTH_URL: baseURL,
       AUTH_TRUST_HOST: "true",
       NEXT_PUBLIC_APP_URL: baseURL,
+      // Public key only (no private key): the prompt shows, pushes are logged.
+      NEXT_PUBLIC_VAPID_PUBLIC_KEY:
+        process.env.NEXT_PUBLIC_VAPID_PUBLIC_KEY ??
+        "BDF4tXwhJN5Rz0J6CyIB-Iv8-WB8HyLEREQOQD5pZnVv2z2ctT6iveA6it5OGYhI8YE5Sa-bP7A71iPnmfewiE8",
     },
   },
 });

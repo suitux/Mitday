@@ -18,13 +18,14 @@ Someone suggests it, nobody commits, someone is “easy” and the plan dies at 
 
 ## Every group has one of each
 
-| The friend                                      | What Mitday does about it                                                                                                |
-| ----------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------ |
-| **The one who's “easy”**                        | Has to prove it: _Can do_, _If needed_ or _Can't_, painted day by day. Options, colours and weights are set by the plan. |
-| **The one who signs up for nothing**            | Doesn't have to. Open the link, type a name, mark the days. A personal link lets them edit from another phone.           |
-| **The “I can only do dinner” one**              | Plans can use whole days, named slots (_Lunch_, _Dinner_) or an hourly grid shown in each person's own time zone.        |
-| **The one who'd rather nobody knew they can't** | The creator decides what guests see: who can make it, only the heatmap, or nothing at all.                               |
-| **The one who hears about everything last**     | When the plan closes, everyone who left an email gets the date with an `.ics` for Google or Apple Calendar.              |
+| The friend                                      | What Mitday does about it                                                                                                   |
+| ----------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| **The one who's “easy”**                        | Has to prove it: _Can do_, _If needed_ or _Can't_, painted day by day. Options, colours and weights are set by the plan.    |
+| **The one who signs up for nothing**            | Doesn't have to. Open the link, type a name, mark the days. A personal link lets them edit from another phone.              |
+| **The “I can only do dinner” one**              | Plans can use whole days, named slots (_Lunch_, _Dinner_) or an hourly grid shown in each person's own time zone.           |
+| **The one who'd rather nobody knew they can't** | The creator decides what guests see: who can make it, only the heatmap, or nothing at all.                                  |
+| **The one who hears about everything last**     | When the plan closes, everyone who left an email gets the date with an `.ics` for Google or Apple Calendar.                 |
+| **The one who never opens their email**         | Push notifications: creators hear about new answers, guests about the final date. On iPhone, add Mitday to the Home Screen. |
 
 <table>
   <tr>
@@ -71,14 +72,14 @@ Without `AUTH_RESEND_KEY`, magic links and notification emails are printed in th
 - **Drizzle ORM** on Postgres: Neon in production, Docker locally.
 - **next-intl**: Spanish (default), Catalan and English.
 - **Tailwind v4 + shadcn/ui**. Design: pale periwinkle ground, ink type, one deep teal action, pastel fields per section. Colour on the calendar is reserved for answers. Typeface: Schibsted Grotesk.
-- **React Email + Resend** for notifications; optional **Upstash** rate limiting.
+- **React Email + Resend** for notifications, **Web Push** (installable PWA, works on iOS 16.4+ from the Home Screen); optional **Upstash** rate limiting.
 
 The domain lives in `src/lib` (cells, grid, scoring, visibility), mutations in `src/server/actions`. See `PLAN.md` for the full spec.
 
 ## Deploying (Vercel)
 
 1. Create a Neon database (Vercel Marketplace) and set `DATABASE_URL`.
-2. Set `AUTH_SECRET`, `AUTH_GOOGLE_ID`, `AUTH_GOOGLE_SECRET`, `AUTH_RESEND_KEY`, `EMAIL_FROM`, `NEXT_PUBLIC_APP_URL` and, optionally, `UPSTASH_REDIS_REST_URL` / `UPSTASH_REDIS_REST_TOKEN` for rate limiting.
+2. Set `AUTH_SECRET`, `AUTH_GOOGLE_ID`, `AUTH_GOOGLE_SECRET`, `AUTH_RESEND_KEY`, `EMAIL_FROM`, `NEXT_PUBLIC_APP_URL` and, optionally, `UPSTASH_REDIS_REST_URL` / `UPSTASH_REDIS_REST_TOKEN` for rate limiting and `NEXT_PUBLIC_VAPID_PUBLIC_KEY` / `VAPID_PRIVATE_KEY` / `VAPID_SUBJECT` for push notifications (`pnpm dlx web-push generate-vapid-keys`).
 3. Google OAuth redirect URI: `https://<domain>/api/auth/callback/google`.
 4. The build (`pnpm vercel-build`) applies migrations before `next build` when `DATABASE_URL` is present.
 

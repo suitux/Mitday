@@ -2,6 +2,7 @@ import { toLocale } from "@/i18n/routing";
 import { notFound } from "next/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { SharePanel } from "@/components/plan-form/share-panel";
+import { PushPrompt } from "@/components/push/push-prompt";
 import { Button } from "@/components/ui/button";
 import { Link } from "@/i18n/navigation";
 import { shareLinkFor } from "@/server/links";
@@ -36,6 +37,9 @@ export default async function CreatedPage({
           <Link href={`/plans/${b.plan.id}/manage`}>{t("manage")}</Link>
         </Button>
       </div>
+      {b.plan.notifyOnResponse ? (
+        <PushPrompt mode="owner" className="mt-10" />
+      ) : null}
     </main>
   );
 }

@@ -21,6 +21,7 @@ export default auth((req) => {
 });
 
 export const config = {
-  // Everything except API routes, Next internals, Vercel internals and files with an extension.
-  matcher: ["/((?!api|_next|_vercel|.*\\..*).*)"],
+  // Everything except API routes, Next internals, Vercel internals, the
+  // generated apple-icon and files with an extension.
+  matcher: ["/((?!api|_next|_vercel|apple-icon|.*\\..*).*)"],
 };

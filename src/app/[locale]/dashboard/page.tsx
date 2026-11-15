@@ -4,6 +4,7 @@ import { Plus } from "lucide-react";
 import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { after } from "next/server";
+import { PushPrompt } from "@/components/push/push-prompt";
 import { Button } from "@/components/ui/button";
 import { db } from "@/db";
 import { users } from "@/db/schema";
@@ -17,12 +18,19 @@ import {
   toGridPlan,
   type DashboardPlan,
 } from "@/server/plans";
+import { manifestHref } from "@/server/links";
 import { currentUser } from "@/server/session";
 import { redirect } from "@/i18n/navigation";
 
-export async function generateMetadata(): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: PageProps<"/[locale]/dashboard">): Promise<Metadata> {
+  const locale = toLocale((await params).locale);
   const t = await getTranslations("dashboard");
-  return { title: t("title") };
+  return {
+    title: t("title"),
+    manifest: manifestHref(locale, `/${locale}/dashboard`),
+  };
 }
 
 function summary(row: DashboardPlan, locale: string) {
@@ -77,6 +85,8 @@ export default async function Dashboard({
           </Link>
         </Button>
       </div>
+
+      <PushPrompt mode="owner" className="mt-6" />
 
       <section className="mt-8" aria-labelledby="mine">
         <h2 id="mine" className="text-base font-medium">

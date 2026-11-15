@@ -119,7 +119,9 @@ export function LandingDemo({
       cell,
       optionId,
     }));
-    const arrived = friends.filter((f) => Number(f.participantId.slice(1)) < shown);
+    const arrived = friends.filter(
+      (f) => Number(f.participantId.slice(1)) < shown,
+    );
     return aggregate(
       options,
       [...arrived, ...mine],
@@ -170,7 +172,7 @@ export function LandingDemo({
                   who.length > 0 && "flex-col gap-0.5 leading-none",
                   // The winner stands out: thick ring lifted off the grid.
                   isBest &&
-                    "z-10 ring-2 ring-hue ring-offset-2 ring-offset-card shadow-md",
+                    "z-10 shadow-md ring-2 ring-hue ring-offset-2 ring-offset-card",
                 )}
                 visual={{
                   mineColor: o ? colorValue(o.color) : undefined,

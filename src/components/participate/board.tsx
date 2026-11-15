@@ -20,6 +20,7 @@ import { Palette } from "@/components/calendar/palette";
 import { SlotView } from "@/components/calendar/slot-view";
 import type { ViewProps } from "@/components/calendar/types";
 import { usePaint, type Brush } from "@/components/calendar/use-paint";
+import { PushPrompt } from "@/components/push/push-prompt";
 import { Button } from "@/components/ui/button";
 import type { Answers, BoardProps } from "@/lib/client-plan";
 import { colorValue } from "@/lib/plan-schema";
@@ -226,6 +227,16 @@ export function Board({
         <PersonalLinkCard
           link={personalLink}
           onDismiss={() => setPersonalLink(null)}
+        />
+      ) : null}
+
+      {/* Ask once there is something to be told about: after the first save. */}
+      {!closed && me?.hasSaved ? (
+        <PushPrompt
+          mode="guest"
+          slug={plan.slug}
+          openUrl={personalLink ?? knownLink ?? initialLink}
+          className="mb-5"
         />
       ) : null}
 

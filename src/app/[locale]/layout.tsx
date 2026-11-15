@@ -8,6 +8,7 @@ import { SiteFooter } from "@/components/app/site-footer";
 import { SiteHeader } from "@/components/app/site-header";
 import { routing } from "@/i18n/routing";
 import { appUrl } from "@/lib/env";
+import { manifestHref } from "@/server/links";
 
 const sans = Schibsted_Grotesk({
   variable: "--font-schibsted",
@@ -37,6 +38,8 @@ export async function generateMetadata({
     alternates: {
       languages: Object.fromEntries(routing.locales.map((l) => [l, `/${l}`])),
     },
+    manifest: manifestHref(locale),
+    appleWebApp: { capable: true, title: "Mitday", statusBarStyle: "default" },
   };
 }
 

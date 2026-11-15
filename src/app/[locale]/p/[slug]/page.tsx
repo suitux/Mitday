@@ -11,7 +11,12 @@ import { Link } from "@/i18n/navigation";
 import type { Answers, ClientPlan } from "@/lib/client-plan";
 import { googleCalendarUrl, eventForCell } from "@/lib/ics";
 import { buildOthersView } from "@/lib/plan-view";
-import { personalLinkFor, shareLinkFor } from "@/server/links";
+import {
+  manifestHref,
+  personalLinkFor,
+  personalLinkPath,
+  shareLinkFor,
+} from "@/server/links";
 import { getCurrentParticipant } from "@/server/participant";
 import {
   getParticipantsAndResponses,
@@ -23,11 +28,21 @@ import { currentUser } from "@/server/session";
 export async function generateMetadata({
   params,
 }: PageProps<"/[locale]/p/[slug]">): Promise<Metadata> {
-  const { slug } = await params;
+  const { slug, locale: rawLocale } = await params;
+  const locale = toLocale(rawLocale);
   const b = await getPlanBySlug(slug);
   if (!b) return {};
   const t = await getTranslations("participate");
+  // Installed from here, the app opens this plan (as this guest, on iOS too).
+  const current = await getCurrentParticipant(b.plan.id);
+  const start =
+    current.participant &&
+    !current.participant.userId &&
+    current.guestCredential
+      ? personalLinkPath(locale, slug, current.guestCredential)
+      : `/${locale}/p/${slug}`;
   return {
+    manifest: manifestHref(locale, start),
     title: b.plan.title,
     description: b.plan.description ?? t("metaDescription"),
     robots: { index: false, follow: false },
