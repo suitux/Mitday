@@ -1,6 +1,7 @@
 import { getTranslations } from "next-intl/server";
 import { Suspense } from "react";
 import { Link } from "@/i18n/navigation";
+import { isAdminEmail } from "@/lib/admin";
 import { currentUser } from "@/server/session";
 import { MitdayMark } from "./logo";
 import { UserMenu } from "./user-menu";
@@ -30,6 +31,7 @@ async function HeaderUser() {
         name={user.name ?? user.email ?? "?"}
         email={user.email}
         image={user.image}
+        isAdmin={isAdminEmail(user.email)}
       />
     </div>
   );

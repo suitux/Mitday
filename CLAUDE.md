@@ -22,6 +22,7 @@ Group scheduling: a creator makes a plan, shares a link, guests paint the days/s
 - `src/lib/guest.ts` + `src/server/participant.ts` — guest identity (cookie `mitday_p_<planId>` = `<participantId>.<token>`, only sha256 stored).
 - `src/server/actions/*` — all mutations; return `ActionResult` (`{ ok, data } | { ok: false, error }`), error codes translated under `errors.*`.
 - `src/server/notify.ts` — emails (React Email templates in `src/emails`) and Web Push, sent with `after()`. Without `AUTH_RESEND_KEY` emails are printed to the server console.
+- `src/lib/admin.ts` + `src/server/admin.ts` + `/[locale]/admin` — read-only backoffice (users, their plans) for emails in `ADMIN_EMAILS`; every admin page calls `currentAdmin()` and 404s otherwise.
 - `src/server/push.ts` + `public/sw.js` + `src/components/push/push-prompt.tsx` — Web Push (VAPID, `web-push`). `push_subscriptions` has one row per (endpoint, user) or (endpoint, guest participant). Without VAPID keys the prompt is hidden and pushes are logged. The manifest is `/api/manifest?start=…`: iOS home-screen apps don't share Safari's cookies, so a guest's plan page sets `start` to their personal link.
 
 ## Commands

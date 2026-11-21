@@ -1,5 +1,6 @@
 import "server-only";
 import { auth } from "@/auth";
+import { isAdminEmail } from "@/lib/admin";
 
 export async function currentUser() {
   const session = await auth();
@@ -11,6 +12,12 @@ export async function currentUser() {
     email: user.email ?? null,
     image: user.image ?? null,
   };
+}
+
+/** The signed-in user if their email is in `ADMIN_EMAILS`, else null. */
+export async function currentAdmin() {
+  const user = await currentUser();
+  return user && isAdminEmail(user.email) ? user : null;
 }
 
 export class ActionError extends Error {

@@ -8,7 +8,8 @@
     "dashboard": "My plans",
     "account": "Account",
     "newPlan": "New plan",
-    "signOut": "Sign out"
+    "signOut": "Sign out",
+    "admin": "Admin"
   },
   "footer": {
     "tagline": "Mitday · for groups that always say “we should hang out”",
@@ -492,5 +493,43 @@
       "inappOwner": "Look for “Open in Safari” in this app's menu, or copy the link and paste it into Safari. We'll show you how to turn them on there.",
       "copyLink": "Copy link"
     }
+  },
+  "admin": {
+    "title": "Admin",
+    "users": "Users",
+    "total": "{count, plural, =0 {No users} one {# user} other {# users}}",
+    "searchPlaceholder": "Search by name or email",
+    "search": "Search",
+    "clear": "Clear",
+    "colUser": "User",
+    "colLocale": "Language",
+    "colOwned": "Plans created",
+    "colParticipating": "Joined",
+    "colLastPlan": "Last plan",
+    "never": "—",
+    "noName": "No name",
+    "emptyTitle": "No users yet",
+    "emptySearch": "No user matches “{q}”.",
+    "prev": "Previous",
+    "next": "Next",
+    "pageOf": "Page {page} of {pages}",
+    "back": "All users",
+    "email": "Email",
+    "locale": "Language",
+    "verified": "Verified",
+    "notVerified": "Not verified",
+    "providers": "Sign-in",
+    "noProviders": "None",
+    "owned": "Plans created",
+    "participating": "Joined",
+    "noPlans": "None.",
+    "colTitle": "Plan",
+    "colStatus": "Status",
+    "colParticipants": "Participants",
+    "colCreated": "Created",
+    "colFinal": "Final date",
+    "open": "Open",
+    "closed": "Closed",
+    "viewPublic": "View public page"
   }
 }

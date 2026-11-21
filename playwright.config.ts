@@ -29,6 +29,7 @@ export default defineConfig({
     stdout: process.env.E2E_SERVER_LOGS ? "pipe" : "ignore",
     env: {
       AUTH_TEST_LOGIN: "1",
+      ADMIN_EMAILS: "admin@test.mitday",
       AUTH_URL: baseURL,
       AUTH_TRUST_HOST: "true",
       NEXT_PUBLIC_APP_URL: baseURL,

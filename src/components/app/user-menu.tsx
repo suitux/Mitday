@@ -1,6 +1,6 @@
 "use client";
 
-import { LogOut, LayoutGrid, Plus } from "lucide-react";
+import { LogOut, LayoutGrid, Plus, Shield } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
@@ -18,10 +18,12 @@ export function UserMenu({
   name,
   email,
   image,
+  isAdmin = false,
 }: {
   name: string;
   email: string | null;
   image: string | null;
+  isAdmin?: boolean;
 }) {
   const t = useTranslations("nav");
   const initial = name.trim().charAt(0).toUpperCase() || "?";
@@ -59,6 +61,13 @@ export function UserMenu({
             <Plus /> {t("newPlan")}
           </Link>
         </DropdownMenuItem>
+        {isAdmin ? (
+          <DropdownMenuItem asChild>
+            <Link href="/admin">
+              <Shield /> {t("admin")}
+            </Link>
+          </DropdownMenuItem>
+        ) : null}
         <DropdownMenuSeparator />
         <form action={signOutAction}>
           <DropdownMenuItem asChild>

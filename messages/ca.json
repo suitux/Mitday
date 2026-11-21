@@ -8,7 +8,8 @@
     "dashboard": "Els meus plans",
     "account": "Compte",
     "newPlan": "Nou pla",
-    "signOut": "Tancar la sessió"
+    "signOut": "Tancar la sessió",
+    "admin": "Administració"
   },
   "footer": {
     "tagline": "Mitday · per a colles que sempre diuen «a veure si quedem»",
@@ -492,5 +493,43 @@
       "inappOwner": "Busca «Obrir a Safari» al menú d'aquesta app, o copia l'enllaç i enganxa'l a Safari. Allà t'expliquem com activar-les.",
       "copyLink": "Copiar l'enllaç"
     }
+  },
+  "admin": {
+    "title": "Administració",
+    "users": "Usuaris",
+    "total": "{count, plural, =0 {Cap usuari} one {# usuari} other {# usuaris}}",
+    "searchPlaceholder": "Cerca per nom o correu",
+    "search": "Cerca",
+    "clear": "Neteja",
+    "colUser": "Usuari",
+    "colLocale": "Idioma",
+    "colOwned": "Plans creats",
+    "colParticipating": "Participa en",
+    "colLastPlan": "Últim pla",
+    "never": "—",
+    "noName": "Sense nom",
+    "emptyTitle": "No hi ha usuaris",
+    "emptySearch": "Cap usuari coincideix amb «{q}».",
+    "prev": "Anterior",
+    "next": "Següent",
+    "pageOf": "Pàgina {page} de {pages}",
+    "back": "Tots els usuaris",
+    "email": "Correu",
+    "locale": "Idioma",
+    "verified": "Verificat",
+    "notVerified": "No verificat",
+    "providers": "Accés",
+    "noProviders": "Cap",
+    "owned": "Plans creats",
+    "participating": "Participa en",
+    "noPlans": "Cap.",
+    "colTitle": "Pla",
+    "colStatus": "Estat",
+    "colParticipants": "Participants",
+    "colCreated": "Creat",
+    "colFinal": "Data final",
+    "open": "Obert",
+    "closed": "Tancat",
+    "viewPublic": "Veure la pàgina pública"
   }
 }

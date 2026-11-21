@@ -7,7 +7,7 @@ import { routing } from "@/i18n/routing";
 const intl = createIntlMiddleware(routing);
 const { auth } = NextAuth(authConfig);
 
-const PROTECTED = /^\/(?:es|ca|en)\/(?:dashboard|plans)(?:\/|$)/;
+const PROTECTED = /^\/(?:es|ca|en)\/(?:dashboard|plans|admin)(?:\/|$)/;
 
 export default auth((req) => {
   const { pathname, search } = req.nextUrl;

@@ -8,7 +8,8 @@
     "dashboard": "Mis planes",
     "account": "Cuenta",
     "newPlan": "Nuevo plan",
-    "signOut": "Cerrar sesión"
+    "signOut": "Cerrar sesión",
+    "admin": "Administración"
   },
   "footer": {
     "tagline": "Mitday · para grupos que siempre dicen «a ver si quedamos»",
@@ -492,5 +493,43 @@
       "inappOwner": "Busca «Abrir en Safari» en el menú de esta app, o copia el enlace y pégalo en Safari. Allí te contamos cómo activarlas.",
       "copyLink": "Copiar enlace"
     }
+  },
+  "admin": {
+    "title": "Administración",
+    "users": "Usuarios",
+    "total": "{count, plural, =0 {Ningún usuario} one {# usuario} other {# usuarios}}",
+    "searchPlaceholder": "Buscar por nombre o email",
+    "search": "Buscar",
+    "clear": "Limpiar",
+    "colUser": "Usuario",
+    "colLocale": "Idioma",
+    "colOwned": "Planes creados",
+    "colParticipating": "Participa en",
+    "colLastPlan": "Último plan",
+    "never": "—",
+    "noName": "Sin nombre",
+    "emptyTitle": "No hay usuarios",
+    "emptySearch": "Ningún usuario coincide con «{q}».",
+    "prev": "Anterior",
+    "next": "Siguiente",
+    "pageOf": "Página {page} de {pages}",
+    "back": "Todos los usuarios",
+    "email": "Email",
+    "locale": "Idioma",
+    "verified": "Verificado",
+    "notVerified": "No verificado",
+    "providers": "Acceso",
+    "noProviders": "Ninguno",
+    "owned": "Planes creados",
+    "participating": "Participa en",
+    "noPlans": "Ninguno.",
+    "colTitle": "Plan",
+    "colStatus": "Estado",
+    "colParticipants": "Participantes",
+    "colCreated": "Creado",
+    "colFinal": "Fecha final",
+    "open": "Abierto",
+    "closed": "Cerrado",
+    "viewPublic": "Ver página pública"
   }
 }
